@@ -138,7 +138,7 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 export pyenv_root="$home/.pyenv"
 [[ -d $pyenv_root/bin ]] && export path="$pyenv_root/bin:$path"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)". "$home/.cargo/env"
+eval "$(pyenv virtualenv-init -)"
 # pyenv end
 
 # cargo

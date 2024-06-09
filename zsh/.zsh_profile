@@ -4,7 +4,7 @@ VIM="nvim"
 export GIT_EDITOR=$VIM
 export DOTFILES=$HOME/.dotfiles
 
-addToPathFront $HOME/.local/bin
+export PATH="$HOME/.local/bin:$PATH"
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
