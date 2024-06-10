@@ -113,7 +113,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # pnpm
 alias pn="pnpm"
 alias pnpx="pnpm dlx"
-export PNPM_HOME="/Users/aidan/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
