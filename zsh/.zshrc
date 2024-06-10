@@ -147,7 +147,7 @@ export PATH="$CARGO_INSTALL/bin:$PATH"
 # cargo end
 
 # brew
-LINUX_BREW="$HOME/linuxbrew/.linuxbrew/bin"
+LINUX_BREW="/home/linuxbrew/.linuxbrew/bin"
 if [ -f "$LINUX_BREW/brew" ]; then export PATH="$LINUX_BREW:$PATH"; fi
 MAC_BREW="/opt/homebrew/bin/"
 if [ -f "$MAC_BREW/brew" ]; then export PATH="$MAC_BREW:$PATH"; fi
