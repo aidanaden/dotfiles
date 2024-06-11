@@ -10,6 +10,23 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# # fzf theme via https://github.com/catppuccin/fzf
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+# --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+
+# fzf tokyo night
+export FZF_DEFAULT_OPTS=" \
+$FZF_DEFAULT_OPTS \
+--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7 \
+--color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff \
+--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff \
+--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
+
+# Bat (better cat) theme
+export BAT_THEME=tokyonight_night
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -70,9 +87,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-fzf-history-search)
 
 source $ZSH/oh-my-zsh.sh
+eval "$(bat cache --build)" 2>/dev/null
 
 # User configuration
 
@@ -103,6 +121,9 @@ source ~/.zsh_profile
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Eza (better ls)
+alias ls="eza --color=always --long --git --icons=always" 
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -153,3 +174,4 @@ if [ -f "$LINUX_BREW/brew" ]; then export PATH="$LINUX_BREW:$PATH"; fi
 MAC_BREW="/opt/homebrew/bin/"
 if [ -f "$MAC_BREW/brew" ]; then export PATH="$MAC_BREW:$PATH"; fi
 # brew end
+
