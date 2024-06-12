@@ -1,0 +1,10 @@
+
+2024/06/13 (07:04:41) | ===> btop++ v.1.3.2
+2024/06/13 (07:04:41) | INFO: Logger set to DEBUG
+2024/06/13 (07:04:41) | DEBUG: Using locale en_US.UTF-8
+2024/06/13 (07:04:41) | INFO: Running on /dev/ttys002
+2024/06/13 (07:04:41) | DEBUG: get_sensors(): show_coretemp=1 check_temp=1
+2024/06/13 (07:04:41) | DEBUG: M1 sensors found
+2024/06/13 (07:04:41) | DEBUG: Loading theme file: /Users/aidan/.config/btop/themes/tokyo-night.theme
+2024/06/13 (07:04:45) | DEBUG: Writing new config file
+2024/06/13 (07:04:45) | INFO: Quitting! Runtime: 00:00:04
