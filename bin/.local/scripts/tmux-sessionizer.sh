@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/projects ~/ ~/coinhall -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/projects ~/ ~/coinhall ~/coinhall/monoapp ~/coinhall/monoapp/apps ~/coinhall/monoapp/packages -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
