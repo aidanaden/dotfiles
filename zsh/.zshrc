@@ -26,6 +26,7 @@ $FZF_DEFAULT_OPTS \
 
 # Bat (better cat) theme
 export BAT_THEME=tokyonight_night
+alias cat="bat"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
