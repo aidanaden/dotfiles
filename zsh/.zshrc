@@ -124,7 +124,9 @@ source ~/.zsh_profile
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Eza (better ls)
-alias ls="eza --color=always --long --git --icons=always" 
+alias ls="eza"
+alias ll="eza -alh"
+alias tree="eza --tree"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
