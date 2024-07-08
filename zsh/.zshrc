@@ -178,3 +178,21 @@ MAC_BREW="/opt/homebrew/bin/"
 if [ -f "$MAC_BREW/brew" ]; then export PATH="$MAC_BREW:$PATH"; fi
 # brew end
 
+# transmission
+alias tsm="transmission-remote https://transmission.aidanaden.com/transmission"
+
+. "$HOME/.cargo/env"
+
+# yazi
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+# yazi end
+
+# bun completions
+[ -s "/Users/aidan/.bun/_bun" ] && source "/Users/aidan/.bun/_bun"

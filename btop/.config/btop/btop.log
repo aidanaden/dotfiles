@@ -8,3 +8,13 @@
 2024/06/13 (07:04:41) | DEBUG: Loading theme file: /Users/aidan/.config/btop/themes/tokyo-night.theme
 2024/06/13 (07:04:45) | DEBUG: Writing new config file
 2024/06/13 (07:04:45) | INFO: Quitting! Runtime: 00:00:04
+
+2024/06/18 (14:11:44) | ===> btop++ v.1.3.2
+2024/06/18 (14:11:44) | INFO: Logger set to DEBUG
+2024/06/18 (14:11:44) | DEBUG: Using locale en_US.UTF-8
+2024/06/18 (14:11:44) | INFO: Running on /dev/ttys027
+2024/06/18 (14:11:44) | DEBUG: get_sensors(): show_coretemp=1 check_temp=1
+2024/06/18 (14:11:44) | DEBUG: M1 sensors found
+2024/06/18 (14:11:44) | DEBUG: Loading theme file: /Users/aidan/.config/btop/themes/tokyo-night.theme
+2024/06/18 (14:12:05) | DEBUG: Writing new config file
+2024/06/18 (14:12:05) | INFO: Quitting! Runtime: 00:00:21

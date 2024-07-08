@@ -9,4 +9,5 @@ export PATH="$HOME/.local/scripts:$PATH"
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer.sh\n"
-
+bindkey -s ^h "tmux-cht.sh\n"
+bindkey -s ^l "tmux-launcher.sh\n"

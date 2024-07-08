@@ -6,7 +6,7 @@ PROJECTS="$HOME/projects"
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find $PROJECTS $PROJECTS/* $HOME $COINHALL/* $COINHALL/*/* -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find $PROJECTS $PROJECTS/* $HOME $COINHALL $COINHALL/* $COINHALL/*/* -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
