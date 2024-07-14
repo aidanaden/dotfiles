@@ -1,6 +1,8 @@
 export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 
+alias vim=$VIM
+export EDITOR=$VIM
 export GIT_EDITOR=$VIM
 export DOTFILES=$HOME/.dotfiles
 
@@ -8,6 +10,4 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/scripts:$PATH"
 
 # Where should I put you?
-bindkey -s ^f "tmux-sessionizer.sh\n"
-bindkey -s ^h "tmux-cht.sh\n"
-bindkey -s ^l "tmux-launcher.sh\n"
+# bindkey -s ^f "tmux-sessionizer.sh\n"

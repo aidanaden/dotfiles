@@ -196,3 +196,15 @@ function yy() {
 
 # bun completions
 [ -s "/Users/aidan/.bun/_bun" ] && source "/Users/aidan/.bun/_bun"
+
+# tmux list sessions on startup
+function _tmux()
+{
+    if [[ $# == 0 ]] && command tmux ls >& /dev/null; then
+        command tmux attach \; choose-tree -s
+    else
+        command tmux "$@"
+    fi
+}
+
+alias tmux=_tmux

@@ -1,0 +1,14 @@
+## for TMUX users (prefix + TAB to activate popup)
+# bind-key Tab capture-pane \; save-buffer /tmp/tmux-buffer \; delete-buffer \; display-popup -w 80% -h 60% -E "fzf-nova"
+# or
+# bind-key Tab capture-pane \; save-buffer /tmp/tmux-buffer \; delete-buffer \; display-popup -w 80% -h 60% -E "/path/to/fzf-nova"
+
+export FZF_DEFAULT_OPTS="-e -i -d '_' --with-nth 2.. --info=hidden --layout=reverse --scroll-off=5 --tiebreak=index --bind 'home:first,end:last,tab:down,shift-tab:up'"
+mydir="${0%/*}"
+selected="$(
+  find "$mydir" -type f -name '_*' -exec basename {} \; \
+  | sort | sed 's@\.@ @g' | column -t -s ',' \
+  | fzf --prompt='fzf-nova: ' | cut -d ' ' -f1
+  )"
+[ -z "$selected" ] && exit
+eval "${mydir}/${selected},*"
