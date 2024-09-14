@@ -135,22 +135,18 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # bun end
 
 # pnpm
-alias pn="pnpm"
-alias pnpx="pnpm dlx"
-export PNPM_HOME="$HOME/.local/share/pnpm"
+export PNPM_HOME="/Users/aidan/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+alias pn="pnpm"
 # pnpm end
 
 # turso 
 export PATH="$HOME/.turso:$PATH"
 # turso end
-
-# fnm
-eval "$(fnm env --use-on-cd)"
-# fnm end
 
 # gcloud sdk
 # update PATH 
@@ -208,3 +204,8 @@ function _tmux()
 }
 
 alias tmux=_tmux
+
+
+# fnm
+eval "$(fnm env)"
+# fnm end

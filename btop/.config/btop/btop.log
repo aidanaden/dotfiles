@@ -74,3 +74,33 @@
 2024/07/12 (14:15:35) | DEBUG: Loading theme file: /Users/aidan/.config/btop/themes/tokyo-night.theme
 2024/07/12 (14:16:17) | DEBUG: Writing new config file
 2024/07/12 (14:16:17) | INFO: Quitting! Runtime: 00:00:43
+
+2024/07/15 (06:15:22) | ===> btop++ v.1.3.2
+2024/07/15 (06:15:22) | INFO: Logger set to DEBUG
+2024/07/15 (06:15:22) | DEBUG: Using locale en_US.UTF-8
+2024/07/15 (06:15:22) | INFO: Running on /dev/ttys008
+2024/07/15 (06:15:22) | DEBUG: get_sensors(): show_coretemp=1 check_temp=1
+2024/07/15 (06:15:22) | DEBUG: M1 sensors found
+2024/07/15 (06:15:22) | DEBUG: Loading theme file: /Users/aidan/.config/btop/themes/tokyo-night.theme
+2024/07/15 (14:06:50) | ERROR: Stall in Runner thread, restarting!
+2024/07/15 (22:18:59) | ERROR: Stall in Runner thread, restarting!
+2024/07/15 (23:20:31) | ERROR: Stall in Runner thread, restarting!
+2024/07/15 (23:20:39) | ERROR: Stall in Runner thread, restarting!
+2024/07/15 (23:20:47) | ERROR: Stall in Runner thread, restarting!
+2024/07/15 (23:20:56) | ERROR: Stall in Runner thread, restarting!
+2024/07/15 (23:21:03) | ERROR: Stall in Runner thread, restarting!
+2024/07/16 (00:26:38) | ERROR: Stall in Runner thread, restarting!
+2024/07/16 (00:26:45) | ERROR: Stall in Runner thread, restarting!
+2024/07/16 (01:29:55) | ERROR: Stall in Runner thread, restarting!
+2024/07/16 (02:31:46) | ERROR: Stall in Runner thread, restarting!
+2024/07/17 (02:04:21) | ERROR: Stall in Runner thread, restarting!
+
+2024/07/17 (04:34:53) | ===> btop++ v.1.3.2
+2024/07/17 (04:34:53) | INFO: Logger set to DEBUG
+2024/07/17 (04:34:53) | DEBUG: Using locale en_US.UTF-8
+2024/07/17 (04:34:53) | INFO: Running on /dev/ttys036
+2024/07/17 (04:34:53) | DEBUG: get_sensors(): show_coretemp=1 check_temp=1
+2024/07/17 (04:34:53) | DEBUG: M1 sensors found
+2024/07/17 (04:34:53) | DEBUG: Loading theme file: /Users/aidan/.config/btop/themes/tokyo-night.theme
+2024/07/17 (04:34:54) | INFO: Quitting! Runtime: 00:00:01
+2024/07/17 (09:36:12) | ERROR: Stall in Runner thread, restarting!
