@@ -177,8 +177,6 @@ if [ -f "$MAC_BREW/brew" ]; then export PATH="$MAC_BREW:$PATH"; fi
 # transmission
 alias tsm="transmission-remote https://transmission.aidanaden.com/transmission"
 
-. "$HOME/.cargo/env"
-
 # yazi
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

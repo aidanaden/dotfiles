@@ -15,10 +15,13 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [
-            # dev tools
+            # text editor
             pkgs.neovim
+
+            # github
             pkgs.gh
             pkgs.git
+            pkgs.act
 
             # node/ts/js
             pkgs.fnm
@@ -34,10 +37,15 @@
             pkgs.go
             pkgs.goreleaser
 
+            # python
+            pkgs.pyenv
+            pkgs.uv
+
             # clickhouse
             pkgs.clickhouse
 
             # command line tools
+            pkgs.fzf
             pkgs.stow
             pkgs.fd
             pkgs.jq
@@ -63,6 +71,7 @@
 
             # misc
             pkgs.yt-dlp
+            pkgs.mpv
         ];
 
       # Auto upgrade nix package and the daemon service.
@@ -86,8 +95,16 @@
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
 
+      # Declare the user that will be running `nix-darwin`.
+      users.users.aidan = {
+        name = "aidan";
+        home = "/Users/aidan";
+      };
+
       # Set zig version to 0.13.0
       nixpkgs.overlays = [zig.overlays.default];
+
+      security.pam.enableSudoTouchIdAuth = true;
     };
   in
   {
@@ -99,7 +116,5 @@
 
     # Expose the package set, including overlays, for convenience.
     darwinPackages = self.darwinConfigurations."m1".pkgs;
-
-    security.pam.enableSudoTouchIdAuth = true;
   };
 }
