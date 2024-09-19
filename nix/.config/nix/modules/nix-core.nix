@@ -1,5 +1,5 @@
 
-{ pkgs, nixpkgs, ... }:
+{ pkgs, nixpkgs, zig, ... }:
 
 {
   nix.settings = {
