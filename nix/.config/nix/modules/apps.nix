@@ -92,9 +92,6 @@
     # bitwarden
     # bitwarden-desktop
 
-    # spotify
-    spotify
-
     # telegram
     telegram-desktop
 

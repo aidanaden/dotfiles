@@ -21,5 +21,7 @@
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
 
-  pkgs.overlays = [zig.overlays.default];
+  nixpkgs.overlays = [zig.overlays.default];
+
+  system.stateVersion = 5;
 }
