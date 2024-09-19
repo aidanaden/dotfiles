@@ -34,7 +34,7 @@
     # TODO replace with your own username, system and hostname
     username = "aidan";
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
-    hostname = "Ryans-MacBook-Air-3.system";
+    hostname = "m1";
 
     specialArgs =
       inputs

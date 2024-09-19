@@ -1,5 +1,4 @@
-{ pkgs, ...}: {
-
+{pkgs, ...}: {
   ##########################################################################
   #
   #  Install all apps and packages here.
@@ -17,6 +16,7 @@
   # But on macOS, it's less stable than homebrew.
   #
   # Related Discussion: https://discourse.nixos.org/t/darwin-again/29331
+  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # text editor
     neovim
@@ -73,15 +73,18 @@
     # tiling + hotkeys
     skhd
     yabai
-            
+
     # cloud specifi
     flyctl
     turso-cli
 
-    # media
+    # video
     yt-dlp
     mpv
     # jellyfin-media-player
+
+    # music
+    spotify
 
     # torrents
     qbittorrent-qt5
@@ -98,6 +101,22 @@
     # tailscale
     tailscale
   ];
+
+  launchd = {
+    user = {
+      agents = {
+        yabai = {
+          command = "yabai";
+          serviceConfig = {
+            KeepAlive = true;
+            RunAtLoad = true;
+            StandardOutPath = "/tmp/yabai_aidan.out.log";
+            StandardErrorPath = "/tmp/yabai_aidan.err.log";
+          };
+        };
+      };
+    };
+  };
 
   # # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   # #
