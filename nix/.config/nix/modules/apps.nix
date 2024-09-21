@@ -106,12 +106,12 @@
     tailscale
 
     # crypto wallets
-    trezor-suite
 
     # shamir cli
-    # inputs.shamir.packages.aarch64-darwin.shamir
+    # inputs.shamir.packages.${pkgs.system}.shamir
+    # inputs.zls.packages.${pkgs.system}.zls
     # inputs.zig2nix.packages.aarch64-darwin.zig2nix
-    inputs.example.packages.${pkgs.system}.go-hello
+    # inputs.example.packages.${pkgs.system}.go-hello
   ];
 
   launchd = {

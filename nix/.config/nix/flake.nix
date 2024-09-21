@@ -19,8 +19,10 @@
     };
     zig.url = "github:mitchellh/zig-overlay";
     # zig2nix.url = "github:Cloudef/zig2nix";
-    example.url = "github:NixOS/templates";
+    # example.url = "github:NixOS/templates";
+    zls.url = "github:zigtools/zls";
     # shamir.url = "github:aidanaden/shamir-zig";
+    # schnorr.url = "github:aidanaden/schnorr-zig";
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -39,9 +41,7 @@
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
     hostname = "m1";
 
-    specialArgs = {
-      inherit username hostname inputs;
-    };
+    specialArgs = {inherit inputs username hostname;};
   in {
     darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
       inherit system specialArgs;
@@ -49,7 +49,6 @@
         ./modules/nix-core.nix
         ./modules/system.nix
         ./modules/apps.nix
-
         ./modules/host-users.nix
       ];
     };
