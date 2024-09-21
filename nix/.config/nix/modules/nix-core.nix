@@ -1,7 +1,7 @@
 {
   pkgs,
   nixpkgs,
-  zig,
+  inputs,
   ...
 }: {
   nix.settings = {
@@ -23,7 +23,7 @@
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
 
-  nixpkgs.overlays = [zig.overlays.default];
+  nixpkgs.overlays = [inputs.zig.overlays.default];
 
   system.stateVersion = 5;
 }

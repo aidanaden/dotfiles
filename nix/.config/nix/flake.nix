@@ -20,8 +20,8 @@
     zig.url = "github:mitchellh/zig-overlay";
     # zig2nix.url = "github:Cloudef/zig2nix";
     # example.url = "github:NixOS/templates";
-    zls.url = "github:zigtools/zls";
-    # shamir.url = "github:aidanaden/shamir-zig";
+    # zls.url = "github:zigtools/zls";
+    shamir.url = "github:aidanaden/shamir-zig";
     # schnorr.url = "github:aidanaden/schnorr-zig";
   };
 
@@ -34,6 +34,7 @@
     self,
     nixpkgs,
     darwin,
+    shamir,
     ...
   }: let
     # TODO replace with your own username, system and hostname

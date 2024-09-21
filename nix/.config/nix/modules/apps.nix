@@ -21,6 +21,9 @@
   #
   # Related Discussion: https://discourse.nixos.org/t/darwin-again/29331
   nixpkgs.config.allowUnfree = true;
+  # zls = inputs.zls.packages.${pkgs.system}.zls.overrideAttrs (old: {
+  #   nativeBuildInputs = [zig];
+  # });
   environment.systemPackages = with pkgs; [
     # text editor
     neovim
@@ -108,10 +111,14 @@
     # crypto wallets
 
     # shamir cli
-    # inputs.shamir.packages.${pkgs.system}.shamir
+    inputs.shamir.packages.${pkgs.system}.shamir
     # inputs.zls.packages.${pkgs.system}.zls
     # inputs.zig2nix.packages.aarch64-darwin.zig2nix
     # inputs.example.packages.${pkgs.system}.go-hello
+    # inputs.zls.packages.${pkgs.system}.zls.overrideAttrs
+    # (old: {
+    #   nativeBuildInputs = [inputs.zig.packages.${pkgs.system}.default];
+    # })
   ];
 
   launchd = {
