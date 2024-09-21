@@ -109,7 +109,9 @@
     trezor-suite
 
     # shamir cli
-    inputs.shamir.default
+    # inputs.shamir.packages.aarch64-darwin.shamir
+    # inputs.zig2nix.packages.aarch64-darwin.zig2nix
+    inputs.example.packages.${pkgs.system}.go-hello
   ];
 
   launchd = {
