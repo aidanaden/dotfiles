@@ -18,6 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
     zig.url = "github:mitchellh/zig-overlay";
+    shamir.url = "github:aidanaden/shamir-zig";
   };
 
   # The `outputs` function will return all the build results of the flake.

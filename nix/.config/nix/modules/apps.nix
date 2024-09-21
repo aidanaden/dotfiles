@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   ##########################################################################
   #
   #  Install all apps and packages here.
@@ -100,6 +104,12 @@
 
     # tailscale
     tailscale
+
+    # crypto wallets
+    trezor-suite
+
+    # shamir cli
+    inputs.shamir.default
   ];
 
   launchd = {
