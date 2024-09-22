@@ -104,3 +104,12 @@
 2024/07/17 (04:34:53) | DEBUG: Loading theme file: /Users/aidan/.config/btop/themes/tokyo-night.theme
 2024/07/17 (04:34:54) | INFO: Quitting! Runtime: 00:00:01
 2024/07/17 (09:36:12) | ERROR: Stall in Runner thread, restarting!
+
+2024/09/23 (04:43:38) | ===> btop++ v.1.3.2
+2024/09/23 (04:43:38) | INFO: Logger set to DEBUG
+2024/09/23 (04:43:38) | DEBUG: Using locale en_US.UTF-8
+2024/09/23 (04:43:38) | INFO: Running on /dev/ttys050
+2024/09/23 (04:43:38) | DEBUG: get_sensors(): show_coretemp=1 check_temp=1
+2024/09/23 (04:43:38) | DEBUG: M1 sensors found
+2024/09/23 (04:43:38) | DEBUG: Loading theme file: /Users/aidan/.config/btop/themes/tokyo-night.theme
+2024/09/23 (04:43:39) | INFO: Quitting! Runtime: 00:00:01

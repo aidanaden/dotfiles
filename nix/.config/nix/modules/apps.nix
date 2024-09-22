@@ -81,14 +81,14 @@
     skhd
     yabai
 
-    # cloud specifi
+    # cloud specific
     flyctl
     turso-cli
+    google-cloud-sdk
 
     # video
     yt-dlp
     mpv
-    # jellyfin-media-player
 
     # torrents
     qbittorrent-qt5
@@ -109,24 +109,12 @@
 
     # shamir cli
     inputs.shamir.packages.${pkgs.system}.default
-    # inputs.zls.packages.${pkgs.system}.zls
-    # inputs.zig2nix.packages.aarch64-darwin.zig2nix
-    # inputs.example.packages.${pkgs.system}.go-hello
-    # inputs.zls.packages.${pkgs.system}.zls.overrideAttrs
-    # (old: {
-    #   nativeBuildInputs = [inputs.zig.packages.${pkgs.system}.default];
-    # })
-    # pkgs.callPackage
-    # ./figurine.nix
-    # {}
-    (stdenv.mkDerivation
-      rec {
-        name = "hello-2.8";
-        src = fetchurl {
-          url = "mirror://gnu/hello/${name}.tar.gz";
-          sha256 = "0wqd8sjmxfskrflaxywc7gqw7sfawrfvdxd9skxawzfgyy0pzdz6";
-        };
-      })
+
+    # schnorr cli
+    inputs.schnorr.packages.${pkgs.system}.default
+
+    # rustmission
+    # inputs.rustmission.packages.${pkgs.system}.default
   ];
 
   launchd = {
