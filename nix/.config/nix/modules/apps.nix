@@ -90,9 +90,6 @@
     mpv
     # jellyfin-media-player
 
-    # music
-    spotify
-
     # torrents
     qbittorrent-qt5
 
@@ -111,7 +108,7 @@
     # crypto wallets
 
     # shamir cli
-    inputs.shamir.packages.${pkgs.system}.shamir
+    inputs.shamir.packages.${pkgs.system}.default
     # inputs.zls.packages.${pkgs.system}.zls
     # inputs.zig2nix.packages.aarch64-darwin.zig2nix
     # inputs.example.packages.${pkgs.system}.go-hello
@@ -119,6 +116,10 @@
     # (old: {
     #   nativeBuildInputs = [inputs.zig.packages.${pkgs.system}.default];
     # })
+    # pkgs.callPackage
+    # ./figurine.nix
+    # {}
+    (import ./my-hello.nix)
   ];
 
   launchd = {
