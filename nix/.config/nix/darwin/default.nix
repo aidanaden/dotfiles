@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  zig,
+  ...
+}: {
   imports = [./homebrew.nix];
 
   environment = {
@@ -27,7 +31,7 @@
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
 
-  nixpkgs.overlays = [inputs.zig.overlays.default];
+  nixpkgs.overlays = [zig.overlays.default];
 
   system.stateVersion = 5;
 

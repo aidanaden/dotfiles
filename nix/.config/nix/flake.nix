@@ -58,6 +58,8 @@
     system = "aarch64-darwin";
     hostname = "m1";
   in {
+    # nix code formatter
+    # formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
     formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
     # nix-darwin with home-manager for macOS
     darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
@@ -128,8 +130,5 @@
         }
       ];
     };
-
-    # nix code formatter
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
 }
