@@ -1,13 +1,36 @@
-{pkgs, ...}:
-###################################################################################
-#
-#  macOS's System configuration
-#
-#  All the configuration options are documented here:
-#    https://daiderd.com/nix-darwin/manual/index.html#sec-options
-#
-###################################################################################
-{
+{pkgs, ...}: {
+  imports = [./homebrew.nix];
+
+  environment = {
+    variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
+  };
+
+  nix.settings = {
+    # enable flakes globally
+    experimental-features = ["nix-command" "flakes"];
+
+    # substituers that will be considered before the official ones(https://cache.nixos.org)
+    substituters = [
+      # "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+    builders-use-substitutes = true;
+  };
+
+  # Auto upgrade nix package and the daemon service.
+  services.nix-daemon.enable = true;
+  nix.package = pkgs.nix;
+
+  nixpkgs.overlays = [inputs.zig.overlays.default];
+
+  system.stateVersion = 5;
+
   system = {
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
     activationScripts.postUserActivation.text = ''
