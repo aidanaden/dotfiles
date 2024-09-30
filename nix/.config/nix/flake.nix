@@ -47,6 +47,7 @@
     nixpkgs,
     darwin,
     home-manager,
+    zig,
     ...
   } @ inputs: let
     nixpkgsConfig = {
