@@ -11,7 +11,7 @@
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
     # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -54,7 +54,7 @@
       allowUnfree = true;
       allowUnsupportedSystem = false;
     };
-    # overlays = with inputs; [feovim.overlay krewfile.overlay];
+    overlays = with inputs; [zig.overlays.default];
     user = "aidan";
     system = "aarch64-darwin";
     hostname = "m1";
@@ -76,7 +76,7 @@
           ...
         }: {
           nixpkgs.config = nixpkgsConfig;
-          # nixpkgs.overlays = overlays;
+          nixpkgs.overlays = overlays;
 
           system = {
             stateVersion = 5;
@@ -94,6 +94,9 @@
             localHostName = hostname;
           };
 
+          # Auto upgrade nix package and the daemon service.
+          services.nix-daemon.enable = true;
+
           nix = {
             # enable flakes per default
             package = pkgs.nixFlakes;
@@ -101,6 +104,7 @@
               automatic = false;
               user = user;
             };
+
             settings = {
               allowed-users = [user];
               experimental-features = ["nix-command" "flakes"];
@@ -108,6 +112,15 @@
               # produces linking issues when updating on macOS
               # https://github.com/NixOS/nix/issues/7273
               auto-optimise-store = false;
+
+              # substituers that will be considered before the official ones(https://cache.nixos.org)
+              substituters = [
+                "https://nix-community.cachix.org"
+              ];
+              trusted-public-keys = [
+                "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+              ];
+              builders-use-substitutes = true;
             };
           };
         })
@@ -125,7 +138,7 @@
             users.${user} = {...}:
               with inputs; {
                 imports = [./home ./shell];
-                home.stateVersion = "24.11";
+                home.stateVersion = "24.05";
               };
           };
         }
