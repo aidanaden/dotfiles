@@ -18,17 +18,17 @@
     brews = [
       "aidanaden/tools/canvas-sync"
       "intuis/tap/rustmission"
-      "orbstack"
     ];
 
     # `brew install --cask`
     casks = [
       "spotify" # music player
       "raycast" # launcher on steroids
-      "arc" # mac browser
+      # "arc" # mac browser
       "nikitabobko/tap/aerospace" # tiling window manager
       "anki" # japanese learning
-      "bitwarden" # password manager
+      # "bitwarden" # password manager
+      # "orbstack"
     ];
   };
 }

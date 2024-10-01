@@ -4,10 +4,10 @@
     delta.enable = true;
     userName = "aidanaden";
     userEmail = "aidanaden@hotmail.com";
-    signing = {
-      key = null; # gnupg decides by mail
-      signByDefault = true;
-    };
+    #signing = {
+    #  key = null; # gnupg decides by mail
+    #  signByDefault = true;
+    #};
     includes = [
       # {
       #   condition = "gitdir:~/code/rtl/";

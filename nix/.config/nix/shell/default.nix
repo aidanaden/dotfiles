@@ -67,7 +67,7 @@
       qbittorrent-qt5
 
       # discord client
-      vesktop
+      # vesktop
 
       # telegram
       telegram-desktop
