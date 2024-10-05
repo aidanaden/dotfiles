@@ -56,34 +56,34 @@ in {
     polkit.enable = true;
   };
 
-  wayland.windowManager.sway = {
-    enable = true;
-    config = rec {
-      modifier = "Mod4"; # Super key
-      terminal = "kitty";
-      output = {
-        "Virtual-1" = {
-          mode = "2560x1440@60Hz";
-        };
-      };
-    };
-    extraConfig = ''
-      bindsym Print               exec shotman -c output
-      bindsym Print+Shift         exec shotman -c region
-      bindsym Print+Shift+Control exec shotman -c window
-    '';
-  };
+  # wayland.windowManager.sway = {
+  #   enable = true;
+  #   config = rec {
+  #     modifier = "Mod4"; # Super key
+  #     terminal = "kitty";
+  #     output = {
+  #       "Virtual-1" = {
+  #         mode = "2560x1440@60Hz";
+  #       };
+  #     };
+  #   };
+  #   extraConfig = ''
+  #     bindsym Print               exec shotman -c output
+  #     bindsym Print+Shift         exec shotman -c region
+  #     bindsym Print+Shift+Control exec shotman -c window
+  #   '';
+  # };
 
   services = {
-    # xserver = {
-    #   enable = true;
-    #   displayManager.gdm.enable = true;
-    #   desktopManager.gnome.enable = true;
-    #   xkb = {
-    #     layout = "us";
-    #     variant = "";
-    #   };
-    # };
+    xserver = {
+      enable = true;
+      displayManager.sddm.wayland.enable = true;
+      desktopManager.gnome.enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };
 
     # Enable CUPS to print documents
     printing = {
