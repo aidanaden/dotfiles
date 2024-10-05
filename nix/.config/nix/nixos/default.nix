@@ -75,9 +75,9 @@ in {
   # };
 
   services = {
+    displayManager.sddm.wayland.enable = true;
     xserver = {
       enable = true;
-      displayManager.sddm.wayland.enable = true;
       desktopManager.gnome.enable = true;
       xkb = {
         layout = "us";
