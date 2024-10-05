@@ -30,13 +30,6 @@ in {
     meslo-lgs-nf
   ];
 
-  # Add ability to used TouchID for sudo authentication
-  system = {
-    fprintd = {
-      enable = true;
-    };
-  };
-
   i18n = {
     defaultLocale = locale;
     extraLocaleSettings = {
