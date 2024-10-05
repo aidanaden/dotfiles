@@ -53,18 +53,20 @@
     system = "x86_64-linux";
     hostname = "x1";
   in {
-    # nix code formatter
+    # Nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
-    # replace <your-hostname> with your actual hostname
+    # Replace <your-hostname> with your actual hostname
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
-      # makes all inputs availble in imported files
+      # Makes all inputs availble in imported files
       specialArgs = {inherit inputs;};
       modules = [
-        # add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
+        # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
         nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
         inputs.nix-index-database.nixosModules.nix-index
+        # Include results of the hardware scan
+        ./hardware-configuration.nix
         ./default.nix
         ({
           pkgs,
@@ -94,7 +96,7 @@
           services.nix-daemon.enable = true;
 
           nix = {
-            # enable flakes per default
+            # Enable flakes per default
             package = pkgs.nixFlakes;
             gc = {
               automatic = false;
@@ -105,11 +107,11 @@
               allowed-users = [user];
               experimental-features = ["nix-command" "flakes"];
               warn-dirty = false;
-              # produces linking issues when updating on macOS
+              # Produces linking issues when updating on macOS
               # https://github.com/NixOS/nix/issues/7273
               auto-optimise-store = false;
 
-              # substituers that will be considered before the official ones(https://cache.nixos.org)
+              # Substituers that will be considered before the official ones(https://cache.nixos.org)
               substituters = [
                 "https://nix-community.cachix.org"
               ];
@@ -126,7 +128,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            # makes all inputs available in imported files for hm
+            # Makes all inputs available in imported files for hm
             extraSpecialArgs = {
               inherit inputs;
               pkgs-zsh-fzf-tab =

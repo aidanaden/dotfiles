@@ -15,7 +15,7 @@ in {
     enable = true;
 
     font = {
-      name = "MesloLGS Nerd Font Mono ";
+      name = "MesloLGS Nerd Font Mono";
       size = 11;
     };
 
