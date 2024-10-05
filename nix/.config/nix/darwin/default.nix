@@ -32,6 +32,7 @@
         NSGlobalDomain = {
           # Add a context menu item for showing the Web Inspector in web views
           WebKitDeveloperExtras = true;
+          KeyRepeat = 1;
         };
         "com.apple.spaces" = {
           "spans-displays" = 0; # Display have seperate spaces
