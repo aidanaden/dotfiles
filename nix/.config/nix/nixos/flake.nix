@@ -25,9 +25,9 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    shamir.url = "github:aidanaden/shamir-zig";
-    schnorr.url = "github:aidanaden/schnorr-zig";
-    flow.url = "github:aidanaden/flow";
+    # shamir.url = "github:aidanaden/shamir-zig";
+    # schnorr.url = "github:aidanaden/schnorr-zig";
+    # flow.url = "github:aidanaden/flow";
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -77,30 +77,25 @@
           nixpkgs.overlays = overlays;
 
           system = {
-            stateVersion = 5;
+            stateVersion = "5";
             configurationRevision = self.rev or self.dirtyRev or null;
           };
 
           users.users.${user} = {
             home = "/Users/${user}";
             shell = pkgs.zsh;
+            isNormalUser = true;
           };
 
           networking = {
-            computerName = hostname;
             hostName = hostname;
-            localHostName = hostname;
           };
-
-          # Auto upgrade nix package and the daemon service.
-          services.nix-daemon.enable = true;
 
           nix = {
             # Enable flakes per default
             package = pkgs.nixFlakes;
             gc = {
               automatic = false;
-              user = user;
             };
 
             settings = {

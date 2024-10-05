@@ -52,7 +52,46 @@ in {
     };
   };
 
+  hardware = {
+    pulseaudio.enable = false;
+  };
+
+  programs.sway.enable = true;
+
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+  };
+
+  wayland.windowManager.sway = {
+    enable = true;
+    config = rec {
+      modifier = "Mod4"; # Super key
+      terminal = "kitty";
+      output = {
+        "Virtual-1" = {
+          mode = "2560x1440@60Hz";
+        };
+      };
+    };
+    extraConfig = ''
+      bindsym Print               exec shotman -c output
+      bindsym Print+Shift         exec shotman -c region
+      bindsym Print+Shift+Control exec shotman -c window
+    '';
+  };
+
   services = {
+    # xserver = {
+    #   enable = true;
+    #   displayManager.gdm.enable = true;
+    #   desktopManager.gnome.enable = true;
+    #   xkb = {
+    #     layout = "us";
+    #     variant = "";
+    #   };
+    # };
+
     # Enable CUPS to print documents
     printing = {
       enable = false;
@@ -80,4 +119,8 @@ in {
   #services.xserver.libinput.enable = true;
 
   programs.firefox.enable = true;
+
+  # Create /etc/zshrc that loads the nix-darwin environment.
+  # this is required if you want to use darwin's default shell - zsh
+  programs.zsh.enable = true;
 }

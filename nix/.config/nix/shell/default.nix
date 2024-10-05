@@ -80,13 +80,13 @@
       # crypto wallets
 
       # shamir cli
-      inputs.shamir.packages.${pkgs.system}.default
+      # inputs.shamir.packages.${pkgs.system}.default
 
       # schnorr cli
-      inputs.schnorr.packages.${pkgs.system}.default
+      # inputs.schnorr.packages.${pkgs.system}.default
 
       # flow terminal
-      inputs.flow.packages.${pkgs.system}.default
+      # inputs.flow.packages.${pkgs.system}.default
 
       # rustmission
       # inputs.rustmission.packages.${pkgs.system}.default
