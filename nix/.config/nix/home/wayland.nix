@@ -1,5 +1,4 @@
 {...}: {
-  security.polkit.enable = true;
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
