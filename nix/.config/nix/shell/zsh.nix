@@ -19,6 +19,10 @@
       share = true;
     };
 
+    initExtraFirst = ''
+      source ~/.p10k.zsh
+    '';
+
     initExtra = ''
       # yazi
       function yy() {
@@ -46,8 +50,6 @@
 
       alias tmux=_tmux
 
-      source ~/.p10k.zsh
-
       eval "$(fnm env)"
     '';
 
@@ -70,8 +72,8 @@
       }
       {
         name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+        file = "powerlevel10k.zsh-theme";
       }
     ];
 
