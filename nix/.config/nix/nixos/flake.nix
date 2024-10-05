@@ -85,6 +85,8 @@
             home = "/Users/${user}";
             shell = pkgs.zsh;
             isNormalUser = true;
+            description = user;
+            extraGroups = ["networkmanager" "wheel"];
           };
 
           networking = {
