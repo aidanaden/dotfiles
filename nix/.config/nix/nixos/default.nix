@@ -49,7 +49,7 @@ in {
     pulseaudio.enable = false;
   };
 
-  programs.sway.enable = true;
+  # programs.sway.enable = true;
 
   security = {
     rtkit.enable = true;
@@ -75,15 +75,15 @@ in {
   # };
 
   services = {
-    displayManager.sddm.wayland.enable = true;
-    xserver = {
-      enable = true;
-      desktopManager.gnome.enable = true;
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
-    };
+    # displayManager.sddm.wayland.enable = true;
+    # xserver = {
+    #   enable = true;
+    #   desktopManager.gnome.enable = true;
+    #   xkb = {
+    #     layout = "us";
+    #     variant = "";
+    #   };
+    # };
 
     # Enable CUPS to print documents
     printing = {
