@@ -77,7 +77,7 @@
       specialArgs = {inherit inputs;};
       modules = [
         inputs.nix-index-database.darwinModules.nix-index
-        ./darwin
+        ./default
         ({
           pkgs,
           inputs,
@@ -146,8 +146,8 @@
             users.${user} = {...}:
               with inputs; {
                 imports = [
-                  ./shell
-                  ./home
+                  ../shell
+                  ../home
                 ];
                 home.stateVersion = "24.05";
               };

@@ -27,6 +27,7 @@
       # "arc" # mac browser
       "nikitabobko/tap/aerospace" # tiling window manager
       "anki" # japanese learning
+      "balenaetcher" # flashing iso
       # "bitwarden" # password manager
       # "orbstack"
     ];
