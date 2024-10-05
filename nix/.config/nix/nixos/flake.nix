@@ -1,26 +1,13 @@
 {
-  description = "Nix for macOS configuration";
+  description = "Thinkpad X1 G7 NixOS configuration with flakes";
 
-  ##################################################################################################################
-  #
-  # Want to know Nix in details? Looking for a beginner-friendly tutorial?
-  # Check out https://github.com/ryan4yin/nixos-and-flakes-book !
-  #
-  ##################################################################################################################
-
-  # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
-  # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    darwin = {
-      url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -41,7 +28,6 @@
     shamir.url = "github:aidanaden/shamir-zig";
     schnorr.url = "github:aidanaden/schnorr-zig";
     flow.url = "github:aidanaden/flow";
-    # rustmission.url = "github:intuis/rustmission";
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -52,7 +38,7 @@
   outputs = {
     self,
     nixpkgs,
-    darwin,
+    nixos-hardware,
     home-manager,
     zig,
     neovim-nightly-overlay,
@@ -64,19 +50,21 @@
     };
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
     user = "aidan";
-    system = "aarch64-darwin";
-    hostname = "m1";
+    system = "x86_64-linux";
+    hostname = "x1";
   in {
     # nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
-    # nix-darwin with home-manager for macOS
-    darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
+    # replace <your-hostname> with your actual hostname
+    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
       # makes all inputs availble in imported files
       specialArgs = {inherit inputs;};
       modules = [
-        inputs.nix-index-database.darwinModules.nix-index
+        # add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
+        nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
+        inputs.nix-index-database.nixosModules.nix-index
         ./default.nix
         ({
           pkgs,
@@ -132,7 +120,8 @@
             };
           };
         })
-        home-manager.darwinModule
+
+        home-manager.nixosModule
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -147,7 +136,7 @@
               with inputs; {
                 imports = [
                   ../shell
-                  ../home/darwin.nix
+                  ../home/nixos.nix
                 ];
                 home.stateVersion = "24.05";
               };
