@@ -6,12 +6,12 @@
       enable-normalization-opposite-orientation-for-nested-containers = false
 
       [gaps]
-      inner.horizontal = 15
-      inner.vertical   = 15
-      outer.left       = 15
-      outer.bottom     = 15
-      outer.top        = 15
-      outer.right      = 15
+      inner.horizontal = 5
+      inner.vertical   = 5
+      outer.left       = 5
+      outer.bottom     = 5
+      outer.top        = 5
+      outer.right      = 5
 
       [mode.main.binding]
       alt-j = 'focus down'
@@ -35,19 +35,21 @@
 
       alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
-      alt-q = 'workspace 1'
-      alt-w = 'workspace 2'
-      alt-e = 'workspace 3'
-      alt-r = 'workspace 4'
-      alt-t = 'workspace 5'
+      alt-1 = 'workspace 1'
+      alt-2 = 'workspace 2'
+      alt-3 = 'workspace 3'
+      alt-4 = 'workspace 4'
+      alt-5 = 'workspace 5'
+      alt-6 = 'workspace 6'
 
-      alt-shift-q = 'move-node-to-workspace 1'
-      alt-shift-w = 'move-node-to-workspace 2'
-      alt-shift-e = 'move-node-to-workspace 3'
-      alt-shift-r = 'move-node-to-workspace 4'
-      alt-shift-t = 'move-node-to-workspace 5'
+      alt-shift-1 = 'move-node-to-workspace 1'
+      alt-shift-2 = 'move-node-to-workspace 2'
+      alt-shift-3 = 'move-node-to-workspace 3'
+      alt-shift-4 = 'move-node-to-workspace 4'
+      alt-shift-5 = 'move-node-to-workspace 5'
+      alt-shift-6 = 'move-node-to-workspace 6'
 
-      alt-shift-c = 'reload-config'
+      alt-shift-r = 'reload-config'
 
       [workspace-to-monitor-force-assignment]
       1 = 'main'
@@ -55,33 +57,33 @@
       3 = 'main'
       4 = 'main'
       5 = ['built-in', 'secondary', 'main']
+      6 = 'main'
 
-      # todo
+      # browser
       [[on-window-detected]]
-      if.app-name-regex-substring = 'mail'
+      if.app-name-regex-substring = 'arc'
       run = 'move-node-to-workspace 1'
+
+      # torrent
+      [[on-window-detected]]
+      if.app-name-regex-substring = 'qbittorrent'
+      run = 'move-node-to-workspace 2'
 
       # code
       [[on-window-detected]]
-      if.app-name-regex-substring = 'alacritty'
-      run = 'move-node-to-workspace 2'
-
-      [[on-window-detected]]
-      if.app-name-regex-substring = 'arc'
-      run = 'move-node-to-workspace 2'
-
-      # chat
-      [[on-window-detected]]
-      if.app-name-regex-substring = 'signal'
+      if.app-name-regex-substring = 'kitty'
       run = 'move-node-to-workspace 3'
 
-      # utils
       [[on-window-detected]]
-      if.app-name-regex-substring = 'spotify'
+      if.app-name-regex-substring = 'mail'
       run = 'move-node-to-workspace 4'
 
       [[on-window-detected]]
-      if.app-name-regex-substring = 'bitwarden'
+      if.app-name-regex-substring = 'telegram'
+      run = 'move-node-to-workspace 4'
+
+      [[on-window-detected]]
+      if.app-name-regex-substring = 'vesktop'
       run = 'move-node-to-workspace 4'
     '';
   };

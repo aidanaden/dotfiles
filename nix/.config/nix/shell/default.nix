@@ -11,7 +11,7 @@
 
   home = {
     packages = with pkgs; [
-      neovim # text editor
+      inputs.neovim-nightly-overlay.packages.${system}.default # text editor
 
       alejandra # nix formatter
 
@@ -22,6 +22,8 @@
       fnm
       bun
       nodePackages.pnpm
+      nodePackages.typescript
+      nodePackages.typescript-language-server
 
       # rust
       rustup
@@ -115,6 +117,7 @@
       pip = "python3 -m pip";
       venv = "python3 -m venv";
       pn = "pnpm";
+      vim = "nvim";
     };
 
     sessionVariables = {
@@ -158,6 +161,7 @@
       defaultOptions = [
         "--border sharp"
         "--inline-info"
+        "--color fg:#c0caf5,bg:#1a1b26,hl:#bb9af7,fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff,info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff,marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
       ];
     };
   };

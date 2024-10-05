@@ -12,7 +12,8 @@
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
-    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +32,12 @@
     nixpkgs-zsh-fzf-tab.url = "github:nixos/nixpkgs/8193e46376fdc6a13e8075ad263b4b5ca2592c03";
 
     zig.url = "github:mitchellh/zig-overlay";
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     shamir.url = "github:aidanaden/shamir-zig";
     schnorr.url = "github:aidanaden/schnorr-zig";
     flow.url = "github:aidanaden/flow";
@@ -48,20 +55,21 @@
     darwin,
     home-manager,
     zig,
+    neovim-nightly-overlay,
     ...
   } @ inputs: let
     nixpkgsConfig = {
       allowUnfree = true;
       allowUnsupportedSystem = false;
     };
-    overlays = with inputs; [zig.overlays.default];
+    overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
     user = "aidan";
     system = "aarch64-darwin";
     hostname = "m1";
   in {
     # nix code formatter
-    # formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-    formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+
     # nix-darwin with home-manager for macOS
     darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
       inherit system;
@@ -137,7 +145,10 @@
             };
             users.${user} = {...}:
               with inputs; {
-                imports = [./home ./shell];
+                imports = [
+                  ./shell
+                  ./home
+                ];
                 home.stateVersion = "24.05";
               };
           };

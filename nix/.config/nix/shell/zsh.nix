@@ -45,6 +45,10 @@
       }
 
       alias tmux=_tmux
+
+      source ~/.p10k.zsh
+
+      eval "$(fnm env)"
     '';
 
     plugins = [
@@ -64,7 +68,17 @@
         name = "fzf-tab";
         src = "${pkgs-zsh-fzf-tab.zsh-fzf-tab}/share/fzf-tab";
       }
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
     ];
+
+    # oh-my-zsh = {
+    #   enable = true;
+    #   plugins = [];
+    # };
 
     prezto = {
       enable = true;
@@ -73,6 +87,9 @@
       editor = {
         dotExpansion = true;
         keymap = "vi";
+      };
+      prompt = {
+        theme = "off";
       };
       pmodules = ["autosuggestions" "directory" "editor" "git" "terminal"];
     };

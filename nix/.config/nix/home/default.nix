@@ -1,6 +1,6 @@
 {...}: {
   imports = [
     ./kitty.nix
-    # ./aerospace.nix
+    ./aerospace.nix
   ];
 }

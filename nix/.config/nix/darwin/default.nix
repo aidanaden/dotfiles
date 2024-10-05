@@ -8,6 +8,13 @@
     };
   };
 
+  fonts.packages = with pkgs; [
+    dejavu_fonts
+    scheherazade-new
+    ia-writer-duospace
+    meslo-lgs-nf
+  ];
+
   system = {
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
     activationScripts.postUserActivation.text = ''
@@ -25,6 +32,9 @@
         NSGlobalDomain = {
           # Add a context menu item for showing the Web Inspector in web views
           WebKitDeveloperExtras = true;
+        };
+        "com.apple.spaces" = {
+          "spans-displays" = 0; # Display have seperate spaces
         };
         "com.apple.finder" = {
           ShowExternalHardDrivesOnDesktop = true;
@@ -46,7 +56,7 @@
           askForPasswordDelay = 0;
         };
         "com.apple.screencapture" = {
-          location = "~/Desktop";
+          location = "~/Downloads";
           type = "png";
         };
         # "com.apple.Safari" = {

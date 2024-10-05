@@ -6,7 +6,7 @@
 }: {
   programs.tmux = {
     enable = true;
-    shortcut = "o";
+    shortcut = "b";
     baseIndex = 1;
     escapeTime = 0;
     historyLimit = 10000;
@@ -30,6 +30,18 @@
           set -g @continuum-restore 'on'
           set -g @continuum-boot 'on'
           set -g @continuum-save-interval '10'
+        '';
+      }
+      {
+        plugin = tmuxPlugins.session-wizard;
+        extraConfig = ''
+          set -g @session-wizard-mode "full-path"
+        '';
+      }
+      {
+        plugin = tmuxPlugins.catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavor 'mocha' # latte, frappe, macchiato or mocha
         '';
       }
       # {
