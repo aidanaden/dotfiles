@@ -82,7 +82,8 @@ in {
   programs.waybar.enable = true;
 
   # QT
-  programs.qt5ct.enable = true;
+  # programs.qt5ct.enable = true;
+  qt5.platformTheme = "qt5ct";
 
   services = {
     xserver = {
