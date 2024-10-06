@@ -83,14 +83,14 @@ in {
 
   # QT
   # programs.qt5ct.enable = true;
-  qt5.platformTheme = "qt5ct";
+  qt.platformTheme = "qt5ct";
 
   services = {
     xserver = {
       # enable = true;
 
       videoDrivers = ["nouveau"];
-      layout = "us";
+
       xkb = {
         layout = "us";
         variant = "";
@@ -145,10 +145,12 @@ in {
       #   enable = true;
       # };
     };
-  };
 
-  # Enable touchpad support (enabled default in most desktopManager)
-  services.xserver.libinput.enable = true;
+    # Enable touchpad support (enabled default in most desktopManager)
+    libinput = {
+      enable = true;
+    };
+  };
 
   programs.firefox.enable = true;
 
