@@ -56,41 +56,43 @@ in {
     polkit.enable = true;
   };
 
-  # wayland.windowManager.sway = {
-  #   enable = true;
-  #   config = rec {
-  #     modifier = "Mod4"; # Super key
-  #     terminal = "kitty";
-  #     output = {
-  #       "Virtual-1" = {
-  #         mode = "2560x1440@60Hz";
-  #       };
-  #     };
-  #   };
-  #   extraConfig = ''
-  #     bindsym Print               exec shotman -c output
-  #     bindsym Print+Shift         exec shotman -c region
-  #     bindsym Print+Shift+Control exec shotman -c window
-  #   '';
-  # };
+  # Enable the X11 windowing system.
+  # services.xserver.enable = true;
+  # services.xserver.autorun = true;
 
-  services = {
-    xserver = {
-      enable = true;
-      # displayManager.sddm.wayland.enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
-      windowManager = {
-        qtile.enable = true;
-        bspwm.enable = true;
-        i3.enable = true;
-        dwm.enable = true;
-      };
-    };
+  # Enable the Plasma 5 Desktop Environment.
+  # services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = false;
+  services.xserver.desktopManager.plasma5.enable = true;
+  # Window Managers
+  #services.xserver.windowManager.stumpwm.enable = true;
+  #services.xserver.windowManager.ratpoison.enable = true;
+  #services.xserver.windowManager.exwm.enable = true;
+
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true; # so that gtk works properly
+    extraPackages = with pkgs; [
+      swaylock
+      swayidle
+      wl-clipboard
+      wf-recorder
+      mako # notification daemon
+      grim
+     #kanshi
+      slurp
+      alacritty # Alacritty is the default terminal in the config
+      dmenu # Dmenu is the default in the config but i recommend wofi since its wayland native
+    ];
+    extraSessionCommands = ''
+      export SDL_VIDEODRIVER=wayland
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      export MOZ_ENABLE_WAYLAND=1
+    '';
+  };
 
     # Enable fingerprint
     fprintd = {
