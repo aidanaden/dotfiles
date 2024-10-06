@@ -1,10 +1,9 @@
 {...}: {
   # wayland.windowManager.hyprland.enable = true; # enable Hyprland
   wayland.windowManager.hyprland = {
-    systemd.enable = true;
     enable = true;
-    xwayland.enable = true;
     systemd.enable = true;
+    xwayland.enable = true;
   };
   # wayland.windowManager.sway = {
   #   enable = true;
