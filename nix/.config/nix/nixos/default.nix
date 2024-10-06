@@ -98,8 +98,8 @@ in {
 
       # displayManager.sddm.wayland.enable = true;
       displayManager.gdm.enable = true;
-      desktopManager.plasma5.enable = true;
-      # desktopManager.gnome.enable = true;
+      # desktopManager.plasma5.enable = true;
+      desktopManager.gnome.enable = true;
 
       # windowManager = {
       #   qtile.enable = true;
@@ -124,6 +124,7 @@ in {
         #driver = pkgs.libfprint-3-tod1-vfs0090;
       };
     };
+
     # Enable CUPS to print documents
     printing = {
       enable = false;
@@ -146,10 +147,10 @@ in {
       # };
     };
 
-    # Enable touchpad support (enabled default in most desktopManager)
-    libinput = {
-      enable = true;
-    };
+    # # Enable touchpad support (enabled default in most desktopManager)
+    # libinput = {
+    #   enable = true;
+    # };
   };
 
   programs.firefox.enable = true;
