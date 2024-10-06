@@ -98,8 +98,8 @@ in {
 
       # displayManager.sddm.wayland.enable = true;
       displayManager.gdm.enable = true;
-      # desktopManager.plasma5.enable = true;
-      desktopManager.gnome.enable = true;
+      desktopManager.plasma5.enable = true;
+      # desktopManager.gnome.enable = true;
 
       # windowManager = {
       #   qtile.enable = true;
