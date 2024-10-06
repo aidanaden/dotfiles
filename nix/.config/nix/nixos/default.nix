@@ -75,15 +75,15 @@ in {
   # };
 
   services = {
-    xserver = {
-      displayManager.sddm.wayland.enable = true;
-      enable = true;
-      #   desktopManager.gnome.enable = true;
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
-    };
+    # xserver = {
+    #   displayManager.sddm.wayland.enable = true;
+    #   enable = true;
+    #   #   desktopManager.gnome.enable = true;
+    #   xkb = {
+    #     layout = "us";
+    #     variant = "";
+    #   };
+    # };
 
     # Enable fingerprint
     fprintd = {
@@ -126,4 +126,6 @@ in {
   # Create /etc/zshrc that loads the nix-darwin environment.
   # this is required if you want to use darwin's default shell - zsh
   programs.zsh.enable = true;
+
+  programs.hyprland.enable = true; # enable Hyprland
 }

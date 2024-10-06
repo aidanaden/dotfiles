@@ -1,5 +1,5 @@
 {...}: {
-  programs.hyprland.enable = true; # enable Hyprland
+  wayland.windowManager.hyprland.enable = true; # enable Hyprland
   # wayland.windowManager.sway = {
   #   enable = true;
   #   config = rec {
