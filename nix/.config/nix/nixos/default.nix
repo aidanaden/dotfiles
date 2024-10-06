@@ -76,12 +76,19 @@ in {
 
   services = {
     xserver = {
-      displayManager.sddm.wayland.enable = true;
       enable = true;
+      # displayManager.sddm.wayland.enable = true;
+      displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
       xkb = {
         layout = "us";
         variant = "";
+      };
+      windowManager = {
+        qtile.enable = true;
+        bspwm.enable = true;
+        i3.enable = true;
+        dwm.enable = true;
       };
     };
 
@@ -119,7 +126,7 @@ in {
   };
 
   # Enable touchpad support (enabled default in most desktopManager)
-  #services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   programs.firefox.enable = true;
 
