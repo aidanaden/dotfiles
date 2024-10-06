@@ -90,7 +90,7 @@ in {
     xserver = {
       enable = true;
 
-      videoDrivers = ["nouveau"];
+      # videoDrivers = ["nouveau"];
 
       xkb = {
         layout = "us";
@@ -99,7 +99,8 @@ in {
 
       # displayManager.sddm.wayland.enable = true;
       displayManager.gdm.enable = true;
-      desktopManager.plasma5.enable = true;
+      displayManager.sessionPackages = [pkgs.sway];
+      desktopManager.gnome.enable = true;
       # desktopManager.gnome.enable = true;
 
       # windowManager = {
