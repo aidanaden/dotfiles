@@ -56,20 +56,6 @@ in {
     polkit.enable = true;
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.autorun = true;
-
-  # Enable the Plasma 5 Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = false;
-  services.xserver.desktopManager.plasma5.enable = true;
-  # Window Managers
-  #services.xserver.windowManager.stumpwm.enable = true;
-  #services.xserver.windowManager.ratpoison.enable = true;
-  #services.xserver.windowManager.exwm.enable = true;
-
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
@@ -80,9 +66,8 @@ in {
       wf-recorder
       mako # notification daemon
       grim
-     #kanshi
+      #kanshi
       slurp
-      alacritty # Alacritty is the default terminal in the config
       dmenu # Dmenu is the default in the config but i recommend wofi since its wayland native
     ];
     extraSessionCommands = ''
@@ -93,6 +78,40 @@ in {
       export MOZ_ENABLE_WAYLAND=1
     '';
   };
+
+  programs.waybar.enable = true;
+
+  # QT
+  programs.qt5ct.enable = true;
+
+  services = {
+    xserver = {
+      # enable = true;
+
+      videoDrivers = ["nouveau"];
+      layout = "us";
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+
+      # displayManager.sddm.wayland.enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.plasma5.enable = true;
+      # desktopManager.gnome.enable = true;
+
+      # windowManager = {
+      #   qtile.enable = true;
+      #   bspwm.enable = true;
+      #   dwm.enable = true;
+      #
+      #   i3 = {
+      #     enable = true;
+      #     package = pkgs.i3-gaps;
+      #     extraPackages = with pkgs; [i3status i3lock polybar];
+      #   };
+      # };
+    };
 
     # Enable fingerprint
     fprintd = {
