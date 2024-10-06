@@ -20,6 +20,7 @@ in {
 
     systemPackages = with pkgs; [
       fprintd
+      plasma-desktop
     ];
   };
 
