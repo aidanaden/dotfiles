@@ -85,6 +85,8 @@ in {
   qt.platformTheme = "qt5ct";
 
   services = {
+    # displayManager.sessionPackages = [pkgs.sway];
+
     xserver = {
       enable = true;
 
@@ -96,7 +98,6 @@ in {
       };
 
       displayManager.gdm.enable = true;
-      displayManager.sessionPackages = [pkgs.sway];
       # desktopManager.gnome.enable = true;
 
       # windowManager = {
