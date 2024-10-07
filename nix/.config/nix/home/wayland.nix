@@ -9,7 +9,7 @@
       "$mod" = "SUPER";
 
       monitor = [
-        ",prefered,auto,1"
+        ",prefered,auto,1.2"
       ];
 
       xwayland = {
