@@ -55,33 +55,9 @@ in {
     polkit.enable = true;
   };
 
-  # programs.sway = {
-  #   enable = true;
-  #   wrapperFeatures.gtk = true; # so that gtk works properly
-  #   extraPackages = with pkgs; [
-  #     swaylock
-  #     swayidle
-  #     wl-clipboard
-  #     wf-recorder
-  #     mako # notification daemon
-  #     grim
-  #     #kanshi
-  #     slurp
-  #     dmenu # Dmenu is the default in the config but i recommend wofi since its wayland native
-  #   ];
-  #   extraSessionCommands = ''
-  #     export SDL_VIDEODRIVER=wayland
-  #     export QT_QPA_PLATFORM=wayland
-  #     export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-  #     export _JAVA_AWT_WM_NONREPARENTING=1
-  #     export MOZ_ENABLE_WAYLAND=1
-  #   '';
-  # };
-
   programs.waybar.enable = true;
 
   # QT
-  # programs.qt5ct.enable = true;
   qt.platformTheme = "qt5ct";
 
   services = {
@@ -99,29 +75,12 @@ in {
 
       displayManager.gdm.enable = true;
       # desktopManager.gnome.enable = true;
-
-      # windowManager = {
-      #   qtile.enable = true;
-      #   bspwm.enable = true;
-      #   dwm.enable = true;
-      #
-      #   i3 = {
-      #     enable = true;
-      #     package = pkgs.i3-gaps;
-      #     extraPackages = with pkgs; [i3status i3lock polybar];
-      #   };
-      # };
     };
 
     # Enable fingerprint
     fprintd = {
+      enable = true;
       package = pkgs.fprintd-tod;
-      tod = {
-        enable = true;
-        driver = pkgs.libfprint-2-tod1-vfs0090; # (If the vfs0090 Driver does not work, use the following driver)
-        #driver = pkgs.libfprint-2-tod1-goodix; # (On my device it only worked with this driver)
-        #driver = pkgs.libfprint-3-tod1-vfs0090;
-      };
     };
 
     # Enable CUPS to print documents
