@@ -108,8 +108,14 @@
           nix = {
             # enable flakes per default
             package = pkgs.nixFlakes;
+
+            optimise = {
+              automatic = true;
+              user = user;
+            };
+
             gc = {
-              automatic = false;
+              automatic = true;
               user = user;
             };
 

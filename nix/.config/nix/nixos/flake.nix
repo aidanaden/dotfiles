@@ -97,7 +97,7 @@
             # Enable flakes per default
             package = pkgs.nixFlakes;
             gc = {
-              automatic = false;
+              automatic = true;
             };
 
             settings = {
