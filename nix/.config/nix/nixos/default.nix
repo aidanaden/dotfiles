@@ -59,7 +59,7 @@ in {
 
   # QT
   qt = {
-    enable = true;
+    # enable = true;
     platformTheme = "qt5ct";
   };
 
