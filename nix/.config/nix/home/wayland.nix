@@ -211,7 +211,7 @@ in {
         # window rules to prevent screen from turning off
         "idleinhibit fullscreen,firefox"
         "idleinhibit fullscreen,mpv"
-      ]
+      ];
     };
   };
 }
