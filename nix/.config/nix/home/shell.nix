@@ -2,7 +2,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+in {
   imports = [
     ./zsh.nix
     ./tmux.nix
@@ -71,7 +73,7 @@
       qbittorrent-qt5
 
       # discord client
-      # vesktop
+      unstable.vesktop
 
       # telegram
       telegram-desktop
