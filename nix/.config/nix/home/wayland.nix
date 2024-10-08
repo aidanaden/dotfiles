@@ -21,22 +21,6 @@ in {
       enable = true;
     };
 
-    # extraConfig = ''
-    #   # Fix slow startup
-    #   # exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    #   # exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    #
-    #   # Autostart
-    #   # exec-once = hyprctl setcursor Bibata-Modern-Classic 24
-    #   exec-once = dunst
-    #
-    #   # source = /home/enzo/.config/hypr/colors
-    #   # exec = pkill waybar & sleep 0.5 && waybar
-    #   exec-once = swww init & sleep 0.5 && exec wallpaper_random
-    #
-    #   exec-once = ${unstable.vesktop}/bin/vesktop
-    # '';
-
     settings = {
       "$terminal" = "kitty";
       "$mod" = "SUPER";
@@ -187,9 +171,12 @@ in {
       ];
 
       windowrulev2 = [
+        # prevent maximizing
         "suppressevent maximize, class:.*" # You'll probably like this.
-        "workspace 1 silent, class:^(kitty)$"
-        "workspace 3 silent, class:^(firefox)$"
+
+        # bind apps to workspaces
+        "workspace 1 silent, class:^(firefox)$"
+        "workspace 3 silent, class:^(kitty)$"
         "workspace 4 silent, class:^(vesktop)$"
 
         # firefox Picture-in-Picture
@@ -219,14 +206,14 @@ in {
       ];
 
       exec-once = [
-        "${unstable.vesktop}/bin/vesktop"
         "firefox"
         "kitty"
+        "${unstable.vesktop}/bin/vesktop"
         "dunst"
         "swww init & sleep 0.5 && exec wallpaper_random"
-        # "eval $(gnome-keyring-daemon --start --components=secrets,ssh,gpg,pkcs11)"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
         "hash dbus-update-activation-environment 2>/dev/null"
+        # "eval $(gnome-keyring-daemon --start --components=secrets,ssh,gpg,pkcs11)"
         # "export SSH_AUTH_SOCK"
         # "${pkgs.plasma5Packages.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       ];
