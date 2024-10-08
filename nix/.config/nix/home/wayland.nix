@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+in {
   home.packages = with pkgs; [
     waybar
     swww
@@ -31,6 +33,8 @@
       # source = /home/enzo/.config/hypr/colors
       # exec = pkill waybar & sleep 0.5 && waybar
       exec-once = swww init & sleep 0.5 && exec wallpaper_random
+
+      exec-once = ${unstable.vesktop}/bin/vesktop
     '';
 
     settings = {
@@ -151,6 +155,7 @@
 
         # Applications
         "$mod ALT, f, exec, ${pkgs.firefox}/bin/firefox"
+        "$mod ALT, v, exec, ${unstable.vesktop}/bin/vesktop"
         # "$mod ALT, e, exec, $terminal --hold -e ${pkgs.yazi}/bin/yazi"
         # "$mod ALT, o, exec, ${pkgs.obsidian}/bin/obsidian"
         # "$mod, r, exec, pkill fuzzel || ${pkgs.fuzzel}/bin/fuzzel"
