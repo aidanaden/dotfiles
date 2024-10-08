@@ -65,7 +65,7 @@
       # Makes all inputs availble in imported files
       specialArgs = {inherit inputs;};
       modules = [
-        catppuccin.homeManagerModules.catppuccin
+        catppuccin.nixosModules.catppuccin
         # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
         nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
         inputs.nix-index-database.nixosModules.nix-index
@@ -139,6 +139,7 @@
               with inputs; {
                 imports = [
                   ../home/nixos.nix
+                  catppuccin.homeManagerModules.catppuccin
                 ];
                 home.stateVersion = "24.05";
               };
