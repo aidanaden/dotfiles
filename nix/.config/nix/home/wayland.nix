@@ -8,8 +8,8 @@ in {
   home.packages = with pkgs; [
     waybar
     swww
-    qt5-wayland
-    qt6-wayland
+    qt5.wayland
+    qt6.wayland
   ];
 
   home.sessionVariables = {
@@ -17,6 +17,7 @@ in {
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     QT_QPA_PLATFORM = "wayland";
+    NIXOS_XDG_OPEN_USE_PORTAL = 1;
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
     NIXOS_OZONE_WL = 1;
   };
@@ -55,6 +56,7 @@ in {
       ];
 
       xwayland = {
+        hidpi = true;
         force_zero_scaling = true;
       };
 
