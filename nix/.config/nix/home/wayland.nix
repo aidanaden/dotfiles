@@ -8,8 +8,8 @@ in {
   home.packages = with pkgs; [
     waybar
     swww
-    qt5.wayland
-    qt6.wayland
+    qt5.qtwayland
+    qt6.qtwayland
   ];
 
   home.sessionVariables = {
