@@ -22,7 +22,6 @@
 
     # `brew install --cask`
     casks = [
-      "spotify" # music player
       "raycast" # launcher on steroids
       # "arc" # mac browser
       "nikitabobko/tap/aerospace" # tiling window manager

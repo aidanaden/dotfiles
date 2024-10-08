@@ -194,13 +194,24 @@ in {
         # "$mod, S, exec, ${pkgs.grim}/bin/grim | wl-copy"
         # "$mod SHIFT+ALT, S, exec, ${pkgs.grim}/bin/grim -g \"$(slurp)\" - | ${pkgs.swappy}/bin/swappy -f -"
       ];
-    };
 
-    windowrule2 = [
-      "suppressevent maximize, class:.*" # You'll probably like this.
-      "workspace 1, class:^(kitty)$"
-      "workspace 3, class:^(firefox)$"
-      "workspace 4, class:^(vesktop)$"
-    ];
+      windowrulev2 = [
+        "suppressevent maximize, class:.*" # You'll probably like this.
+        "workspace 1 silent, class:^(kitty)$"
+        "workspace 3 silent, class:^(firefox)$"
+        "workspace 4 silent, class:^(vesktop)$"
+
+        # firefox Picture-in-Picture
+        "float,class:^(firefox)$,title:^(Picture-in-Picture)$"
+        "pin,class:^(firefox)$,title:^(Picture-in-Picture)$"
+        "float,class:^(firefox)$,title:^(Firefox — Sharing Indicator)$"
+      ];
+
+      windowrule = [
+        # window rules to prevent screen from turning off
+        "idleinhibit fullscreen,firefox"
+        "idleinhibit fullscreen,mpv"
+      ]
+    };
   };
 }

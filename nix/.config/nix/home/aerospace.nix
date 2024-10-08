@@ -56,7 +56,7 @@
       2 = 'main'
       3 = 'main'
       4 = 'main'
-      5 = ['built-in', 'secondary', 'main']
+      5 = 'main'
       6 = 'main'
 
       # browser
@@ -85,6 +85,10 @@
       [[on-window-detected]]
       if.app-name-regex-substring = 'vesktop'
       run = 'move-node-to-workspace 4'
+
+      [[on-window-detected]]
+      if.app-name-regex-substring = 'spotify'
+      run = 'move-node-to-workspace 5'
     '';
   };
 }
