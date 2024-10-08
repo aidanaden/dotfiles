@@ -11,6 +11,7 @@ in {
     ./git.nix
     ./btop.nix
     ./bat.nix
+    ./yazi.nix
   ];
 
   home = {
@@ -49,16 +50,10 @@ in {
       # command line tools
       stow
       fd
-      jq
-      eza
       ripgrep
       tldr
       meslo-lgs-nf
       fastfetch
-
-      # terminal
-      tmux
-      kitty
 
       # cloud specific
       flyctl
@@ -80,6 +75,9 @@ in {
 
       # tailscale
       tailscale
+
+      # wireguard ui
+      unstable.wireguard-ui
 
       # crypto wallets
 
@@ -145,10 +143,9 @@ in {
     # shell integrations are enabled by default
     zoxide.enable = true; # autojump
     jq.enable = true; # json parser
-    lazygit.enable = true; # git tui
-    yazi.enable = true; # file browser
     nushell.enable = true; # zsh alternative
     broot.enable = true; # browser big folders
+    eza.enable = true;
 
     # pretty ls
     lsd = {

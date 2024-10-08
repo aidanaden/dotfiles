@@ -28,8 +28,11 @@
       "nikitabobko/tap/aerospace" # tiling window manager
       "anki" # japanese learning
       "balenaetcher" # flashing iso
-      # "bitwarden" # password manager
-      # "orbstack"
+      "trezor-suite" # trezor crypto wallet gui
+      "ledger-live" # ledger crypto wallet gui
+      "bitwarden" # password manager
+      "orbstack"
+      "ente-auth" # 2fa manager
     ];
   };
 }

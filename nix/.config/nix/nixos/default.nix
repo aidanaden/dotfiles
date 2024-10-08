@@ -58,11 +58,12 @@ in {
   programs.waybar.enable = true;
 
   # QT
-  qt.platformTheme = "qt5ct";
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+  }
 
   services = {
-    # displayManager.sessionPackages = [pkgs.sway];
-
     xserver = {
       enable = true;
 
@@ -74,7 +75,6 @@ in {
       };
 
       displayManager.gdm.enable = true;
-      # desktopManager.gnome.enable = true;
     };
 
     # Enable fingerprint
