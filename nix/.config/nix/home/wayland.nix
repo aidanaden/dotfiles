@@ -218,6 +218,8 @@ in {
 
       exec-once = [
         "${unstable.vesktop}/bin/vesktop"
+        "kitty"
+        "firefox"
         "dunst"
         "swww init & sleep 0.5 && exec wallpaper_random"
         # "eval $(gnome-keyring-daemon --start --components=secrets,ssh,gpg,pkcs11)"
