@@ -152,7 +152,6 @@
             users.${user} = {...}:
               with inputs; {
                 imports = [
-                  ../shell
                   ../home/darwin.nix
                 ];
                 home.stateVersion = "24.05";

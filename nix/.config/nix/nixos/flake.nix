@@ -134,7 +134,6 @@
             users.${user} = {...}:
               with inputs; {
                 imports = [
-                  ../shell
                   ../home/nixos.nix
                 ];
                 home.stateVersion = "24.05";
