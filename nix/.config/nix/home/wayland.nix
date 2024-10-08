@@ -12,16 +12,6 @@ in {
     qt6.qtwayland
   ];
 
-  home.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-    NIXOS_XDG_OPEN_USE_PORTAL = 1;
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
-    NIXOS_OZONE_WL = 1;
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -31,21 +21,21 @@ in {
       enable = true;
     };
 
-    extraConfig = ''
-      # Fix slow startup
-      # exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      # exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
-      # Autostart
-      # exec-once = hyprctl setcursor Bibata-Modern-Classic 24
-      exec-once = dunst
-
-      # source = /home/enzo/.config/hypr/colors
-      # exec = pkill waybar & sleep 0.5 && waybar
-      exec-once = swww init & sleep 0.5 && exec wallpaper_random
-
-      exec-once = ${unstable.vesktop}/bin/vesktop
-    '';
+    # extraConfig = ''
+    #   # Fix slow startup
+    #   # exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    #   # exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    #
+    #   # Autostart
+    #   # exec-once = hyprctl setcursor Bibata-Modern-Classic 24
+    #   exec-once = dunst
+    #
+    #   # source = /home/enzo/.config/hypr/colors
+    #   # exec = pkill waybar & sleep 0.5 && waybar
+    #   exec-once = swww init & sleep 0.5 && exec wallpaper_random
+    #
+    #   exec-once = ${unstable.vesktop}/bin/vesktop
+    # '';
 
     settings = {
       "$terminal" = "kitty";
@@ -213,6 +203,29 @@ in {
         # window rules to prevent screen from turning off
         "idleinhibit fullscreen,firefox"
         "idleinhibit fullscreen,mpv"
+      ];
+
+      env = [
+        "NIXOS_OZONE_WL,1"
+        "_JAVA_AWT_WM_NONREPARENTING,1"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+        "QT_QPA_PLATFORM,wayland"
+        "SDL_VIDEODRIVER,wayland"
+        "GDK_BACKEND,wayland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+        "XDG_CURRENT_DESKTOP,Hyprland"
+      ];
+
+      exec-once = [
+        "${unstable.vesktop}/bin/vesktop"
+        "dunst"
+        "swww init & sleep 0.5 && exec wallpaper_random"
+        # "eval $(gnome-keyring-daemon --start --components=secrets,ssh,gpg,pkcs11)"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
+        "hash dbus-update-activation-environment 2>/dev/null"
+        # "export SSH_AUTH_SOCK"
+        # "${pkgs.plasma5Packages.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       ];
     };
   };
