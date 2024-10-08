@@ -8,6 +8,7 @@
     ./tmux.nix
     ./git.nix
     ./btop.nix
+    ./bat.nix
   ];
 
   home = {
