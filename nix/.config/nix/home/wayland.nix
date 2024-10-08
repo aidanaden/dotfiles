@@ -178,7 +178,7 @@ in {
         "workspace 1 silent, class:^(firefox)$"
         "workspace 3 silent, class:^(kitty)$"
         "workspace 4 silent, class:^(vesktop)$"
-        "workspace 5 silent, class:^(spotify)$"
+        "workspace 5 silent, title:^(Spotify)$"
 
         # firefox Picture-in-Picture
         "float,class:^(firefox)$,title:^(Picture-in-Picture)$"
