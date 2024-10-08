@@ -1,4 +1,15 @@
-{...}: {
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    waybar
+    swww
+  ];
+
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -7,6 +18,20 @@
     catppuccin = {
       enable = true;
     };
+
+    extraConfig = ''
+      # Fix slow startup
+      exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+      # Autostart
+      # exec-once = hyprctl setcursor Bibata-Modern-Classic 24
+      exec-once = dunst
+
+      # source = /home/enzo/.config/hypr/colors
+      exec = pkill waybar & sleep 0.5 && waybar
+      exec-once = swww init & sleep 0.5 && exec wallpaper_random
+    '';
 
     settings = {
       "$terminal" = "kitty";
@@ -80,7 +105,7 @@
         "$mod, return, exec, $terminal"
         "$mod SHIFT, q, killactive"
         "$mod SHIFT, e, exit"
-        # "$mod SHIFT, l, exec, ${pkgs.hyprlock}/bin/hyprlock"
+        "$mod SHIFT, l, exec, ${pkgs.hyprlock}/bin/hyprlock"
 
         # Screen focus
         "$mod, v, togglefloating"
@@ -125,7 +150,7 @@
         "$mod, j, movefocus, d"
 
         # Applications
-        # "$mod ALT, f, exec, ${pkgs.firefox}/bin/firefox"
+        "$mod ALT, f, exec, ${pkgs.firefox}/bin/firefox"
         # "$mod ALT, e, exec, $terminal --hold -e ${pkgs.yazi}/bin/yazi"
         # "$mod ALT, o, exec, ${pkgs.obsidian}/bin/obsidian"
         # "$mod, r, exec, pkill fuzzel || ${pkgs.fuzzel}/bin/fuzzel"
