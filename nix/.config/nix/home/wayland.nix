@@ -21,15 +21,15 @@
 
     extraConfig = ''
       # Fix slow startup
-      exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      # exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      # exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
       # Autostart
       # exec-once = hyprctl setcursor Bibata-Modern-Classic 24
       exec-once = dunst
 
       # source = /home/enzo/.config/hypr/colors
-      exec = pkill waybar & sleep 0.5 && waybar
+      # exec = pkill waybar & sleep 0.5 && waybar
       exec-once = swww init & sleep 0.5 && exec wallpaper_random
     '';
 
