@@ -16,6 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin.url = "github:catppuccin/nix";
+
     nixpkgs-zsh-fzf-tab.url = "github:nixos/nixpkgs/8193e46376fdc6a13e8075ad263b4b5ca2592c03";
 
     zig.url = "github:mitchellh/zig-overlay";
@@ -40,6 +42,7 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
+    catppuccin,
     zig,
     neovim-nightly-overlay,
     ...
@@ -62,6 +65,7 @@
       # Makes all inputs availble in imported files
       specialArgs = {inherit inputs;};
       modules = [
+        catppuccin.homeManagerModules.catppuccin
         # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
         nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
         inputs.nix-index-database.nixosModules.nix-index
