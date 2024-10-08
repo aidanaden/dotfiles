@@ -46,7 +46,6 @@ in {
       ];
 
       xwayland = {
-        hidpi = true;
         force_zero_scaling = true;
       };
 
