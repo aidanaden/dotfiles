@@ -7,6 +7,7 @@
     ./zsh.nix
     ./tmux.nix
     ./git.nix
+    ./btop.nix
   ];
 
   home = {
@@ -141,10 +142,8 @@
     # shell integrations are enabled by default
     zoxide.enable = true; # autojump
     jq.enable = true; # json parser
-    bat.enable = true; # pretty cat
     lazygit.enable = true; # git tui
     yazi.enable = true; # file browser
-    btop.enable = true; # htop alternative
     nushell.enable = true; # zsh alternative
     broot.enable = true; # browser big folders
 
