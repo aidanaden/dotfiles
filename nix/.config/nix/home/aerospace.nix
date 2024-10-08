@@ -2,6 +2,9 @@
   home.file.aerospace = {
     target = ".aerospace.toml";
     text = ''
+      # Start AeroSpace at login
+      start-at-login = true
+
       enable-normalization-flatten-containers = false
       enable-normalization-opposite-orientation-for-nested-containers = false
 
@@ -23,6 +26,13 @@
       alt-shift-k = 'move up'
       alt-shift-l = 'move right'
       alt-shift-h = 'move left'
+
+      # yabai-like config
+      # joining windows using alt+ctrl
+      alt-ctrl-h = 'join-with left'
+      alt-ctrl-j = 'join-with down'
+      alt-ctrl-k = 'join-with up'
+      alt-ctrl-l = 'join-with right'
 
       #alt-h = 'split horizontal'
       #alt-v = 'split vertical'
