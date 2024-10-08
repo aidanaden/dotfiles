@@ -8,12 +8,15 @@ in {
   home.packages = with pkgs; [
     waybar
     swww
+    qt5-wayland
+    qt6-wayland
   ];
 
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
+    NIXOS_OZONE_WL = 1;
   };
 
   wayland.windowManager.hyprland = {
@@ -58,6 +61,8 @@ in {
         gaps_out = 6;
         border_size = 2;
         layout = "dwindle";
+        col.active_border = "rgb(7AA2F7)";
+        col.inactive_border = "rgb A9B1D6";
         allow_tearing = true;
       };
 
@@ -71,8 +76,21 @@ in {
         sensitivity = 0;
       };
 
+      # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+      dwindle = {
+        pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        preserve_split = true; # You probably want this
+      };
+
+      decoration = {
+        drop_shadow = false;
+        blur = {
+          enabled = false;
+        };
+      };
+
       animations = {
-        enabled = true;
+        enabled = false;
         bezier = [
           "linear, 0, 0, 1, 1"
           "md3_standard, 0.2, 0, 0, 1"
@@ -113,6 +131,7 @@ in {
         "$mod, return, exec, $terminal"
         "$mod SHIFT, q, killactive"
         "$mod SHIFT, e, exit"
+        "$mod SHIFT, p, pseudo"
         "$mod SHIFT, l, exec, ${pkgs.hyprlock}/bin/hyprlock"
 
         # Screen focus
@@ -174,5 +193,7 @@ in {
         # "$mod SHIFT+ALT, S, exec, ${pkgs.grim}/bin/grim -g \"$(slurp)\" - | ${pkgs.swappy}/bin/swappy -f -"
       ];
     };
+
+    windowrulev2 = "suppressevent maximize, class:.*"; # You'll probably like this.
   };
 }
