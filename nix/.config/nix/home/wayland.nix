@@ -197,7 +197,10 @@ in {
     };
 
     windowrule2 = [
-      "suppressevent maximize, class:.*"
-    ]; # You'll probably like this.
+      "suppressevent maximize, class:.*" # You'll probably like this.
+      "workspace 1, class:^(kitty)$"
+      "workspace 3, class:^(firefox)$"
+      "workspace 4, class:^(vesktop)$"
+    ];
   };
 }
