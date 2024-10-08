@@ -46,11 +46,11 @@ in {
       "$mod" = "SUPER";
 
       monitor = [
-        ",prefered,auto,1.25"
+        ",prefered,auto,1.15"
       ];
 
       xwayland = {
-        force_zero_scaling = false;
+        force_zero_scaling = true;
       };
 
       general = {
