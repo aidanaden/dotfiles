@@ -178,6 +178,7 @@ in {
         "workspace 1 silent, class:^(firefox)$"
         "workspace 3 silent, class:^(kitty)$"
         "workspace 4 silent, class:^(vesktop)$"
+        "workspace 5 silent, class:^(spotify)$"
 
         # firefox Picture-in-Picture
         "float,class:^(firefox)$,title:^(Picture-in-Picture)$"
@@ -209,6 +210,7 @@ in {
         "firefox"
         "kitty"
         "${unstable.vesktop}/bin/vesktop"
+        "spotify"
         "dunst"
         "swww init & sleep 0.5 && exec wallpaper_random"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
