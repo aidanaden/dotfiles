@@ -7,7 +7,7 @@
   programs.waybar = {
     enable = true;
     systemd = {
-      enable = false;
+      enable = true;
       target = "graphical-session.target";
     };
     style = ''
