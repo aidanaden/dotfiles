@@ -34,8 +34,8 @@ in {
       };
 
       general = {
-        gaps_in = 6;
-        gaps_out = 6;
+        gaps_in = 4;
+        gaps_out = 4;
         border_size = 2;
         layout = "dwindle";
         "col.active_border" = "rgba(7aa2f7aa)";
@@ -185,6 +185,7 @@ in {
 
         # bind apps to workspaces
         "workspace 1 silent, class:^(firefox)$"
+        "workspace 2 silent, class:^(qbittorrent)$"
         "workspace 3 silent, class:^(kitty)$"
         "workspace 4 silent, class:^(vesktop)$"
         "workspace 5 silent, title:^(Spotify)$"
@@ -221,6 +222,7 @@ in {
         "vesktop"
         "spotify"
         "telegram-desktop"
+        "qbittorrent"
         "dunst"
         "swww init & sleep 0.5 && exec wallpaper_random"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
