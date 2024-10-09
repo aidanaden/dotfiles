@@ -181,15 +181,15 @@
           "disable-scroll" = true;
           "on-click" = "activate";
           # // "all-outputs": false,
-          "format" = "{name}: {icon}";
+          "format" = "{name}";
           "on-scroll-up" = "hyprctl dispatch workspace m-1 > /dev/null";
           "on-scroll-down" = "hyprctl dispatch workspace m+1 > /dev/null";
           "format-icons" = {
-            "1" = "";
-            "2" = "";
-            "3" = "";
-            "4" = "";
-            "5" = "";
+            "browser" = "";
+            "media" = "";
+            "code" = "";
+            "chat" = "";
+            "music" = "";
             "urgent" = "";
             "active" = "";
             "default" = "";
