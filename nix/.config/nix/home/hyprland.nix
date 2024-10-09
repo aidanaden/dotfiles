@@ -51,6 +51,9 @@ in {
         };
         accel_profile = "flat";
         sensitivity = 0;
+        # Delay before a held-down key is repeated, in milliseconds. Default: 600
+        repeat_delay = 300;
+        force_no_accel = true;
       };
 
       # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
@@ -59,6 +62,7 @@ in {
         preserve_split = true; # You probably want this
       };
 
+      # see https://wiki.hyprland.org/Configuring/Variables/#decoration
       decoration = {
         drop_shadow = false;
         blur = {
@@ -66,6 +70,7 @@ in {
         };
       };
 
+      # see https://wiki.hyprland.org/Configuring/Variables/#animations
       animations = {
         enabled = false;
         bezier = [
@@ -99,6 +104,7 @@ in {
         ];
       };
 
+      # see https://wiki.hyprland.org/Configuring/Variables/#cursor
       cursor = {
         enable_hyprcursor = true;
       };
@@ -115,10 +121,10 @@ in {
       bind = [
         # General
         "$mod, return, exec, $terminal"
-        "$mod SHIFT, q, killactive"
-        "$mod SHIFT, e, exit"
-        "$mod SHIFT, p, pseudo"
-        "$mod SHIFT, l, exec, ${pkgs.hyprlock}/bin/hyprlock"
+        # "$mod SHIFT, q, killactive"
+        # "$mod SHIFT, e, exit"
+        # "$mod SHIFT, p, pseudo"
+        # "$mod SHIFT, l, exec, ${pkgs.hyprlock}/bin/hyprlock"
 
         # Screen focus
         "$mod, v, togglefloating"
@@ -157,10 +163,10 @@ in {
         "$mod, j, movefocus, d"
 
         # Swap windows
-        "$mod CTRL, h, swapwindow, l"
-        "$mod CTRL, l, swapwindow, r"
-        "$mod CTRL, k, swapwindow, u"
-        "$mod CTRL, j, swapwindow, d"
+        "$mod SHIFT, h, swapwindow, l"
+        "$mod SHIFT, l, swapwindow, r"
+        "$mod SHIFT, k, swapwindow, u"
+        "$mod SHIFT, j, swapwindow, d"
 
         # Applications
         # "$mod ALT, f, exec, ${pkgs.firefox}/bin/firefox"
