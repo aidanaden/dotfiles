@@ -12,89 +12,149 @@
     };
     style = ''
       * {
-          border: none;
-          border-radius: 0;
-          font-family: MesloLGS Nerd Font Mono;
-          font-size: 14px;
-          min-height: 0;
+        border: none;
+        border-radius: 0;
+        font-family: MesloLGS Nerd Font Mono;
+        font-weight: 600;
+        font-size: 12px;
+        min-height: 0;
       }
 
       window#waybar {
-          background: transparent;
-          color: white;
+        background: #12131a;
+        color: white;
       }
 
       #workspaces {
-      	background-color: #24283b;
-      	margin: 5px;
-      	margin-left: 10px;
-      	border-radius: 5px;
+        background-color: #1d202e;
+        margin: 5px;
+        margin-left: 6px;
+        border-radius: 5px;
       }
       #workspaces button {
-          padding: 5px 10px;
-          color: #c0caf5;
+        padding: 2px 8px;
+        color: #fff;
       }
 
       #workspaces button.focused {
-          color: #24283b;
-          background-color: #7aa2f7;
-          border-radius: 5px;
+        color: #24283b;
+        background-color: #7aa2f7;
+        border-radius: 5px;
       }
 
       #workspaces button:hover {
-      	background-color: #7dcfff;
-      	color: #24283b;
-      	border-radius: 5px;
+        background-color: #7dcfff;
+        color: #24283b;
+        border-radius: 5px;
       }
 
-      #custom-date, #clock, #battery, #pulseaudio, #network {
-      	background-color: #24283b;
-      	padding: 5px 10px;
-      	margin: 5px 0px;
+      #custom-date,
+      #clock,
+      #battery,
+      #pulseaudio,
+      #network
+      #backlight {
+        background-color: #1d202e;
+        padding: 2px 10px;
+        margin: 5px 0px;
       }
 
       #custom-date {
-      	color: #7dcfff;
+        color: #7dcfff;
       }
 
       #custom-power {
-      	color: #24283b;
-      	background-color: #db4b4b;
-      	border-radius: 5px;
-      	margin-right: 10px;
-      	margin-top: 5px;
-      	margin-bottom: 5px;
-      	margin-left: 0px;
-      	padding: 5px 10px;
+        color: #24283b;
+        background-color: #db4b4b;
+        border-radius: 5px;
+        margin-right: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 0px;
+        padding: 3px 10px;
       }
 
       #clock {
-          color: #b48ead;
-          border-radius: 0px 5px 5px 0px;
-          margin-right: 10px;
+        color: #b48ead;
+        border-radius: 0px 5px 5px 0px;
+        margin-right: 6px;
       }
 
       #battery {
-          color: #9ece6a;
+        color: #9ece6a;
       }
 
       #battery.charging {
-          color: #9ece6a;
+        color: #9ece6a;
       }
 
       #battery.warning:not(.charging) {
-          background-color: #f7768e;
-          color: #24283b;
-          border-radius: 5px 5px 5px 5px;
+        background-color: #f7768e;
+        color: #24283b;
+        border-radius: 5px 5px 5px 5px;
       }
 
       #network {
-      	color: #f7768e;
-      	border-radius: 5px 0px 0px 5px;
+        color: #f7768e;
+        border-radius: 5px 0px 0px 5px;
       }
 
-      #pulseaudio {
-      	color: #e0af68;
+      #pulseaudio, #backlight {
+        color: #e0af68;
+      }
+
+      #temperature {
+        background-color: #24283b;
+        margin: 5px 0;
+        padding: 0 10px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        color: #82e4ff;
+      }
+
+      #disk {
+        color: #b9f27c;
+        margin: 5px 0;
+        padding-right: 10px;
+        background-color: #24283b;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        margin-right: 3px;
+      }
+
+      #memory {
+        margin-left: 5px;
+        background: #2a3152;
+        margin: 5px 0;
+        padding: 0 10px;
+        margin-left: 3px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        color: #ff9e64;
+      }
+
+      #cpu {
+        margin: 5px 0;
+        padding: 0 10px;
+        background-color: #2a3152;
+        color: #ff7a93;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        margin-right: 6px;
+      }
+
+      #tray {
+        background-color: #455085;
+        margin: 5px;
+        margin-left: 0px;
+        margin-right: 6px;
+        border-radius: 5px;
+        padding: 0 10px;
+      }
+
+      #tray > * {
+        padding: 0 2px;
+        margin: 0 2px;
       }
     '';
     settings = [
@@ -102,74 +162,70 @@
         "layer" = "top";
         "position" = "top";
         modules-left = [
-          "custom/launcher"
-          "temperature"
-          "mpd"
-          "custom/cava-internal"
-        ];
-        modules-center = [
-          "clock"
+          "hyprland/workspaces"
         ];
         modules-right = [
+          "network"
           "pulseaudio"
           "backlight"
+          "battery"
+          "custom/date"
+          "clock"
+          "temperature"
+          "disk"
           "memory"
           "cpu"
-          "network"
-          "custom/powermenu"
           "tray"
         ];
-        "custom/launcher" = {
-          "format" = " ";
-          "on-click" = "pkill rofi || rofi2";
-          "on-click-middle" = "exec default_wall";
-          "on-click-right" = "exec wallpaper_random";
-          "tooltip" = false;
-        };
-        "custom/cava-internal" = {
-          "exec" = "sleep 1s && cava-internal";
-          "tooltip" = false;
-        };
-        "pulseaudio" = {
-          "scroll-step" = 1;
-          "format" = "{icon} {volume}%";
-          "format-muted" = "󰖁 Muted";
+        "hyprland/workspaces" = {
+          "disable-scroll" = true;
+          "on-click" = "activate";
+          # // "all-outputs": false,
+          # // "format": "{name}: {icon}",
+          "format" = "{name}";
+          "on-scroll-up" = "hyprctl dispatch workspace m-1 > /dev/null";
+          "on-scroll-down" = "hyprctl dispatch workspace m+1 > /dev/null";
           "format-icons" = {
-            "default" = ["" "" ""];
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            "urgent" = "";
+            "focused" = "";
+            "default" = "";
           };
-          "on-click" = "pamixer -t";
-          "tooltip" = false;
+        };
+        "custom/date" = {
+          "format" = "󰸗 {}";
+          "interval" = 3600;
+          # "exec" = "/home/loki/bin/waybar-date.sh";
+        };
+        "custom/power" = {
+          "format" = "󰐥";
+          # "on-click" = "/home/loki/bin/waybar-power.sh";
         };
         "clock" = {
           "interval" = 1;
-          "format" = "{:%I:%M %p  %A %b %d}";
-          "tooltip" = true;
-          "tooltip-format" = "{=%A; %d %B %Y}\n<tt>{calendar}</tt>";
+          "format" = "{:%H:%M}";
+          "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          "format-alt" = "{:%Y-%m-%d}";
         };
-        "memory" = {
-          "interval" = 1;
-          "format" = "󰻠 {percentage}%";
+        "battery" = {
           "states" = {
-            "warning" = 85;
+            "warning" = 30;
+            "critical" = 15;
           };
+          "format" = "{icon} {capacity}%";
+          "format-charging" = "󰂄 {capacity}%";
+          "format-plugged" = "󰂄{capacity}%";
+          "format-alt" = "{time} {icon}";
+          "format-full" = "󱈑 {capacity}%";
+          "format-icons" = ["󱊡" "󱊢" "󱊣"];
         };
-        "cpu" = {
-          "interval" = 1;
-          "format" = "󰍛 {usage}%";
-        };
-        "mpd" = {
-          "max-length" = 25;
-          "format" = "<span foreground='#bb9af7'></span> {title}";
-          "format-paused" = " {title}";
-          "format-stopped" = "<span foreground='#bb9af7'></span>";
-          "format-disconnected" = "";
-          "on-click" = "mpc --quiet toggle";
-          "on-click-right" = "mpc update; mpc ls | mpc add";
-          "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
-          "on-scroll-up" = "mpc --quiet prev";
-          "on-scroll-down" = "mpc --quiet next";
-          "smooth-scrolling-threshold" = 5;
-          "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
+        "temperature" = {
+          "hwmon-path" = "/sys/class/hwmon/hwmon4/temp1_input";
+          "format" = "CPU {temperatureC}°C ";
         };
         "network" = {
           "format-disconnected" = "󰯡 Disconnected";
@@ -179,14 +235,42 @@
           "interval" = 1;
           "tooltip" = false;
         };
-        "custom/powermenu" = {
-          "format" = "";
-          "on-click" = "pkill rofi || ~/.config/rofi/powermenu/type-3/powermenu.sh";
-          "tooltip" = false;
+        "pulseaudio" = {
+          "format" = "{icon}  {volume}%";
+          "format-bluetooth" = "{volume}% {icon} {format_source}";
+          "format-bluetooth-muted" = "󰖁 {icon} {format_source}";
+          "format-muted" = "󰖁 Muted";
+          "format-icons" = {
+            "headphone" = "";
+            "hands-free" = "";
+            "headset" = "";
+            "phone" = "";
+            "portable" = "";
+            "car" = "";
+            "default" = ["" "" "" "" ""];
+          };
+        };
+        "backlight" = {
+          "format" = "{percent}% {icon}";
+          "format-icons" = ["" "" "" "" "" "" "" "" ""];
         };
         "tray" = {
-          "icon-size" = 15;
+          "icon-size" = 13;
           "spacing" = 5;
+        };
+        "disk" = {
+          "interval" = 5;
+          "format" = "ROOT {percentage_free}% FREE";
+          "path" = "/";
+        };
+        "memory" = {
+          "interval" = 5;
+          "format" = "RAM {used:0.1f}G/{total:0.1f}G ";
+        };
+        "cpu" = {
+          "interval" = 10;
+          "format" = "CPU {}% ";
+          "max-length" = 20;
         };
       }
     ];
