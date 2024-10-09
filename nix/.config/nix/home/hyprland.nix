@@ -131,6 +131,7 @@ in {
       bind = [
         # General
         "$mod, return, exec, $terminal"
+        "$mod, SPACE, exec, rofi"
         "$mod SHIFT, q, killactive"
         # "$mod SHIFT, e, exit"
         # "$mod SHIFT, p, pseudo"
