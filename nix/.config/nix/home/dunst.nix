@@ -38,9 +38,9 @@
         always_run_script = true;
         corner_radius = 10;
         follow = "mouse";
-        font = "Source Sans Pro 10";
+        font = "MesloLGS Nerd Font Mono 11";
         format = "<b>%s</b>\\n%b"; #format = "<span foreground='#f3f4f5'><b>%s %p</b></span>\n%b"
-        frame_color = "#232323";
+        frame_color = "#89b4fa";
         frame_width = 1;
         offset = "15x15";
         horizontal_padding = 10;
@@ -57,22 +57,23 @@
         show_indicators = "yes";
         shrink = "no";
         word_wrap = "yes";
-        browser = "/usr/bin/env librewolf -new-tab";
+        browser = "/usr/bin/env firefox -new-tab";
       };
 
       fullscreen_delay_everything = {fullscreen = "delay";};
 
       urgency_critical = {
-        background = "#d64e4e";
-        foreground = "#f0e0e0";
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
+        frame_color = "#fab387";
       };
       urgency_low = {
-        background = "#232323";
-        foreground = "#2596be";
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
       };
       urgency_normal = {
-        background = "#1e1e2a";
-        foreground = "#2596be";
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
       };
     };
   };

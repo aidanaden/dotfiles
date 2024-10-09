@@ -6,7 +6,7 @@
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in {
   home.packages = with pkgs; [
-    waybar
+    brightnessctl
     swww
     qt5.qtwayland
     qt6.qtwayland
@@ -117,8 +117,15 @@ in {
         "$mod ALT, k, resizeactive, 0 -20"
         "$mod ALT, j, resizeactive, 0 20"
 
+        # Audio keys
         ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+        # Brightness keys
+        ", XF86MonBrightnessUp, exec, brightnessctl s 5%+"
+        ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
       ];
 
       bind = [
