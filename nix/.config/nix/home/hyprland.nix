@@ -124,7 +124,7 @@ in {
       bind = [
         # General
         "$mod, return, exec, $terminal"
-        # "$mod SHIFT, q, killactive"
+        "$mod SHIFT, q, killactive"
         # "$mod SHIFT, e, exit"
         # "$mod SHIFT, p, pseudo"
         # "$mod SHIFT, l, exec, ${pkgs.hyprlock}/bin/hyprlock"
