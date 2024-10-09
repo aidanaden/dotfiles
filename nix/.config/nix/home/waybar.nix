@@ -52,7 +52,7 @@
       #clock,
       #battery,
       #pulseaudio,
-      #network
+      #network,
       #backlight {
         background-color: #1d202e;
         padding: 2px 10px;
@@ -197,7 +197,7 @@
           };
         };
         "custom/date" = {
-          "format" = "󰸗 {}";
+          "format" = "󰸗";
           "interval" = 3600;
           # "exec" = "/home/loki/bin/waybar-date.sh";
         };
