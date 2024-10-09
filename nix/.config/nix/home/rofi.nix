@@ -5,7 +5,9 @@
     package = pkgs.rofi-wayland;
     plugins = [
       pkgs.rofi-calc
+      pkgs.rofi-emoji
     ];
+    terminal = "kitty";
     extraConfig = {
       modi = "drun,filebrowser,run";
       show-icons = true;
