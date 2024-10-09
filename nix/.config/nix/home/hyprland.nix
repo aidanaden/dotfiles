@@ -193,8 +193,6 @@ in {
         # Screencapture
         # "$mod, S, exec, ${pkgs.grim}/bin/grim | wl-copy"
         # "$mod SHIFT+ALT, S, exec, ${pkgs.grim}/bin/grim -g \"$(slurp)\" - | ${pkgs.swappy}/bin/swappy -f -"
-
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ];
 
       windowrulev2 = [

@@ -5,7 +5,7 @@
     ./waybar.nix
     ./dunst.nix
     ./ventoy.nix
-    ./ktailctl.nix
+    ./trayscale.nix
     ./bitwarden-desktop.nix
   ];
 }
