@@ -7,6 +7,6 @@
     ./ventoy.nix
     ./trayscale.nix
     ./bitwarden-desktop.nix
-    ./rofi.nix
+    ./rofi
   ];
 }

@@ -8,8 +8,9 @@
       pkgs.rofi-emoji
     ];
     terminal = "kitty";
+    theme = "./tokyonight.rasi";
     extraConfig = {
-      modi = "drun,filebrowser,run";
+      modi = "drun,filebrowser,run,emoji";
       show-icons = true;
       icon-theme = "Papirus";
       location = 0;

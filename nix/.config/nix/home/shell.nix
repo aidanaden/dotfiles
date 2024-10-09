@@ -6,11 +6,11 @@
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in {
   imports = [
-    ./zsh.nix
-    ./tmux.nix
+    ./zsh
+    ./tmux
+    ./bat
     ./git.nix
     ./btop.nix
-    ./bat.nix
     ./yazi.nix
     ./spotify.nix
     ./kitty.nix
