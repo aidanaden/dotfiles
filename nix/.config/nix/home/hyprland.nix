@@ -116,6 +116,9 @@ in {
         "$mod ALT, l, resizeactive, 20 0"
         "$mod ALT, k, resizeactive, 0 -20"
         "$mod ALT, j, resizeactive, 0 20"
+
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ];
 
       bind = [
@@ -183,6 +186,8 @@ in {
         # Screencapture
         # "$mod, S, exec, ${pkgs.grim}/bin/grim | wl-copy"
         # "$mod SHIFT+ALT, S, exec, ${pkgs.grim}/bin/grim -g \"$(slurp)\" - | ${pkgs.swappy}/bin/swappy -f -"
+
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ];
 
       windowrulev2 = [
