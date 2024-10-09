@@ -10,7 +10,7 @@
     terminal = "kitty";
     theme = "./tokyonight.rasi";
     extraConfig = {
-      modi = "drun,filebrowser,run,emoji";
+      modi = "drun,filebrowser,run";
       show-icons = true;
       icon-theme = "Papirus";
       location = 0;
