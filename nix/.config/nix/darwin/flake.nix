@@ -38,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     shamir.url = "github:aidanaden/shamir-zig";
     schnorr.url = "github:aidanaden/schnorr-zig";
     flow.url = "github:aidanaden/flow";
@@ -152,6 +157,7 @@
             users.${user} = {...}:
               with inputs; {
                 imports = [
+                  inputs.spicetify-nix.homeManagerModules.default
                   ../home/darwin.nix
                 ];
                 home.stateVersion = "24.05";

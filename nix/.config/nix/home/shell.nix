@@ -12,6 +12,8 @@ in {
     ./btop.nix
     ./bat.nix
     ./yazi.nix
+    ./spotify.nix
+    ./kitty.nix
   ];
 
   home = {

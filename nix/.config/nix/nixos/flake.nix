@@ -27,6 +27,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # shamir.url = "github:aidanaden/shamir-zig";
     # schnorr.url = "github:aidanaden/schnorr-zig";
     # flow.url = "github:aidanaden/flow";
@@ -138,8 +143,9 @@
             users.${user} = {...}:
               with inputs; {
                 imports = [
-                  ../home/nixos.nix
+                  inputs.spicetify-nix.homeManagerModules.default
                   catppuccin.homeManagerModules.catppuccin
+                  ../home/nixos.nix
                 ];
                 home.stateVersion = "24.05";
               };
