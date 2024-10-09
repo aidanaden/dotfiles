@@ -8,7 +8,7 @@
       pkgs.rofi-emoji
     ];
     terminal = "kitty";
-    theme = "./tokyonight.rasi";
+    theme = ./tokyonight.rasi;
     extraConfig = {
       modi = "drun,filebrowser,run";
       show-icons = true;
@@ -21,4 +21,5 @@
       display-filebrowser = " File";
     };
   };
+  xdg.configFile."rofi/tokyonight.rasi".source = ./tokyonight.rasi;
 }
