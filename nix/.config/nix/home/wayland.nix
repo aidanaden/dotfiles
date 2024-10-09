@@ -218,8 +218,9 @@ in {
       exec-once = [
         "firefox"
         "kitty"
-        "${unstable.vesktop}/bin/vesktop"
+        "vesktop"
         "spotify"
+        "telegram-desktop"
         "dunst"
         "swww init & sleep 0.5 && exec wallpaper_random"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
