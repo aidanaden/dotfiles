@@ -6,5 +6,6 @@
     ./dunst.nix
     ./ventoy.nix
     ./ktailctl.nix
+    ./bitwarden-desktop.nix
   ];
 }
