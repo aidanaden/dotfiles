@@ -185,8 +185,9 @@ in {
 
         # bind apps to workspaces
         "workspace 1 silent, class:^(firefox)$"
-        "workspace 2 silent, class:^(qbittorrent)$"
+        "workspace 2 silent, class:^(org.qbittorrent.qBittorrent)$"
         "workspace 3 silent, class:^(kitty)$"
+        "workspace 4 silent, class:^(org.telegram.desktop)$"
         "workspace 4 silent, class:^(vesktop)$"
         "workspace 5 silent, title:^(Spotify)$"
 
