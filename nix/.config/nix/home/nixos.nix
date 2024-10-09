@@ -1,9 +1,10 @@
 {...}: {
   imports = [
-    ./hyprland.nix
     ./shell.nix
+    ./hyprland.nix
     ./waybar.nix
     ./dunst.nix
     ./ventoy.nix
+    ./ktailctl.nix
   ];
 }

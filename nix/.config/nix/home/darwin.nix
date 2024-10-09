@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./aerospace.nix
     ./shell.nix
+    ./aerospace.nix
   ];
 }
