@@ -103,6 +103,15 @@ in {
         enable_hyprcursor = true;
       };
 
+      # Allows for repeatable binds (press n hold)
+      binde = [
+        # Screen resize
+        "$mod ALT, h, resizeactive, -20 0"
+        "$mod ALT, l, resizeactive, 20 0"
+        "$mod ALT, k, resizeactive, 0 -20"
+        "$mod ALT, j, resizeactive, 0 20"
+      ];
+
       bind = [
         # General
         "$mod, return, exec, $terminal"
@@ -116,12 +125,6 @@ in {
         "$mod, u, focusurgentorlast"
         "$mod, tab, focuscurrentorlast"
         "$mod, f, fullscreen"
-
-        # Screen resize
-        "$mod CTRL, h, resizeactive, -20 0"
-        "$mod CTRL, l, resizeactive, 20 0"
-        "$mod CTRL, k, resizeactive, 0 -20"
-        "$mod CTRL, j, resizeactive, 0 20"
 
         # Workspaces
         "$mod, 1, workspace, 1"
@@ -153,9 +156,15 @@ in {
         "$mod, k, movefocus, u"
         "$mod, j, movefocus, d"
 
+        # Swap windows
+        "$mod CTRL, h, swapwindow, l"
+        "$mod CTRL, l, swapwindow, r"
+        "$mod CTRL, k, swapwindow, u"
+        "$mod CTRL, j, swapwindow, d"
+
         # Applications
-        "$mod ALT, f, exec, ${pkgs.firefox}/bin/firefox"
-        "$mod ALT, v, exec, ${unstable.vesktop}/bin/vesktop"
+        # "$mod ALT, f, exec, ${pkgs.firefox}/bin/firefox"
+        # "$mod ALT, v, exec, ${unstable.vesktop}/bin/vesktop"
         # "$mod ALT, e, exec, $terminal --hold -e ${pkgs.yazi}/bin/yazi"
         # "$mod ALT, o, exec, ${pkgs.obsidian}/bin/obsidian"
         # "$mod, r, exec, pkill fuzzel || ${pkgs.fuzzel}/bin/fuzzel"
