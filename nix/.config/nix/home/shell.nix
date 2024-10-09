@@ -81,9 +81,6 @@ in {
       # wireguard ui
       unstable.wireguard-ui
 
-      # music player
-      spotify
-
       # crypto wallets
 
       # shamir cli
