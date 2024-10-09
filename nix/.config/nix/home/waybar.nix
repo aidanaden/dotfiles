@@ -36,7 +36,7 @@
         color: #fff;
       }
 
-      #workspaces button.focused {
+      #workspaces button.active {
         color: #24283b;
         background-color: #7aa2f7;
         border-radius: 5px;
@@ -181,8 +181,7 @@
           "disable-scroll" = true;
           "on-click" = "activate";
           # // "all-outputs": false,
-          # // "format": "{name}: {icon}",
-          "format" = "{name}";
+          "format" = "{name}: {icon}";
           "on-scroll-up" = "hyprctl dispatch workspace m-1 > /dev/null";
           "on-scroll-down" = "hyprctl dispatch workspace m+1 > /dev/null";
           "format-icons" = {
@@ -192,7 +191,7 @@
             "4" = "";
             "5" = "";
             "urgent" = "";
-            "focused" = "";
+            "active" = "";
             "default" = "";
           };
         };
