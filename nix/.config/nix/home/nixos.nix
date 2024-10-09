@@ -5,5 +5,6 @@
     ./shell.nix
     ./waybar.nix
     ./dunst.nix
+    ./ventoy.nix
   ];
 }
