@@ -64,7 +64,7 @@
       # yazi end
 
       # bun completions
-      [ -s "/Users/aidan/.bun/_bun" ] && source "/Users/aidan/.bun/_bun"
+      [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
       # tmux list sessions on startup
       function _tmux()
