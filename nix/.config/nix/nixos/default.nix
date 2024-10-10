@@ -1,6 +1,8 @@
 {
   pkgs,
   user,
+  overlays,
+  nixpkgsConfig,
   self,
   ...
 }: let

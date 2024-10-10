@@ -79,7 +79,7 @@
         ../default.nix
         ../user.nix
         {
-          inherit user hostname;
+          inherit user hostname overlays nixpkgsConfig;
         }
 
         home-manager.nixosModule
