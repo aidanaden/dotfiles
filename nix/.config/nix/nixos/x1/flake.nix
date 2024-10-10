@@ -94,7 +94,7 @@
                 imports = [
                   inputs.spicetify-nix.homeManagerModules.default
                   catppuccin.homeManagerModules.catppuccin
-                  ../home/nixos.nix
+                  ../../home/nixos.nix
                 ];
                 home.stateVersion = "24.05";
               };
