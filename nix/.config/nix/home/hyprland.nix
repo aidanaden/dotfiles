@@ -179,6 +179,9 @@ in {
         "$mod SHIFT, k, swapwindow, u"
         "$mod SHIFT, j, swapwindow, d"
 
+        # Maximize window
+        "$mod, f, fullscreen, 1"
+
         # Applications
         # "$mod ALT, f, exec, ${pkgs.firefox}/bin/firefox"
         # "$mod ALT, v, exec, ${unstable.vesktop}/bin/vesktop"
