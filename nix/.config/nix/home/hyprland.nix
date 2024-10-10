@@ -141,7 +141,7 @@ in {
         "$mod, v, togglefloating"
         "$mod, u, focusurgentorlast"
         "$mod, tab, focuscurrentorlast"
-        "$mod, f, fullscreen"
+        "$mod, f, fullscreen, 1"
 
         # Workspaces
         "$mod, 1, workspace, 1"
@@ -178,9 +178,6 @@ in {
         "$mod SHIFT, l, swapwindow, r"
         "$mod SHIFT, k, swapwindow, u"
         "$mod SHIFT, j, swapwindow, d"
-
-        # Maximize window
-        "$mod, f, fullscreen, 1"
 
         # Applications
         # "$mod ALT, f, exec, ${pkgs.firefox}/bin/firefox"
