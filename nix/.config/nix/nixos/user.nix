@@ -5,7 +5,7 @@
   ...
 }: {
   users.users.${user} = {
-    home = "/Users/${user}";
+    home = "/home/${user}";
     shell = pkgs.zsh;
     isNormalUser = true;
     description = user;
