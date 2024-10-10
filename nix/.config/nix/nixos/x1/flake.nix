@@ -70,12 +70,13 @@
       # Makes all inputs availble in imported files
       specialArgs = {inherit inputs user hostname overlays nixpkgsConfig;};
 
-      system = {
-        stateVersion = "5";
-        configurationRevision = self.rev or self.dirtyRev or null;
-      };
-
       modules = [
+        ({...}: {
+          system = {
+            stateVersion = "5";
+            configurationRevision = self.rev or self.dirtyRev or null;
+          };
+        })
         catppuccin.nixosModules.catppuccin
         # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
         nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
