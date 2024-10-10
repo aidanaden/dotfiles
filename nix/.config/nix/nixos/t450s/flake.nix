@@ -68,7 +68,7 @@
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
       # Makes all inputs availble in imported files
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs user hostname overlays nixpkgsConfig;};
       modules = [
         ({...}: {
           system = {
