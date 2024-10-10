@@ -19,6 +19,34 @@
       share = true;
     };
 
+    shellAliases = {
+      # builtins
+      size = "du -sh";
+      cp = "cp -i";
+      mkdir = "mkdir -p";
+      df = "df -h";
+      free = "free -h";
+      du = "du -sh";
+      del = "rm -rf";
+      lst = "ls --tree -I .git";
+      lsl = "ls -l";
+      lsa = "ls -a";
+      null = "/dev/null";
+
+      # overrides
+      cat = "bat";
+      top = "btop";
+      htop = "btop";
+      ping = "gping";
+      diff = "delta";
+      ssh = "TERM=screen ssh";
+      python = "python3";
+      pip = "python3 -m pip";
+      venv = "python3 -m venv";
+      pn = "pnpm";
+      vim = "nvim";
+    };
+
     # initExtraFirst = ''
     #   source ~/.p10k.zsh
     # '';
