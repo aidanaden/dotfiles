@@ -68,7 +68,7 @@
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
       # Makes all inputs availble in imported files
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs user hostname overlays nixpkgsConfig;};
       modules = [
         catppuccin.nixosModules.catppuccin
         # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
@@ -78,10 +78,6 @@
         ./hardware-configuration.nix
         ../default.nix
         ../user.nix
-        {
-          inherit user hostname overlays nixpkgsConfig;
-        }
-
         home-manager.nixosModule
         {
           home-manager = {

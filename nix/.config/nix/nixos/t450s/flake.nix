@@ -76,11 +76,13 @@
         inputs.nix-index-database.nixosModules.nix-index
         # Include results of the hardware scan
         ./hardware-configuration.nix
+
         ../default.nix
-        ../user.nix
         {
           inherit user hostname overlays nixpkgsConfig;
         }
+
+        ../user.nix
 
         home-manager.nixosModule
         {
