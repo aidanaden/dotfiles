@@ -1,5 +1,5 @@
 {
-  description = "Thinkpad X1 G7 NixOS configuration with flakes";
+  description = "Thinkpad t450s NixOS configuration with flakes";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -59,7 +59,7 @@
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
     user = "aidan";
     system = "x86_64-linux";
-    hostname = "x1";
+    hostname = "t450s";
   in {
     # Nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -72,62 +72,15 @@
       modules = [
         catppuccin.nixosModules.catppuccin
         # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-        nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
+        nixos-hardware.nixosModules.lenovo-thinkpad-t450s
         inputs.nix-index-database.nixosModules.nix-index
         # Include results of the hardware scan
         ./hardware-configuration.nix
-        ./default.nix
-        ({
-          pkgs,
-          inputs,
-          ...
-        }: {
-          nixpkgs.config = nixpkgsConfig;
-          nixpkgs.overlays = overlays;
-
-          system = {
-            stateVersion = "5";
-            configurationRevision = self.rev or self.dirtyRev or null;
-          };
-
-          users.users.${user} = {
-            home = "/Users/${user}";
-            shell = pkgs.zsh;
-            isNormalUser = true;
-            description = user;
-            extraGroups = ["networkmanager" "wheel"];
-          };
-
-          networking = {
-            hostName = hostname;
-          };
-
-          nix = {
-            # Enable flakes per default
-            package = pkgs.nixFlakes;
-            gc = {
-              automatic = true;
-            };
-
-            settings = {
-              allowed-users = [user];
-              experimental-features = ["nix-command" "flakes"];
-              warn-dirty = false;
-              # Produces linking issues when updating on macOS
-              # https://github.com/NixOS/nix/issues/7273
-              auto-optimise-store = false;
-
-              # Substituers that will be considered before the official ones(https://cache.nixos.org)
-              substituters = [
-                "https://nix-community.cachix.org"
-              ];
-              trusted-public-keys = [
-                "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-              ];
-              builders-use-substitutes = true;
-            };
-          };
-        })
+        ../default.nix
+        ../user.nix
+        {
+          inherit user hostname;
+        }
 
         home-manager.nixosModule
         {

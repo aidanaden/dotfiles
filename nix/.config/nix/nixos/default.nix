@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  user,
+  ...
+}: let
   locale = "en_SG.UTF-8";
 in {
   # Bootloader
@@ -21,6 +25,7 @@ in {
     systemPackages = with pkgs; [
       fprintd
       plasma-desktop
+      git
     ];
   };
 
@@ -109,6 +114,40 @@ in {
       # jack = {
       #   enable = true;
       # };
+    };
+  };
+
+  nixpkgs.config = nixpkgsConfig;
+  nixpkgs.overlays = overlays;
+
+  system = {
+    stateVersion = "5";
+    configurationRevision = self.rev or self.dirtyRev or null;
+  };
+
+  nix = {
+    # Enable flakes per default
+    package = pkgs.nixFlakes;
+    gc = {
+      automatic = true;
+    };
+
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+      warn-dirty = false;
+
+      # Produces linking issues when updating on macOS
+      # https://github.com/NixOS/nix/issues/7273
+      auto-optimise-store = true;
+
+      # Substituers that will be considered before the official ones(https://cache.nixos.org)
+      substituters = [
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      builders-use-substitutes = true;
     };
   };
 
