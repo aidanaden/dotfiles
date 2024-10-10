@@ -1,6 +1,7 @@
 {
   pkgs,
   user,
+  self,
   ...
 }: let
   locale = "en_SG.UTF-8";
