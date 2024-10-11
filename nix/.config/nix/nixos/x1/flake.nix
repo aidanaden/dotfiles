@@ -61,7 +61,7 @@
     system = "x86_64-linux";
     hostname = "x1";
     # convert to 1 for 1080p screens
-    scale = 1.25;
+    scale = "1.25";
   in {
     # Nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
