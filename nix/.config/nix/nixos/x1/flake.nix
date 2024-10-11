@@ -60,6 +60,8 @@
     user = "aidan";
     system = "x86_64-linux";
     hostname = "x1";
+    # convert to 1 for 1080p screens
+    scale = 1.25;
   in {
     # Nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -68,7 +70,7 @@
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
       # Makes all inputs availble in imported files
-      specialArgs = {inherit inputs user hostname overlays nixpkgsConfig;};
+      specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale;};
       modules = [
         ({...}: {
           system = {
@@ -91,7 +93,7 @@
             useUserPackages = true;
             # Makes all inputs available in imported files for hm
             extraSpecialArgs = {
-              inherit inputs;
+              inherit inputs scale;
               pkgs-zsh-fzf-tab =
                 import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
             };

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  scale,
   ...
 }: let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
@@ -26,7 +27,7 @@ in {
       "$mod" = "SUPER";
 
       monitor = [
-        ",prefered,auto,1.25"
+        ",prefered,auto,${scale}"
       ];
 
       xwayland = {
