@@ -80,7 +80,7 @@
 
       eval "$(fnm env)"
 
-      VI_MODE_SET_CURSOR=true
+      export VI_MODE_SET_CURSOR=true
     '';
 
     plugins = [
