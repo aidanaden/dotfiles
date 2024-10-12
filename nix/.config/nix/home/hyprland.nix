@@ -52,7 +52,7 @@ in {
         touchpad = {
           natural_scroll = true;
         };
-        accel_profile  "flat";
+        accel_profile = "flat";
         sensitivity = 0;
         # Delay before a held-down key is repeated, in milliseconds. Default: 600
         repeat_delay = 300;
