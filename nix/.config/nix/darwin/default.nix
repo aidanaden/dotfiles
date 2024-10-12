@@ -23,6 +23,11 @@
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     '';
 
+    keyboard = {
+      enableKeyMapping = true;
+      # remapsCapsLockToEscape = true;
+    };
+
     defaults = {
       menuExtraClock.Show24Hour = true; # show 24 hour clock
 
