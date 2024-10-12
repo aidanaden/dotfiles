@@ -79,6 +79,8 @@
       alias tmux=_tmux
 
       eval "$(fnm env)"
+
+      VI_MODE_SET_CURSOR=true
     '';
 
     plugins = [
