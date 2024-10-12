@@ -25,7 +25,7 @@
 
     keyboard = {
       enableKeyMapping = true;
-      # remapsCapsLockToEscape = true;
+      remapCapsLockToControl = true;
     };
 
     defaults = {
