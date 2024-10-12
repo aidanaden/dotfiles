@@ -85,8 +85,8 @@
           inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix
-          ../default.nix
-          ../user.nix
+          ./default.nix
+          ./user.nix
           home-manager.nixosModule
           {
             home-manager = {
@@ -103,7 +103,7 @@
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
                     catppuccin.homeManagerModules.catppuccin
-                    ../../home/nixos.nix
+                    ../home/nixos.nix
                   ];
                   home.stateVersion = "24.05";
                 };
@@ -130,8 +130,8 @@
           inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix
-          ../default.nix
-          ../user.nix
+          ./default.nix
+          ./user.nix
           home-manager.nixosModule
           {
             home-manager = {
@@ -148,7 +148,7 @@
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
                     catppuccin.homeManagerModules.catppuccin
-                    ../../home/nixos.nix
+                    ../home/nixos.nix
                   ];
                   home.stateVersion = "24.05";
                 };
