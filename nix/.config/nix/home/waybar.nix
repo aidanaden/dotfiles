@@ -250,7 +250,7 @@
           };
         };
         "backlight" = {
-          "format" = "{percent}% {icon}";
+          "format" = "{icon}  {percent}%";
           "format-icons" = ["" "" "" "" "" "" "" "" ""];
         };
         "tray" = {
