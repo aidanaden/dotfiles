@@ -16,8 +16,6 @@ in {
     terminal = "xterm-kitty";
 
     plugins = with pkgs; [
-      tmuxPlugins.sensible
-      tmuxPlugins.better-mouse-mode
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig = ''
@@ -40,6 +38,8 @@ in {
           set -g @session-wizard-mode "full-path"
         '';
       }
+      tmuxPlugins.sensible
+      tmuxPlugins.better-mouse-mode
       # {
       #   plugin = unstable.tmuxPlugins.catppuccin;
       #   extraConfig = ''
