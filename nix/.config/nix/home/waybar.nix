@@ -55,7 +55,7 @@
       #network,
       #backlight {
         background-color: #1d202e;
-        padding: 2px 8px;
+        padding: 2px 10px;
         margin: 5px 0px;
       }
 
@@ -67,11 +67,11 @@
         color: #24283b;
         background-color: #db4b4b;
         border-radius: 5px;
-        margin-right: 8px;
+        margin-right: 10px;
         margin-top: 5px;
         margin-bottom: 5px;
         margin-left: 0px;
-        padding: 3px 8px;
+        padding: 3px 10px;
       }
 
       #clock {
@@ -106,7 +106,7 @@
       #temperature {
         background-color: #24283b;
         margin: 5px 0;
-        padding: 0 8px;
+        padding: 0 10px;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
         color: #82e4ff;
@@ -115,7 +115,7 @@
       #disk {
         color: #b9f27c;
         margin: 5px 0;
-        padding-right: 8px;
+        padding-right: 10px;
         background-color: #24283b;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
@@ -126,7 +126,7 @@
         margin-left: 5px;
         background: #2a3152;
         margin: 5px 0;
-        padding: 0 8px;
+        padding: 0 10px;
         margin-left: 3px;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
@@ -135,7 +135,7 @@
 
       #cpu {
         margin: 5px 0;
-        padding: 0 8px;
+        padding: 0 10px;
         background-color: #2a3152;
         color: #ff7a93;
         border-top-right-radius: 5px;
@@ -149,7 +149,7 @@
         margin-left: 0px;
         margin-right: 6px;
         border-radius: 5px;
-        adding: 0 8px;
+        padding: 0 10px;
       }
 
       #tray > * {
@@ -276,7 +276,7 @@
         };
         "tray" = {
           "icon-size" = 13;
-          "spacing" = 2;
+          "spacing" = 5;
         };
         "disk" = {
           "interval" = 5;
