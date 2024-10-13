@@ -16,7 +16,7 @@
         border-radius: 0;
         font-family: MesloLGS Nerd Font Mono;
         font-weight: 600;
-        font-size: 12px;
+        font-size: 11px;
         min-height: 0;
       }
 

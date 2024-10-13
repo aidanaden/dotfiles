@@ -51,7 +51,7 @@ in {
         follow_mouse = true;
         touchpad = {
           natural_scroll = true;
-          scroll_factor = 0.5;
+          scroll_factor = 0.2;
         };
         accel_profile = "flat";
         sensitivity = 0;
