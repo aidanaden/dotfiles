@@ -56,6 +56,10 @@ in {
 
   hardware = {
     pulseaudio.enable = false;
+
+    # Bluetooth support
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = false;
   };
 
   security = {
@@ -95,6 +99,9 @@ in {
     printing = {
       enable = false;
     };
+
+    # Enable bluetooth manager
+    blueman.enable = true;
 
     # Enable sound with pipewire
     pipewire = {

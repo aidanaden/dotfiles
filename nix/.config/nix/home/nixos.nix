@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./shell.nix
+    ./default.nix
     ./hyprland.nix
     ./waybar.nix
     ./dunst.nix

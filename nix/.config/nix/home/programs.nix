@@ -5,17 +5,6 @@
 }: let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in {
-  imports = [
-    ./zsh
-    ./tmux
-    ./bat
-    ./git.nix
-    ./btop.nix
-    ./yazi.nix
-    ./spotify.nix
-    ./kitty.nix
-  ];
-
   home = {
     packages = with pkgs; [
       inputs.neovim-nightly-overlay.packages.${system}.default # text editor
