@@ -51,6 +51,7 @@ in {
         follow_mouse = true;
         touchpad = {
           natural_scroll = true;
+          scroll_factor = 0.5;
         };
         accel_profile = "flat";
         sensitivity = 0;
@@ -221,6 +222,7 @@ in {
         # window rules to prevent screen from turning off
         "idleinhibit fullscreen,firefox"
         "idleinhibit fullscreen,mpv"
+        "noborder,^(rofi)$"
       ];
 
       env = [
