@@ -244,10 +244,10 @@
             "󰤥"
             "󰤨"
           ];
-          format-ethernet = " {bandwidthDownOctets}";
-          format-wifi = "{icon} {signalStrength}%";
+          format-ethernet = " {bandwidthDownOctets} {essid}";
+          format-wifi = "{icon} {signalStrength}% {essid}";
           format-disconnected = "󰤮";
-          tooltip = false;
+          tooltip = true;
         };
         "pulseaudio" = {
           format = "{icon} {volume}% {format_source}";
