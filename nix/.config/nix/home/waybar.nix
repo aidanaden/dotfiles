@@ -16,7 +16,7 @@
         border-radius: 0;
         font-family: MesloLGS Nerd Font Mono;
         font-weight: 600;
-        font-size: 11px;
+        font-size: 12px;
         min-height: 0;
       }
 
@@ -55,7 +55,7 @@
       #network,
       #backlight {
         background-color: #1d202e;
-        padding: 2px 10px;
+        padding: 2px 5px;
         margin: 5px 0px;
       }
 
