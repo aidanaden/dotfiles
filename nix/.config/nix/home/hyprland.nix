@@ -127,6 +127,12 @@ in {
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
+        # Playback keys
+        # ", XF86AudioPlay, exec, playerctl play-pause"
+        # ", XF86AudioPause, exec, playerctl play-pause"
+        # ", XF86AudioNext, exec, playerctl next"
+        # ", XF86AudioPrev, exec, playerctl previous"
+
         # Brightness keys
         ", XF86MonBrightnessUp, exec, brightnessctl s 5%+"
         ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"

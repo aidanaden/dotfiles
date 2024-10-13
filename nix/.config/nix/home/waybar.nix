@@ -205,52 +205,73 @@
           # "on-click" = "/home/loki/bin/waybar-power.sh";
         };
         "clock" = {
-          "interval" = 1;
-          "format" = "{:%H:%M}";
-          "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          "format-alt" = "{:%Y-%m-%d}";
+          format = " {:L%H:%M}";
+          tooltip = true;
+          tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
         };
         "battery" = {
-          "states" = {
-            "warning" = 30;
-            "critical" = 15;
+          states = {
+            warning = 30;
+            critical = 15;
           };
-          "format" = "{icon} {capacity}%";
-          "format-charging" = "󰂄 {capacity}%";
-          "format-plugged" = "󰂄{capacity}%";
-          "format-alt" = "{time} {icon}";
-          "format-full" = "󱈑 {capacity}%";
-          "format-icons" = ["󱊡" "󱊢" "󱊣"];
+          format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          format-plugged = "󱘖 {capacity}%";
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+          on-click = "";
+          tooltip = false;
         };
         "temperature" = {
           "hwmon-path" = "/sys/class/hwmon/hwmon4/temp1_input";
           "format" = "CPU {temperatureC}°C ";
         };
         "network" = {
-          "format-disconnected" = "󰯡 Disconnected";
-          "format-ethernet" = "󰒢 Connected!";
-          "format-linked" = "󰖪 {essid} (No IP)";
-          "format-wifi" = "󰖩 {essid}";
-          "interval" = 1;
-          "tooltip" = false;
+          format-icons = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
+          format-ethernet = " {bandwidthDownOctets}";
+          format-wifi = "{icon} {signalStrength}%";
+          format-disconnected = "󰤮";
+          tooltip = false;
         };
         "pulseaudio" = {
-          "format" = "{icon}  {volume}%";
-          "format-bluetooth" = "{volume}% {icon} {format_source}";
-          "format-bluetooth-muted" = "󰖁 {icon} {format_source}";
-          "format-muted" = "󰖁 Muted";
-          "format-icons" = {
-            "headphone" = "";
-            "hands-free" = "";
-            "headset" = "";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = ["" "" "" "" ""];
+          format = "{icon} {volume}% {format_source}";
+          format-bluetooth = "{volume}% {icon} {format_source}";
+          format-bluetooth-muted = " {icon} {format_source}";
+          format-muted = " {format_source}";
+          format-source = " {volume}%";
+          format-source-muted = "";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
         };
         "backlight" = {
-          "format" = "{icon}  {percent}%";
+          "format" = "{icon} {percent}%";
           "format-icons" = ["" "" "" "" "" "" "" "" ""];
         };
         "tray" = {
@@ -259,16 +280,16 @@
         };
         "disk" = {
           "interval" = 5;
-          "format" = "ROOT {percentage_free}% FREE";
+          "format" = "  {free}";
           "path" = "/";
         };
         "memory" = {
           "interval" = 5;
-          "format" = "RAM {used:0.1f}G/{total:0.1f}G ";
+          "format" = " {}%";
         };
         "cpu" = {
           "interval" = 10;
-          "format" = "CPU {}% ";
+          "format" = " {usage:2}%";
           "max-length" = 20;
         };
       }
