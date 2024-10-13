@@ -276,7 +276,7 @@
         };
         "tray" = {
           "icon-size" = 13;
-          "spacing" = 5;
+          "spacing" = 2;
         };
         "disk" = {
           "interval" = 5;
