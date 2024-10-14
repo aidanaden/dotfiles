@@ -25,9 +25,9 @@
       tmux = {
         enable = true;
       };
-      spicetify = {
-        enable = true;
-      };
+      # spicetify = {
+      #   enable = true;
+      # };
     };
 
     opacity = {
