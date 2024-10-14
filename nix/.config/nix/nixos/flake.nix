@@ -32,10 +32,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:danth/stylix/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    stylix.url = "github:danth/stylix";
 
     # shamir.url = "github:aidanaden/shamir-zig";
     # schnorr.url = "github:aidanaden/schnorr-zig";
