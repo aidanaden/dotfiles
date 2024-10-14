@@ -82,7 +82,6 @@
               configurationRevision = self.rev or self.dirtyRev or null;
             };
           })
-          # stylix.nixosModules.stylix
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
           inputs.nix-index-database.nixosModules.nix-index
@@ -105,8 +104,7 @@
                 with inputs; {
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
-                    # stylix.homeManagerModules.stylix
-                    # catppuccin.homeManagerModules.catppuccin
+                    stylix.homeManagerModules.stylix
                     ../home/nixos.nix
                   ];
                   home.stateVersion = "23.11";
@@ -128,7 +126,6 @@
               configurationRevision = self.rev or self.dirtyRev or null;
             };
           })
-          # stylix.nixosModules.stylix
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t450s
           inputs.nix-index-database.nixosModules.nix-index
@@ -151,8 +148,7 @@
                 with inputs; {
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
-                    # stylix.homeManagerModules.stylix
-                    # catppuccin.homeManagerModules.catppuccin
+                    stylix.homeManagerModules.stylix
                     ../home/nixos.nix
                   ];
                   home.stateVersion = "23.11";
