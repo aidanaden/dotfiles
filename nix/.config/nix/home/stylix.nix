@@ -4,7 +4,7 @@
     autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark.yaml";
     image = ../wallpapers/tokyodark/wallpaper1.png;
-
+    polarity = "dark";
     targets = {
       kitty = {
         enable = true;
