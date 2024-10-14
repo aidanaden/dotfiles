@@ -82,7 +82,7 @@
               configurationRevision = self.rev or self.dirtyRev or null;
             };
           })
-          stylix.nixosModules.stylix
+          # stylix.nixosModules.stylix
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
           inputs.nix-index-database.nixosModules.nix-index
@@ -97,7 +97,7 @@
               useUserPackages = true;
               # Makes all inputs available in imported files for hm
               extraSpecialArgs = {
-                inherit inputs scale;
+                inherit inputs scale stylix;
                 pkgs-zsh-fzf-tab =
                   import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
               };
@@ -105,6 +105,7 @@
                 with inputs; {
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
+                    # stylix.homeManagerModules.stylix
                     # catppuccin.homeManagerModules.catppuccin
                     ../home/nixos.nix
                   ];
@@ -127,7 +128,7 @@
               configurationRevision = self.rev or self.dirtyRev or null;
             };
           })
-          stylix.nixosModules.stylix
+          # stylix.nixosModules.stylix
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t450s
           inputs.nix-index-database.nixosModules.nix-index
@@ -142,7 +143,7 @@
               useUserPackages = true;
               # Makes all inputs available in imported files for hm
               extraSpecialArgs = {
-                inherit inputs scale;
+                inherit inputs scale stylix;
                 pkgs-zsh-fzf-tab =
                   import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
               };
@@ -150,7 +151,7 @@
                 with inputs; {
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
-                    stylix.homeManagerModules.stylix
+                    # stylix.homeManagerModules.stylix
                     # catppuccin.homeManagerModules.catppuccin
                     ../home/nixos.nix
                   ];

@@ -11,10 +11,10 @@ in {
     swww # Wallpaper daemon
     ibnotify # Notification libraries
     grim # Screenshots
-    grim # Screenshots
+    slurp # Screenshots
     udiskie # Automatic device mounting
     xdg-utils # Utilities for better X/Wayland integration
-    wlogout # Logout/shutdown/hibernate/lock screen modal UI
+    # wlogout # Logout/shutdown/hibernate/lock screen modal UI
     font-awesome # Fonts
     wl-clipboard # Clipboard
     qt5.qtwayland

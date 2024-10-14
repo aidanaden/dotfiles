@@ -85,7 +85,7 @@
       specialArgs = {inherit inputs;};
       modules = [
         inputs.nix-index-database.darwinModules.nix-index
-        stylix.nixosModules.stylix
+        stylix.darwinModules.stylix
         ./default.nix
         ({
           pkgs,
@@ -154,7 +154,7 @@
             useUserPackages = true;
             # makes all inputs available in imported files for hm
             extraSpecialArgs = {
-              inherit inputs;
+              inherit inputs stylix;
               pkgs-zsh-fzf-tab =
                 import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
             };
@@ -162,7 +162,7 @@
               with inputs; {
                 imports = [
                   inputs.spicetify-nix.homeManagerModules.default
-                  stylix.homeManagerModules.stylix
+                  # stylix.homeManagerModules.stylix
                   ../home/darwin.nix
                 ];
                 home.stateVersion = "23.11";

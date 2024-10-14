@@ -3,9 +3,19 @@
     enable = true;
     autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark.yaml";
+    image = "";
 
     targets = {
-      plymouth.enable = false;
+      kitty = {
+        enable = true;
+        variant256Colors = true;
+      };
+      waybar = {
+        enable = true;
+        enableCenterBackColors = false;
+        enableLeftBackColors = false;
+        enableRightBackColors = false;
+      };
     };
 
     fonts = {
