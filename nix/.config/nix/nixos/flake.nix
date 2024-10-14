@@ -150,6 +150,7 @@
                 with inputs; {
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
+                    stylix.homeManagerModules.stylix
                     # catppuccin.homeManagerModules.catppuccin
                     ../home/nixos.nix
                   ];

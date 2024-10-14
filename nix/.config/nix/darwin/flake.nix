@@ -162,6 +162,7 @@
               with inputs; {
                 imports = [
                   inputs.spicetify-nix.homeManagerModules.default
+                  stylix.homeManagerModules.stylix
                   ../home/darwin.nix
                 ];
                 home.stateVersion = "23.11";
