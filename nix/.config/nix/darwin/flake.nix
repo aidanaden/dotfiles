@@ -43,6 +43,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix.url = "github:danth/stylix/release-24.05";
+
     shamir.url = "github:aidanaden/shamir-zig";
     schnorr.url = "github:aidanaden/schnorr-zig";
     flow.url = "github:aidanaden/flow";
@@ -61,6 +63,7 @@
     home-manager,
     zig,
     neovim-nightly-overlay,
+    stylix,
     ...
   } @ inputs: let
     nixpkgsConfig = {
@@ -82,6 +85,7 @@
       specialArgs = {inherit inputs;};
       modules = [
         inputs.nix-index-database.darwinModules.nix-index
+        stylix.nixosModules.stylix
         ./default.nix
         ({
           pkgs,
@@ -160,7 +164,7 @@
                   inputs.spicetify-nix.homeManagerModules.default
                   ../home/darwin.nix
                 ];
-                home.stateVersion = "24.05";
+                home.stateVersion = "23.11";
               };
           };
         }

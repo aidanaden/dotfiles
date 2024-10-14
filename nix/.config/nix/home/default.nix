@@ -9,5 +9,6 @@
     ./spotify.nix
     ./kitty.nix
     ./programs.nix
+    ./stylix.nix
   ];
 }

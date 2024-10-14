@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:catppuccin/nix";
+    # catppuccin.url = "github:catppuccin/nix";
 
     nixpkgs-zsh-fzf-tab.url = "github:nixos/nixpkgs/8193e46376fdc6a13e8075ad263b4b5ca2592c03";
 
@@ -31,6 +31,8 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix.url = "github:danth/stylix/release-24.05";
 
     # shamir.url = "github:aidanaden/shamir-zig";
     # schnorr.url = "github:aidanaden/schnorr-zig";
@@ -47,9 +49,10 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
-    catppuccin,
+    # catppuccin,
     zig,
     neovim-nightly-overlay,
+    stylix,
     ...
   } @ inputs: let
     nixpkgsConfig = {
@@ -79,7 +82,7 @@
               configurationRevision = self.rev or self.dirtyRev or null;
             };
           })
-          catppuccin.nixosModules.catppuccin
+          stylix.nixosModules.stylix
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
           inputs.nix-index-database.nixosModules.nix-index
@@ -102,10 +105,10 @@
                 with inputs; {
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
-                    catppuccin.homeManagerModules.catppuccin
+                    # catppuccin.homeManagerModules.catppuccin
                     ../home/nixos.nix
                   ];
-                  home.stateVersion = "24.05";
+                  home.stateVersion = "23.11";
                 };
             };
           }
@@ -124,7 +127,7 @@
               configurationRevision = self.rev or self.dirtyRev or null;
             };
           })
-          catppuccin.nixosModules.catppuccin
+          stylix.nixosModules.stylix
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t450s
           inputs.nix-index-database.nixosModules.nix-index
@@ -147,10 +150,10 @@
                 with inputs; {
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
-                    catppuccin.homeManagerModules.catppuccin
+                    # catppuccin.homeManagerModules.catppuccin
                     ../home/nixos.nix
                   ];
-                  home.stateVersion = "24.05";
+                  home.stateVersion = "23.11";
                 };
             };
           }

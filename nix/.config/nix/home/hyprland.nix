@@ -7,20 +7,32 @@
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in {
   home.packages = with pkgs; [
-    brightnessctl
-    swww
+    brightnessctl # Screen brightness daemon
+    swww # Wallpaper daemon
+    ibnotify # Notification libraries
+    grim # Screenshots
+    grim # Screenshots
+    udiskie # Automatic device mounting
+    xdg-utils # Utilities for better X/Wayland integration
+    wlogout # Logout/shutdown/hibernate/lock screen modal UI
+    font-awesome # Fonts
+    wl-clipboard # Clipboard
     qt5.qtwayland
     qt6.qtwayland
   ];
+
+  # XDG portal
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
     xwayland.enable = true;
 
-    catppuccin = {
-      enable = true;
-    };
+    # catppuccin = {
+    #   enable = true;
+    # };
 
     settings = {
       "$terminal" = "kitty";
@@ -232,6 +244,7 @@ in {
       ];
 
       env = [
+        # Hint electron apps to use wayland
         "NIXOS_OZONE_WL,1"
         "_JAVA_AWT_WM_NONREPARENTING,1"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"

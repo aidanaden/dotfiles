@@ -101,7 +101,9 @@ in {
     };
 
     # Enable bluetooth manager
-    blueman.enable = true;
+    blueman = {
+      enable = true;
+    };
 
     # Enable sound with pipewire
     pipewire = {
@@ -125,6 +127,14 @@ in {
       #   enable = true;
       # };
     };
+
+    gvfs = {
+      enable = true;
+    };
+
+    openssh = {
+      enable = true;
+    };
   };
 
   nixpkgs.config = nixpkgsConfig;
@@ -135,6 +145,8 @@ in {
     package = pkgs.nixFlakes;
     gc = {
       automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
     };
 
     settings = {
