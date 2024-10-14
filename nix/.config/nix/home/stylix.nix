@@ -37,7 +37,7 @@
     fonts = {
       sizes = {
         desktop = 12;
-        popups = 12;
+        popups = 11;
         terminal = 11;
         applications = 12;
       };
