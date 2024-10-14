@@ -9,7 +9,7 @@ in {
   home.packages = with pkgs; [
     brightnessctl # Screen brightness daemon
     swww # Wallpaper daemon
-    ibnotify # Notification libraries
+    libnotify # Notification libraries
     grim # Screenshots
     slurp # Screenshots
     udiskie # Automatic device mounting
