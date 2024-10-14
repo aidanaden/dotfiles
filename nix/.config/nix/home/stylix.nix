@@ -4,6 +4,10 @@
     autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark.yaml";
 
+    targets = {
+      plymouth.enable = false;
+    };
+
     fonts = {
       sizes = {
         desktop = 12;
