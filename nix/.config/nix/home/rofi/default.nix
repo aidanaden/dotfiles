@@ -8,11 +8,11 @@
       pkgs.rofi-emoji
     ];
     terminal = "kitty";
-    theme = ./tokyonight.rasi;
+    # theme = ./tokyonight.rasi;
     extraConfig = {
       modi = "drun,filebrowser,run";
       show-icons = true;
-      icon-theme = "Papirus";
+      # icon-theme = "Papirus";
       location = 0;
       font = "MesloLGS Nerd Font Mono 11";
       drun-display-format = "{icon} {name}";
@@ -21,5 +21,5 @@
       display-filebrowser = " File";
     };
   };
-  xdg.configFile."rofi/tokyonight.rasi".source = ./tokyonight.rasi;
+  # xdg.configFile."rofi/tokyonight.rasi".source = ./tokyonight.rasi;
 }

@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   stylix = {
     enable = true;
-    autoEnable = false;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark.yaml";
+    autoEnable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
     image = ../wallpapers/tokyodark/wallpaper1.png;
     polarity = "dark";
     targets = {
@@ -20,6 +20,9 @@
         enable = true;
       };
       hyprland = {
+        enable = true;
+      };
+      tmux = {
         enable = true;
       };
     };
