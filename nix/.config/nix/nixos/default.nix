@@ -19,11 +19,6 @@ in {
     timeZone = "Asia/Singapore";
   };
 
-  system = {
-    stateVersion = "5";
-    configurationRevision = self.rev or self.dirtyRev or null;
-  };
-
   environment = {
     variables = {
       EDITOR = "nvim";
@@ -32,6 +27,7 @@ in {
 
     systemPackages = with pkgs; [
       fprintd
+      plasma-desktop
       git
     ];
   };
@@ -41,7 +37,6 @@ in {
     scheherazade-new
     ia-writer-duospace
     meslo-lgs-nf
-    font-awesome
   ];
 
   i18n = {
