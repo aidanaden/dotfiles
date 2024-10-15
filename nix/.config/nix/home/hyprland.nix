@@ -17,13 +17,25 @@ in {
     # wlogout # Logout/shutdown/hibernate/lock screen modal UI
     font-awesome # Fonts
     wl-clipboard # Clipboard
+    networkmanagerapplet
+    lshw
     qt5.qtwayland
     qt6.qtwayland
   ];
 
   # XDG portal
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal
+    ];
+    configPackages = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal
+    ];
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -266,6 +278,7 @@ in {
         "telegram-desktop"
         "qbittorrent"
         "dunst"
+        "nm-applet --indicator"
         "swww init & sleep 0.5 && exec wallpaper_random"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
         "hash dbus-update-activation-environment 2>/dev/null"
