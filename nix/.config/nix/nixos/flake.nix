@@ -164,6 +164,12 @@
         # Makes all inputs availble in imported files
         specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale;};
         modules = [
+          ({...}: {
+            system = {
+              stateVersion = "5";
+              configurationRevision = self.rev or self.dirtyRev or null;
+            };
+          })
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.dell-xps-13-9360
           inputs.nix-index-database.nixosModules.nix-index
