@@ -17,6 +17,7 @@ in {
     # wlogout # Logout/shutdown/hibernate/lock screen modal UI
     font-awesome # Fonts
     wl-clipboard # Clipboard
+    playerctl # Media player daemon
     networkmanagerapplet
     lshw
     qt5.qtwayland
@@ -152,10 +153,10 @@ in {
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
         # Playback keys
-        # ", XF86AudioPlay, exec, playerctl play-pause"
-        # ", XF86AudioPause, exec, playerctl play-pause"
-        # ", XF86AudioNext, exec, playerctl next"
-        # ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPause, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPrev, exec, playerctl previous"
 
         # Brightness keys
         ", XF86MonBrightnessUp, exec, brightnessctl s 5%+"

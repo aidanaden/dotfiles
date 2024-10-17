@@ -39,6 +39,9 @@
           WebKitDeveloperExtras = true;
           KeyRepeat = 1;
         };
+        dock = {
+          autohide = true;
+        };
         "com.apple.spaces" = {
           "spans-displays" = 0; # Display have seperate spaces
         };

@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration with flakes";
+  description = "Lenovo thinkpad t450s NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -15,8 +15,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # catppuccin.url = "github:catppuccin/nix";
 
     nixpkgs-zsh-fzf-tab.url = "github:nixos/nixpkgs/8193e46376fdc6a13e8075ad263b4b5ca2592c03";
 
@@ -62,7 +60,7 @@
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
     user = "aidan";
     system = "x86_64-linux";
-    hostname = "x1";
+    hostname = "t450s";
     # recommended to convert to 1.25 for 1440p and above
     scale = "1";
   in {
@@ -70,51 +68,6 @@
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     nixosConfigurations = {
-      # Lenovo thinkpad x1 gen 7
-      x1g7 = nixpkgs.lib.nixosSystem {
-        inherit system;
-        # Makes all inputs availble in imported files
-        specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale;};
-        modules = [
-          ({...}: {
-            system = {
-              stateVersion = "5";
-              configurationRevision = self.rev or self.dirtyRev or null;
-            };
-          })
-          # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-          nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
-          inputs.nix-index-database.nixosModules.nix-index
-          # Include results of the hardware scan
-          ./hardware-configuration.nix
-          ./default.nix
-          ./user.nix
-          home-manager.nixosModule
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              # Makes all inputs available in imported files for hm
-              extraSpecialArgs = {
-                inherit inputs scale stylix;
-                pkgs-zsh-fzf-tab =
-                  import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
-              };
-              users.${user} = {...}:
-                with inputs; {
-                  imports = [
-                    inputs.spicetify-nix.homeManagerModules.default
-                    stylix.homeManagerModules.stylix
-                    ../home/nixos.nix
-                  ];
-                  home.stateVersion = "23.11";
-                };
-            };
-          }
-        ];
-      };
-
-      # Lenovo thinkpad t450s
       t450s = nixpkgs.lib.nixosSystem {
         inherit system;
         # Makes all inputs availble in imported files
@@ -128,50 +81,6 @@
           })
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t450s
-          inputs.nix-index-database.nixosModules.nix-index
-          # Include results of the hardware scan
-          ./hardware-configuration.nix
-          ./default.nix
-          ./user.nix
-          home-manager.nixosModule
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              # Makes all inputs available in imported files for hm
-              extraSpecialArgs = {
-                inherit inputs scale stylix;
-                pkgs-zsh-fzf-tab =
-                  import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
-              };
-              users.${user} = {...}:
-                with inputs; {
-                  imports = [
-                    inputs.spicetify-nix.homeManagerModules.default
-                    stylix.homeManagerModules.stylix
-                    ../home/nixos.nix
-                  ];
-                  home.stateVersion = "23.11";
-                };
-            };
-          }
-        ];
-      };
-
-      # Dell xps 13
-      xps13-9360 = nixpkgs.lib.nixosSystem {
-        inherit system;
-        # Makes all inputs availble in imported files
-        specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale;};
-        modules = [
-          ({...}: {
-            system = {
-              stateVersion = "5";
-              configurationRevision = self.rev or self.dirtyRev or null;
-            };
-          })
-          # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-          nixos-hardware.nixosModules.dell-xps-13-9360
           inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix
