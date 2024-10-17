@@ -78,6 +78,9 @@
               stateVersion = "5";
               configurationRevision = self.rev or self.dirtyRev or null;
             };
+            # Bootloader
+            boot.loader.systemd-boot.enable = true;
+            boot.loader.efi.canTouchEfiVariables = true;
           })
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t450s

@@ -8,13 +8,10 @@
 }: let
   locale = "en_SG.UTF-8";
 in {
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   # Networking
   networking.networkmanager.enable = true;
 
+  # Time
   time = {
     timeZone = "Asia/Singapore";
   };
@@ -95,7 +92,7 @@ in {
       package = pkgs.fprintd-tod;
     };
 
-    # Enable CUPS to print documents
+    # Disable CUPS to print documents
     printing = {
       enable = false;
     };
