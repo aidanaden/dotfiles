@@ -58,7 +58,7 @@
       allowUnsupportedSystem = false;
     };
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
-    user = "aidan";
+    user = "sense";
     system = "x86_64-linux";
     hostname = "t400";
     # recommended to convert to 1.25 for 1440p and above
@@ -77,6 +77,12 @@
             system = {
               stateVersion = "5";
               configurationRevision = self.rev or self.dirtyRev or null;
+            };
+            # Obtained from generated /etc/nixos/configuration.nix
+            boot.loader.grub = {
+              enable = true;
+              device = "/dev/sda";
+              useOSProber = true;
             };
           })
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
