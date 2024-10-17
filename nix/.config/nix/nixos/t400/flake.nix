@@ -84,7 +84,7 @@
           # Include results of the hardware scan
           ./hardware-configuration.nix
           ../default.nix
-          ./user.nix
+          ../user.nix
           home-manager.nixosModule
           {
             home-manager = {
@@ -101,7 +101,7 @@
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
                     stylix.homeManagerModules.stylix
-                    ../home/nixos.nix
+                    ../../home/nixos.nix
                   ];
                   home.stateVersion = "23.11";
                 };
