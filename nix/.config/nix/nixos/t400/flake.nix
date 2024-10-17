@@ -83,7 +83,7 @@
           inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix
-          ./default.nix
+          ../default.nix
           ./user.nix
           home-manager.nixosModule
           {
