@@ -14,10 +14,10 @@ in {
   programs.kitty = {
     enable = true;
 
-    font = {
-      name = "MesloLGS Nerd Font Mono";
-      size = 11;
-    };
+    # font = {
+    #   name = "MesloLGS Nerd Font Mono";
+    #   size = 11;
+    # };
 
     settings = {
       # foreground = "#a9b1d6";
