@@ -1,10 +1,32 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  user,
+  overlays,
+  hostname,
+  nixpkgsConfig,
+  ...
+}: {
   imports = [./homebrew.nix];
+
+  nixpkgs.config = nixpkgsConfig;
+  nixpkgs.overlays = overlays;
+
+  users.users.${user} = {
+    home = "/Users/${user}";
+    shell = pkgs.zsh;
+  };
+
+  networking = {
+    computerName = hostname;
+    hostName = hostname;
+    localHostName = hostname;
+  };
 
   environment = {
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      TERMINAL = "kitty";
     };
   };
 
@@ -14,6 +36,53 @@
     ia-writer-duospace
     meslo-lgs-nf
   ];
+
+  services = {
+    activate-system.enable = true;
+    # Auto upgrade nix package and the daemon service.
+    nix-daemon.enable = true;
+    tailscale.enable = true;
+  };
+
+  nix = {
+    # enable flakes per default
+    package = pkgs.nixFlakes;
+
+    optimise = {
+      automatic = true;
+      user = user;
+    };
+
+    gc = {
+      automatic = true;
+      user = user;
+    };
+
+    settings = {
+      allowed-users = [user];
+      experimental-features = ["nix-command" "flakes"];
+      warn-dirty = false;
+      # produces linking issues when updating on macOS
+      # https://github.com/NixOS/nix/issues/7273
+      auto-optimise-store = false;
+
+      # substituers that will be considered before the official ones(https://cache.nixos.org)
+      substituters = [
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      builders-use-substitutes = true;
+    };
+  };
+
+  # Add ability to used TouchID for sudo authentication
+  security.pam.enableSudoTouchIdAuth = true;
+
+  # Create /etc/zshrc that loads the nix-darwin environment.
+  # this is required if you want to use darwin's default shell - zsh
+  programs.zsh.enable = true;
 
   system = {
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
@@ -29,7 +98,48 @@
     };
 
     defaults = {
-      menuExtraClock.Show24Hour = true; # show 24 hour clock
+      dock = {
+        autohide = true;
+        mru-spaces = false;
+        orientation = "bottom";
+        showhidden = true;
+        static-only = true;
+        # TODO: Make this user-specific
+        persistent-apps = [
+          "/Users/${user}/Applications/Home Manager Apps/Telegram.app"
+          "/Users/${user}/Applications/Home Manager Apps/Vesktop.app"
+          "/Users/${user}/Applications/Home Manager Apps/Spotify.app"
+          "/Users/${user}/Applications/Home Manager Apps/kitty.app"
+          "/Users/${user}/Applications/Home Manager Apps/qbittorrent.app"
+          "/Applications/Raycast.app"
+          "/Applications/Arc.app"
+          "/Applications/Bitwarden.app"
+        ];
+      };
+
+      trackpad = {
+        Clicking = true;
+        TrackpadRightClick = true; # enable two finger right click
+        TrackpadThreeFingerDrag = true; # enable three finger drag
+      };
+
+      finder = {
+        _FXShowPosixPathInTitle = true;
+        FXEnableExtensionChangeWarning = false;
+        FXPreferredViewStyle = "Nlsv";
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        QuitMenuItem = true;
+        ShowPathbar = true;
+        ShowStatusBar = true;
+      };
+
+      menuExtraClock = {
+        ShowAMPM = false;
+        ShowDate = 1; # Always
+        Show24Hour = true;
+        ShowSeconds = false;
+      };
 
       # other macOS's defaults configuration.
       # ......
@@ -38,9 +148,13 @@
           # Add a context menu item for showing the Web Inspector in web views
           WebKitDeveloperExtras = true;
           KeyRepeat = 1;
+          "_HIHideMenuBar" = false;
         };
-        dock = {
-          autohide = true;
+        "com.apple.AdLib" = {
+          allowApplePersonalizedAdvertising = false;
+        };
+        "com.apple.controlcenter" = {
+          BatteryShowPercentage = true;
         };
         "com.apple.spaces" = {
           "spans-displays" = 0; # Display have seperate spaces
@@ -68,6 +182,25 @@
           location = "~/Downloads";
           type = "png";
         };
+        "com.apple.print.PrintingPrefs" = {
+          # Automatically quit printer app once the print jobs complete
+          "Quit When Finished" = true;
+        };
+        "com.apple.SoftwareUpdate" = {
+          AutomaticCheckEnabled = true;
+          # Check for software updates daily, not just once per week
+          ScheduleFrequency = 1;
+          # Download newly available updates in background
+          AutomaticDownload = 1;
+          # Install System data files & security updates
+          CriticalUpdateInstall = 1;
+        };
+        "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
+        # Prevent Photos from opening automatically when devices are plugged in
+        "com.apple.ImageCapture".disableHotPlug = true;
+        # Turn on app auto-update
+        "com.apple.commerce".AutoUpdate = true;
+
         # "com.apple.Safari" = {
         #   # Privacy: don’t send search queries to Apple
         #   UniversalSearchEnabled = false;
@@ -96,39 +229,12 @@
         #   "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;
         #   "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
         # };
+
         # "com.apple.mail" = {
         #   # Disable inline attachments (just show the icons)
         #   DisableInlineAttachmentViewing = true;
         # };
-        "com.apple.AdLib" = {
-          allowApplePersonalizedAdvertising = false;
-        };
-        "com.apple.print.PrintingPrefs" = {
-          # Automatically quit printer app once the print jobs complete
-          "Quit When Finished" = true;
-        };
-        "com.apple.SoftwareUpdate" = {
-          AutomaticCheckEnabled = true;
-          # Check for software updates daily, not just once per week
-          ScheduleFrequency = 1;
-          # Download newly available updates in background
-          AutomaticDownload = 1;
-          # Install System data files & security updates
-          CriticalUpdateInstall = 1;
-        };
-        "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = true;
-        # Prevent Photos from opening automatically when devices are plugged in
-        "com.apple.ImageCapture".disableHotPlug = true;
-        # Turn on app auto-update
-        "com.apple.commerce".AutoUpdate = true;
       };
     };
   };
-
-  # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
-
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  # this is required if you want to use darwin's default shell - zsh
-  programs.zsh.enable = true;
 }

@@ -82,7 +82,7 @@
     darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
       inherit system;
       # makes all inputs availble in imported files
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs nixpkgsConfig overlays user hostname;};
       modules = [
         inputs.nix-index-database.darwinModules.nix-index
         # stylix.darwinModules.stylix
@@ -92,59 +92,9 @@
           inputs,
           ...
         }: {
-          nixpkgs.config = nixpkgsConfig;
-          nixpkgs.overlays = overlays;
-
           system = {
             stateVersion = 5;
             configurationRevision = self.rev or self.dirtyRev or null;
-          };
-
-          users.users.${user} = {
-            home = "/Users/${user}";
-            shell = pkgs.zsh;
-          };
-
-          networking = {
-            computerName = hostname;
-            hostName = hostname;
-            localHostName = hostname;
-          };
-
-          # Auto upgrade nix package and the daemon service.
-          services.nix-daemon.enable = true;
-
-          nix = {
-            # enable flakes per default
-            package = pkgs.nixFlakes;
-
-            optimise = {
-              automatic = true;
-              user = user;
-            };
-
-            gc = {
-              automatic = true;
-              user = user;
-            };
-
-            settings = {
-              allowed-users = [user];
-              experimental-features = ["nix-command" "flakes"];
-              warn-dirty = false;
-              # produces linking issues when updating on macOS
-              # https://github.com/NixOS/nix/issues/7273
-              auto-optimise-store = false;
-
-              # substituers that will be considered before the official ones(https://cache.nixos.org)
-              substituters = [
-                "https://nix-community.cachix.org"
-              ];
-              trusted-public-keys = [
-                "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-              ];
-              builders-use-substitutes = true;
-            };
           };
         })
         home-manager.darwinModule

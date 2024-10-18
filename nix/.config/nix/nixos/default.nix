@@ -20,6 +20,7 @@ in {
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      TERMINAL = "kitty";
     };
 
     systemPackages = with pkgs; [
