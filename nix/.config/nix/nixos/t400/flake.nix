@@ -110,9 +110,10 @@
                     ../../home/nixos.nix
                   ];
                   home.stateVersion = "23.11";
-                  wayland.windowManager.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland.override {
+                  wayland.windowManager.hyprland.package = pkgs.hyprland.override {
                     legacyRenderer = true;
-                    mesa = pkgs.mesa;
+                    withSystemd = false;
+                    # mesa = pkgs.mesa;
                   };
                 };
             };
