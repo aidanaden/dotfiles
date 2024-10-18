@@ -68,7 +68,7 @@
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     nixosConfigurations = {
-      t400 = nixpkgs.lib.nixosSystem {
+      default = nixpkgs.lib.nixosSystem {
         inherit system;
         # Makes all inputs availble in imported files
         specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale;};
