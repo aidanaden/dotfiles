@@ -48,6 +48,8 @@
     shamir.url = "github:aidanaden/shamir-zig";
     schnorr.url = "github:aidanaden/schnorr-zig";
     flow.url = "github:aidanaden/flow";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
     # rustmission.url = "github:intuis/rustmission";
   };
 
@@ -85,7 +87,7 @@
       specialArgs = {inherit inputs nixpkgsConfig overlays user hostname;};
       modules = [
         inputs.nix-index-database.darwinModules.nix-index
-        # stylix.darwinModules.stylix
+        inputs.mac-app-util.darwinModules.default
         ./default.nix
         ({
           pkgs,
@@ -113,6 +115,7 @@
                 imports = [
                   inputs.spicetify-nix.homeManagerModules.default
                   stylix.homeManagerModules.stylix
+                  mac-app-util.homeManagerModules.default
                   ../home/darwin.nix
                 ];
                 home.stateVersion = "23.11";
