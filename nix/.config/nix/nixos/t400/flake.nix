@@ -98,7 +98,7 @@
               useUserPackages = true;
               # Makes all inputs available in imported files for hm
               extraSpecialArgs = {
-                inherit inputs scale stylix pkgs;
+                inherit inputs scale stylix;
                 pkgs-zsh-fzf-tab =
                   import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
               };
@@ -110,7 +110,7 @@
                     ../../home/nixos.nix
                   ];
                   home.stateVersion = "23.11";
-                  wayland.windowManager.hyprland.package = pkgs.hyprland.override {
+                  wayland.windowManager.hyprland.package = nixpkgs.hyprland.override {
                     legacyRenderer = true;
                     withSystemd = false;
                     # mesa = pkgs.mesa;
