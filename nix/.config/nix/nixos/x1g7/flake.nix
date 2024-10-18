@@ -62,7 +62,7 @@
     system = "x86_64-linux";
     hostname = "x1";
     # recommended to convert to 1.25 for 1440p and above
-    scale = "1";
+    scale = "1.25";
   in {
     # Nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
