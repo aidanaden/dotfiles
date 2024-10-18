@@ -1,23 +1,24 @@
-{...}: let
-  gray = "#414868";
-  red = "#f7768e";
-  green = "#73daca";
-  yellow = "#e0af68";
-  blue = "#7aa2f7";
-  magenta = "#bb9af7";
-  cyan = "#7dcfff";
-  white = "#c0caf5";
-  cursor_text = "#1a1b26";
-  selection_background = "#28344a";
-  dark_blue = "#3d59a1";
+{pkgs, ...}: let
+  # gray = "#414868";
+  # red = "#f7768e";
+  # green = "#73daca";
+  # yellow = "#e0af68";
+  # blue = "#7aa2f7";
+  # magenta = "#bb9af7";
+  # cyan = "#7dcfff";
+  # white = "#c0caf5";
+  # cursor_text = "#1a1b26";
+  # selection_background = "#28344a";
+  # dark_blue = "#3d59a1";
 in {
   programs.kitty = {
     enable = true;
 
-    # font = {
-    #   name = "MesloLGS Nerd Font Mono";
-    #   size = 11;
-    # };
+    font = {
+      name = "MesloLGS Nerd Font";
+      package = pkgs.meslo-lgs-nf;
+      size = 11;
+    };
 
     settings = {
       # foreground = "#a9b1d6";
