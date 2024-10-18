@@ -15,12 +15,6 @@
     meslo-lgs-nf
   ];
 
-  fontconfig = {
-    defaultFonts = {
-      monospace = ["MesloLGS Nerd Font Mono"];
-    };
-  };
-
   system = {
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
     activationScripts.postUserActivation.text = ''
