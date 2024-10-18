@@ -23,7 +23,7 @@
     # `brew install --cask`
     casks = [
       "raycast" # launcher on steroids
-      # "arc" # mac browser
+      "arc" # mac browser
       "nikitabobko/tap/aerospace" # tiling window manager
       "anki" # japanese learning
       "balenaetcher" # flashing iso

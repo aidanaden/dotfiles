@@ -79,6 +79,11 @@
       if.app-name-regex-substring = 'qbittorrent'
       run = 'move-node-to-workspace 2'
 
+      # torrent
+      [[on-window-detected]]
+      if.app-name-regex-substring = 'qBittorrent'
+      run = 'move-node-to-workspace 2'
+
       # code
       [[on-window-detected]]
       if.app-name-regex-substring = 'kitty'
