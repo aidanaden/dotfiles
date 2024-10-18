@@ -98,7 +98,7 @@
               useUserPackages = true;
               # Makes all inputs available in imported files for hm
               extraSpecialArgs = {
-                inherit inputs scale stylix;
+                inherit inputs scale stylix pkgs;
                 pkgs-zsh-fzf-tab =
                   import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
               };
