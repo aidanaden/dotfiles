@@ -58,11 +58,11 @@
       allowUnsupportedSystem = false;
     };
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
-    user = "aidan";
+    user = "suji";
     system = "x86_64-linux";
     hostname = "xps13";
     # recommended to convert to 1.25 for 1440p and above
-    scale = "1";
+    scale = "1.6";
   in {
     # Nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
