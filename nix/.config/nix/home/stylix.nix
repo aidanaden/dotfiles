@@ -54,7 +54,7 @@
       };
       monospace = {
         package = pkgs.meslo-lgs-nf;
-        name = "MesloLGS Nerd Font";
+        name = "MesloLGS NF";
       };
       emoji = {
         package = pkgs.noto-fonts-emoji;
