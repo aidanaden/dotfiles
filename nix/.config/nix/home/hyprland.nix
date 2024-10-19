@@ -73,7 +73,7 @@ in {
         follow_mouse = true;
         touchpad = {
           natural_scroll = true;
-          scroll_factor = 0.2;
+          scroll_factor = 1;
         };
         accel_profile = "flat";
         sensitivity = 0;

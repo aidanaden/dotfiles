@@ -120,6 +120,8 @@
                     # UEFI unsupported on t400
                     withSystemd = false;
                   };
+                  # Lowered scroll speed
+                  wayland.windowManager.hyprland.input.touchpad.scroll_factor = 0.2;
                 };
             };
           }

@@ -108,6 +108,8 @@
                     ../../home/nixos.nix
                   ];
                   home.stateVersion = "23.11";
+                  # Default scroll speed
+                  wayland.windowManager.hyprland.input.touchpad.scroll_factor = 1;
                 };
             };
           }
