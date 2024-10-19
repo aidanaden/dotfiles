@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   scale,
+  terminal,
   ...
 }: let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
@@ -44,7 +45,7 @@ in {
     xwayland.enable = true;
 
     settings = {
-      "$terminal" = "kitty";
+      "$terminal" = "${terminal}";
       "$mod" = "SUPER";
 
       monitor = [
@@ -234,7 +235,8 @@ in {
         # bind apps to workspaces
         "workspace 1 silent, class:^(firefox)$"
         "workspace 2 silent, class:^(org.qbittorrent.qBittorrent)$"
-        "workspace 3 silent, class:^(kitty)$"
+        "workspace 3 silent, class:^(${terminal})$"
+        "workspace 3 silent, class:^(alacritty)$"
         "workspace 4 silent, class:^(org.telegram.desktop)$"
         "workspace 4 silent, class:^(vesktop)$"
         "workspace 5 silent, initialTitle:^Spotify.*$"
@@ -269,7 +271,7 @@ in {
 
       exec-once = [
         "firefox"
-        "kitty"
+        "$terminal"
         "vesktop"
         "spotify"
         "telegram-desktop"

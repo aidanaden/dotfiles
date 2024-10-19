@@ -47,7 +47,6 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
-    # catppuccin,
     zig,
     neovim-nightly-overlay,
     stylix,
@@ -61,8 +60,13 @@
     user = "sense";
     system = "x86_64-linux";
     hostname = "t400";
+
     # recommended to convert to 1.25 for 1440p and above
     scale = "1";
+
+    # 'alacritty' is used on t400 since kitty requires OpenGL 3.3
+    # while t400 only supports OpenGL 2.1
+    terminal = "alacritty"; # 'alacritty' or 'kitty'
   in {
     # Nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -79,6 +83,7 @@
               configurationRevision = self.rev or self.dirtyRev or null;
             };
             # Obtained from generated /etc/nixos/configuration.nix
+            # Please change accordingly
             boot.loader.grub = {
               enable = true;
               device = "/dev/sda";
@@ -98,7 +103,7 @@
               useUserPackages = true;
               # Makes all inputs available in imported files for hm
               extraSpecialArgs = {
-                inherit inputs scale stylix;
+                inherit inputs scale terminal stylix;
                 pkgs-zsh-fzf-tab =
                   import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
               };
@@ -114,7 +119,6 @@
                     legacyRenderer = true;
                     # UEFI unsupported on t400
                     withSystemd = false;
-                    mesa = nixpkgs.legacyPackages.${system}.mesa;
                   };
                 };
             };

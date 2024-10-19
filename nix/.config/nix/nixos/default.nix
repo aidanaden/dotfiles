@@ -3,6 +3,7 @@
   user,
   overlays,
   nixpkgsConfig,
+  terminal,
   self,
   ...
 }: let
@@ -20,7 +21,7 @@ in {
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
-      TERMINAL = "kitty";
+      TERMINAL = "${terminal}";
     };
 
     systemPackages = with pkgs; [

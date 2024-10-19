@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  terminal,
+  ...
+}: {
   programs.rofi = {
     enable = true;
     cycle = true;
@@ -7,7 +11,7 @@
       pkgs.rofi-calc
       pkgs.rofi-emoji
     ];
-    terminal = "kitty";
+    terminal = "${terminal}";
     # theme = ./tokyonight.rasi;
     extraConfig = {
       modi = "drun,filebrowser,run";

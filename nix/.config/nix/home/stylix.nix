@@ -16,15 +16,15 @@
         enableLeftBackColors = false;
         enableRightBackColors = false;
       };
-      rofi = {
-        enable = true;
-      };
-      hyprland = {
-        enable = true;
-      };
-      tmux = {
-        enable = true;
-      };
+      # rofi = {
+      #   enable = true;
+      # };
+      # hyprland = {
+      #   enable = true;
+      # };
+      # tmux = {
+      #   enable = true;
+      # };
       # spicetify = {
       #   enable = true;
       # };

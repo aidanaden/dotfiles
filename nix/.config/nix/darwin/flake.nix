@@ -76,6 +76,7 @@
     user = "aidan";
     system = "aarch64-darwin";
     hostname = "m1";
+    terminal = "kitty";
   in {
     # nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -84,7 +85,7 @@
     darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
       inherit system;
       # makes all inputs availble in imported files
-      specialArgs = {inherit inputs nixpkgsConfig overlays user hostname;};
+      specialArgs = {inherit inputs nixpkgsConfig overlays user hostname terminal;};
       modules = [
         inputs.nix-index-database.darwinModules.nix-index
         inputs.mac-app-util.darwinModules.default

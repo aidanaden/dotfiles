@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  terminal,
   ...
 }: let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
@@ -13,7 +14,10 @@ in {
     escapeTime = 0;
     historyLimit = 10000;
     keyMode = "vi";
-    terminal = "xterm-kitty";
+    "terminal" =
+      if terminal == "alacritty"
+      then "alacritty"
+      else "xterm-kitty";
 
     plugins = with pkgs; [
       {

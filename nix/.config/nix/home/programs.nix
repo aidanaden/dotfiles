@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  terminal,
   ...
 }: let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
@@ -87,7 +88,7 @@ in {
 
     sessionVariables = {
       EDITOR = "nvim";
-      TERMINAL = "kitty";
+      TERMINAL = "${terminal}";
     };
   };
 
