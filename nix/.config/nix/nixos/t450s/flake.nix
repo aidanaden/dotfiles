@@ -72,7 +72,7 @@
       default = nixpkgs.lib.nixosSystem {
         inherit system;
         # Makes all inputs availble in imported files
-        specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale;};
+        specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale terminal;};
         modules = [
           ({...}: {
             system = {
@@ -97,7 +97,7 @@
               useUserPackages = true;
               # Makes all inputs available in imported files for hm
               extraSpecialArgs = {
-                inherit inputs scale stylix;
+                inherit inputs scale stylix terminal;
                 pkgs-zsh-fzf-tab =
                   import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
               };
