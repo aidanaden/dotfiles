@@ -75,7 +75,7 @@
       default = nixpkgs.lib.nixosSystem {
         inherit system;
         # Makes all inputs availble in imported files
-        specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale;};
+        specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale terminal;};
         modules = [
           ({...}: {
             system = {
