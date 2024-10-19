@@ -114,7 +114,7 @@
                     legacyRenderer = true;
                     # UEFI unsupported on t400
                     withSystemd = false;
-                    mesa = pkgs.mesa;
+                    mesa = nixpkgs.legacyPackages.${system}.mesa;
                   };
                 };
             };
