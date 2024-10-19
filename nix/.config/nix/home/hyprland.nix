@@ -43,10 +43,6 @@ in {
     systemd.enable = true;
     xwayland.enable = true;
 
-    # catppuccin = {
-    #   enable = true;
-    # };
-
     settings = {
       "$terminal" = "kitty";
       "$mod" = "SUPER";

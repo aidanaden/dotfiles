@@ -112,8 +112,9 @@
                   home.stateVersion = "23.11";
                   wayland.windowManager.hyprland.package = nixpkgs.legacyPackages.${system}.hyprland.override {
                     legacyRenderer = true;
+                    # UEFI unsupported on t400
                     withSystemd = false;
-                    # mesa = pkgs.mesa;
+                    mesa = pkgs.mesa;
                   };
                 };
             };
