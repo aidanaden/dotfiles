@@ -1,5 +1,5 @@
 {
-  description = "Dell xps 13-9360 NixOS configuration";
+  description = "Lenovo thinkpad t450s NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -58,11 +58,11 @@
       allowUnsupportedSystem = false;
     };
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
-    user = "suji";
+    user = "aidan";
     system = "x86_64-linux";
-    hostname = "xps13";
+    hostname = "t450s";
     # recommended to convert to 1.25 for 1440p and above
-    scale = "1.6";
+    scale = "1";
     terminal = "kitty"; # 'alacritty' or 'kitty'
   in {
     # Nix code formatter
@@ -84,7 +84,7 @@
             boot.loader.efi.canTouchEfiVariables = true;
           })
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-          nixos-hardware.nixosModules.dell-xps-13-9360
+          nixos-hardware.nixosModules.lenovo-thinkpad-t450s
           inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix

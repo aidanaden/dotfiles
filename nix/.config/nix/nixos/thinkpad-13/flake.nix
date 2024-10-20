@@ -1,5 +1,5 @@
 {
-  description = "Lenovo thinkpad x1 gen 7 NixOS configuration";
+  description = "Lenovo thinkpad 13 gen 2 NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -47,7 +47,6 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
-    # catppuccin,
     zig,
     neovim-nightly-overlay,
     stylix,
@@ -58,11 +57,12 @@
       allowUnsupportedSystem = false;
     };
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
-    user = "aidan";
+    user = "ehre";
     system = "x86_64-linux";
-    hostname = "x1";
+    hostname = "thinkpad13";
+
     # recommended to convert to 1.25 for 1440p and above
-    scale = "1.25";
+    scale = "1";
     terminal = "kitty"; # 'alacritty' or 'kitty'
   in {
     # Nix code formatter
@@ -79,13 +79,10 @@
               stateVersion = "5";
               configurationRevision = self.rev or self.dirtyRev or null;
             };
-            # Bootloader
+            # UEFI Bootloader
             boot.loader.systemd-boot.enable = true;
             boot.loader.efi.canTouchEfiVariables = true;
           })
-          # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-          nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
-          inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix
           ../default.nix
@@ -97,7 +94,7 @@
               useUserPackages = true;
               # Makes all inputs available in imported files for hm
               extraSpecialArgs = {
-                inherit inputs scale stylix terminal;
+                inherit inputs scale terminal stylix;
                 pkgs-zsh-fzf-tab =
                   import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
               };

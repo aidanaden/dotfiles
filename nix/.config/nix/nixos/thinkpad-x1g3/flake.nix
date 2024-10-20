@@ -1,5 +1,5 @@
 {
-  description = "Lenovo thinkpad t400 NixOS configuration";
+  description = "Lenovo thinkpad x1 gen 3 NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -47,6 +47,7 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
+    # catppuccin,
     zig,
     neovim-nightly-overlay,
     stylix,
@@ -57,16 +58,12 @@
       allowUnsupportedSystem = false;
     };
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
-    user = "sense";
+    user = "euphy";
     system = "x86_64-linux";
-    hostname = "t400";
-
+    hostname = "x1";
     # recommended to convert to 1.25 for 1440p and above
     scale = "1";
-
-    # 'alacritty' is used on t400 since kitty requires OpenGL 3.3
-    # while t400 only supports OpenGL 2.1
-    terminal = "alacritty"; # 'alacritty' or 'kitty'
+    terminal = "kitty"; # 'alacritty' or 'kitty'
   in {
     # Nix code formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -82,15 +79,10 @@
               stateVersion = "5";
               configurationRevision = self.rev or self.dirtyRev or null;
             };
-            # Obtained from generated /etc/nixos/configuration.nix
-            # Please change accordingly
-            boot.loader.grub = {
-              enable = true;
-              device = "/dev/sda";
-              useOSProber = true;
-            };
+            # UEFI Bootloader
+            boot.loader.systemd-boot.enable = true;
+            boot.loader.efi.canTouchEfiVariables = true;
           })
-          # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix
@@ -103,7 +95,7 @@
               useUserPackages = true;
               # Makes all inputs available in imported files for hm
               extraSpecialArgs = {
-                inherit inputs scale terminal stylix;
+                inherit inputs scale stylix terminal;
                 pkgs-zsh-fzf-tab =
                   import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
               };
@@ -115,13 +107,8 @@
                     ../../home/nixos.nix
                   ];
                   home.stateVersion = "23.11";
-                  wayland.windowManager.hyprland.package = nixpkgs.legacyPackages.${system}.hyprland.override {
-                    legacyRenderer = true;
-                    # UEFI unsupported on t400
-                    withSystemd = false;
-                  };
-                  # Lowered scroll speed
-                  wayland.windowManager.hyprland.settings.input.touchpad.scroll_factor = 0.2;
+                  # Default scroll speed
+                  wayland.windowManager.hyprland.settings.input.touchpad.scroll_factor = 1;
                 };
             };
           }

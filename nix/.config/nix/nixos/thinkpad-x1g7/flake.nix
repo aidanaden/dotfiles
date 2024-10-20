@@ -1,5 +1,5 @@
 {
-  description = "Lenovo thinkpad x1 gen 3 NixOS configuration";
+  description = "Lenovo thinkpad x1 gen 7 NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -58,11 +58,11 @@
       allowUnsupportedSystem = false;
     };
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
-    user = "euphy";
+    user = "aidan";
     system = "x86_64-linux";
     hostname = "x1";
     # recommended to convert to 1.25 for 1440p and above
-    scale = "1";
+    scale = "1.25";
     terminal = "kitty"; # 'alacritty' or 'kitty'
   in {
     # Nix code formatter
@@ -79,11 +79,12 @@
               stateVersion = "5";
               configurationRevision = self.rev or self.dirtyRev or null;
             };
-            # Bootloader
+            # UEFI Bootloader
             boot.loader.systemd-boot.enable = true;
             boot.loader.efi.canTouchEfiVariables = true;
           })
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
+          nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
           inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix
