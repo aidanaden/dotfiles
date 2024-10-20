@@ -90,6 +90,8 @@
               useOSProber = true;
             };
           })
+          # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
+          nixos-hardware.nixosModules.lenovo-thinkpad
           inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix

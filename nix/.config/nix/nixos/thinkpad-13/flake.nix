@@ -83,6 +83,8 @@
             boot.loader.systemd-boot.enable = true;
             boot.loader.efi.canTouchEfiVariables = true;
           })
+          # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
+          nixos-hardware.nixosModules.lenovo-thinkpad
           # Include results of the hardware scan
           ./hardware-configuration.nix
           ../default.nix
