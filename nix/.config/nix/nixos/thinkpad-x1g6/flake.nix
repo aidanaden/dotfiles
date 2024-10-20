@@ -1,5 +1,5 @@
 {
-  description = "Lenovo thinkpad x1 gen 3 NixOS configuration";
+  description = "Lenovo thinkpad x1 gen 6 NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -58,7 +58,7 @@
       allowUnsupportedSystem = false;
     };
     overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
-    user = "euphy";
+    user = "ubel";
     system = "x86_64-linux";
     hostname = "x1";
     # recommended to convert to 1.25 for 1440p and above
@@ -84,7 +84,7 @@
             boot.loader.efi.canTouchEfiVariables = true;
           })
           # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-          nixos-hardware.nixosModules.lenovo-thinkpad-x1
+          nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
           inputs.nix-index-database.nixosModules.nix-index
           # Include results of the hardware scan
           ./hardware-configuration.nix
