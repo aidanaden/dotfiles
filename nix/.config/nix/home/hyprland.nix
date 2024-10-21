@@ -233,6 +233,7 @@ in {
 
         # bind apps to workspaces
         "workspace 1 silent, class:^(firefox)$"
+        "workspace 1 silent, class:^(brave-browser)$"
         "workspace 2 silent, class:^(org.qbittorrent.qBittorrent)$"
         "workspace 3 silent, class:^(kitty)$"
         "workspace 3 silent, class:^(Alacritty)$"
@@ -249,6 +250,7 @@ in {
       windowrule = [
         # window rules to prevent screen from turning off
         "idleinhibit fullscreen,firefox"
+        "idleinhibit fullscreen,brave"
         "idleinhibit fullscreen,mpv"
         "noborder,^(rofi)$"
       ];
@@ -269,7 +271,7 @@ in {
       ];
 
       exec-once = [
-        "firefox"
+        "brave"
         "$terminal"
         "vesktop"
         "spotify"
