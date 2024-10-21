@@ -18,9 +18,9 @@ in {
       # node
       fnm
       bun
-      nodePackages.pnpm
-      nodePackages.typescript
-      nodePackages.typescript-language-server
+      unstable.nodePackages.pnpm
+      unstable.nodePackages.typescript
+      unstable.nodePackages.typescript-language-server
 
       # rust
       rustup
