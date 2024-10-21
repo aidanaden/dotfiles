@@ -34,6 +34,9 @@ in {
       # make
       gnumake
 
+      # libusb
+      libusb1
+
       # python
       unstable.python3
       pyenv
