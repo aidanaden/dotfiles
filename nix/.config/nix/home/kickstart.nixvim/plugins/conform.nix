@@ -6,6 +6,7 @@
     extraPackages = with pkgs; [
       # Used to format Lua code
       stylua
+      alejandra
     ];
 
     # Autoformat
@@ -34,6 +35,15 @@
           # You can use a sublist to tell conform to run *until* a formatter
           # is found
           # javascript = [ [ "prettierd" "prettier" ] ];
+          markdown = ["prettierd"];
+          mdx = ["prettierd"];
+          typescript = [["eslint" "prettierd"]];
+          typescriptreact = [["eslint" "prettierd"]];
+          javascript = [["eslint" "prettierd"]];
+          javascriptreact = [["eslint" "prettierd"]];
+          astro = [["eslint" "prettierd"]];
+          yaml = ["yamlfmt"];
+          nix = ["alejandra"];
         };
       };
     };

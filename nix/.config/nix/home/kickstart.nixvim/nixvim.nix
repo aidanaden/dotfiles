@@ -1,4 +1,8 @@
-{ pkgs, inputs, ... }: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in {
   imports = [
@@ -358,10 +362,24 @@ in {
 
       ts-autotag = {
         enable = true;
+        settings = {
+          opts = {
+            enable_close = true;
+            enable_close_on_slash = false;
+            enable_rename = true;
+          };
+        };
       };
 
       oil = {
         enable = true;
+        settings = {
+          view_options = {
+            show_hidden = true;
+          };
+          use_default_keymaps = true;
+          skip_confirm_for_simple_edits = true;
+        };
       };
     };
 

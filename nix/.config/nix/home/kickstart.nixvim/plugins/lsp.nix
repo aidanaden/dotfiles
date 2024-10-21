@@ -59,6 +59,9 @@
     plugins.lsp = {
       enable = true;
 
+      # Whether to enable LSP inlay-hints. Only affects language servers with inlay-hints support.
+      inlayHints = true;
+
       # Enable the following language servers
       #  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       #
@@ -72,13 +75,58 @@
         # clangd = {
         #  enable = true;
         #}
-        # gopls = {
-        #  enable = true;
-        #}
+        ts_ls = {
+          enable = true;
+          settings = {
+            javascript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true;
+                includeInlayFunctionLikeReturnTypeHints = true;
+                includeInlayFunctionParameterTypeHints = true;
+                includeInlayParameterNameHints = "all";
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                includeInlayPropertyDeclarationTypeHints = true;
+                includeInlayVariableTypeHints = true;
+              };
+            };
+            typescript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true;
+                includeInlayFunctionLikeReturnTypeHints = true;
+                includeInlayFunctionParameterTypeHints = true;
+                includeInlayParameterNameHints = "all";
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                includeInlayPropertyDeclarationTypeHints = true;
+                includeInlayVariableTypeHints = true;
+              };
+            };
+          };
+        };
+        gopls = {
+          enable = true;
+        };
+        rust_analyzer = {
+          enable = true;
+          installRustc = false;
+          installCargo = false;
+        };
+        zls = {
+          enable = true;
+        };
+        tailwindcss = {
+          enable = true;
+        };
+        svelte = {
+          enable = true;
+        };
+        jsonls = {
+          enable = true;
+        };
+        yamlls = {
+          enable = true;
+        };
+
         # pyright = {
-        #  enable = true;
-        #}
-        # rust_analyzer = {
         #  enable = true;
         #}
         # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
@@ -87,9 +135,6 @@
         #    `https://nix-community.github.io/nixvim/plugins/typescript-tools/index.html?highlight=typescript-tools#pluginstypescript-toolspackage`
         #
         # But for many setups the LSP (`tsserver`) will work just fine
-        # tsserver = {
-        #  enable = true;
-        #}
 
         lua_ls = {
           enable = true;
