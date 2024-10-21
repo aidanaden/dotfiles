@@ -17,7 +17,7 @@ in {
 
       # node
       bun
-      nodejs_20
+      unstable.nodejs_20
       unstable.nodePackages.pnpm
       unstable.nodePackages.typescript
       unstable.nodePackages.typescript-language-server
@@ -32,6 +32,7 @@ in {
       goreleaser
 
       # python
+      unstable.python3
       pyenv
       uv
       ruff
