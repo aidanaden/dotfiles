@@ -1,4 +1,6 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }: let
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+in {
   imports = [
     # NOTE: The first thing you will want to do is uncommented on of the three imports below
     # depending on which module you chose to use to install Nixvim.
@@ -116,6 +118,8 @@
     enable = true;
     defaultEditor = true;
 
+    nixpkgs.pkgs = unstable.pkgs;
+
     # You can easily change to a different colorscheme.
     # Add your colorscheme here and enable it.
     # Don't forget to disable the colorschemes you arent using
@@ -154,7 +158,7 @@
       number = true;
       # You can also add relative line numbers, to help with jumping.
       #  Experiment for yourself to see if you like it!
-      #relativenumber = true
+      relativenumber = true;
 
       # Enable mouse mode, can be useful for resizing splits for example!
       mouse = "a";
@@ -166,7 +170,7 @@
       clipboard = {
         providers = {
           wl-copy.enable = true; # For Wayland
-          xsel.enable = true; # For X11
+          xsel.enable = false; # For X11
         };
 
         # Sync clipboard between OS and Neovim
@@ -346,6 +350,18 @@
           enable = true;
           signs = true;
         };
+      };
+
+      ts-comments = {
+        enable = true;
+      };
+
+      ts-autotag = {
+        enable = true;
+      };
+
+      oil = {
+        enable = true;
       };
     };
 
