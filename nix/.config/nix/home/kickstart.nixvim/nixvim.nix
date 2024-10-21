@@ -25,6 +25,8 @@ in {
     ./plugins/nvim-cmp.nix
     ./plugins/mini.nix
     ./plugins/treesitter.nix
+    ./plugins/oil.nix
+    ./plugins/ts-autotag.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
@@ -360,26 +362,8 @@ in {
         enable = true;
       };
 
-      ts-autotag = {
+      auto-session = {
         enable = true;
-        settings = {
-          opts = {
-            enable_close = true;
-            enable_close_on_slash = false;
-            enable_rename = true;
-          };
-        };
-      };
-
-      oil = {
-        enable = true;
-        settings = {
-          view_options = {
-            show_hidden = true;
-          };
-          use_default_keymaps = true;
-          skip_confirm_for_simple_edits = true;
-        };
       };
     };
 
