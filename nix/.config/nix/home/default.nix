@@ -10,7 +10,6 @@
       ./spotify.nix
       ./programs.nix
       ./stylix.nix
-      ./brave.nix
     ]
     ++ (
       if terminal == "alacritty"

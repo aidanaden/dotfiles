@@ -8,5 +8,6 @@
     ./trayscale.nix
     ./bitwarden-desktop.nix
     ./rofi
+    ./brave.nix
   ];
 }
