@@ -78,7 +78,7 @@
 
       alias tmux=_tmux
 
-      eval "$(fnm env)"
+      # eval "$(fnm env)"
 
       export VI_MODE_SET_CURSOR=true
     '';

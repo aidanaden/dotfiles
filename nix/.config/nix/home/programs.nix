@@ -16,8 +16,8 @@ in {
       act # github action runner
 
       # node
-      fnm
       bun
+      nodejs_20
       unstable.nodePackages.pnpm
       unstable.nodePackages.typescript
       unstable.nodePackages.typescript-language-server
