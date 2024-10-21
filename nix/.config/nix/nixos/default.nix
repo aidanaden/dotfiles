@@ -134,6 +134,7 @@ in {
       enable = true;
       # Client of exit node
       useRoutingFeatures = "client";
+      openFirewall = true;
     };
 
     gvfs = {
