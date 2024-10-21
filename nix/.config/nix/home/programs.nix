@@ -31,6 +31,9 @@ in {
       # go
       goreleaser
 
+      # make
+      gnumake
+
       # python
       unstable.python3
       pyenv
