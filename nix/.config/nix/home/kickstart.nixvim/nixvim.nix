@@ -154,6 +154,15 @@ in {
       have_nerd_font = false;
     };
 
+    performance = {
+      byteCompileLua = {
+        enable = true;
+        nvimRuntime = true;
+        configs = true;
+        plugins = true;
+      };
+    };
+
     # [[ Setting options ]]
     # See `:help vim.opt`
     # NOTE: You can change these options as you wish!
@@ -166,11 +175,20 @@ in {
       #  Experiment for yourself to see if you like it!
       relativenumber = true;
 
+      # Set tabs to 2 spaces
+      tabstop = 2;
+      softtabstop = 2;
+      showtabline = 0;
+      expandtab = true;
+
       # Enable mouse mode, can be useful for resizing splits for example!
       mouse = "a";
 
       # Don't show the mode, since it's already in the statusline
       showmode = false;
+
+      # Enable text wrap
+      wrap = true;
 
       #  See `:help 'clipboard'`
       clipboard = {
@@ -198,7 +216,14 @@ in {
       signcolumn = "yes";
 
       # Decrease update time
-      updatetime = 250;
+      updatetime = 50;
+
+      # Set completeopt to have a better completion experience
+      completeopt = [
+        "menuone"
+        "noselect"
+        "noinsert"
+      ]; # mostly just for cmp
 
       # Decrease mapped sequence wait time
       # Displays which-key popup sooner

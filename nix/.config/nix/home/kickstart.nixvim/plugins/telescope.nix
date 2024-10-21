@@ -26,6 +26,21 @@
       # See `:help telescope` and `:help telescope.setup()`
       enable = true;
 
+      defaults = {
+        file_ignore_patterns = [
+          "^.git/"
+          "^.mypy_cache/"
+          "^__pycache__/"
+          "^output/"
+          "^data/"
+          "%.ipynb"
+          "^node_modules/"
+          "^dist/"
+          "yarn.lock"
+          "pnpm%-lock.yaml"
+        ];
+      };
+
       # Enable Telescope extensions
       extensions = {
         fzf-native.enable = true;
