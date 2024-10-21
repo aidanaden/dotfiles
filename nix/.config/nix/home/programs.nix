@@ -36,6 +36,7 @@ in {
 
       # libusb
       libusb1
+      pkg-config
 
       # python
       unstable.python3
