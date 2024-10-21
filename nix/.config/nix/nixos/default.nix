@@ -11,6 +11,8 @@
 in {
   # Networking
   networking.networkmanager.enable = true;
+  # Tailscale related
+  networking.firewall.checkReversePath = "loose";
 
   # Time
   time = {
@@ -125,6 +127,13 @@ in {
       # jack = {
       #   enable = true;
       # };
+    };
+
+    # Tailscale
+    tailscale = {
+      enable = true;
+      # Client of exit node
+      useRoutingFeatures = "client";
     };
 
     gvfs = {

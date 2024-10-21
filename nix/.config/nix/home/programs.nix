@@ -65,9 +65,6 @@ in {
       # telegram
       telegram-desktop
 
-      # tailscale
-      tailscale
-
       # wireguard ui
       unstable.wireguard-ui
 
