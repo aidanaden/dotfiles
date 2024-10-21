@@ -10,6 +10,7 @@
       ./spotify.nix
       ./programs.nix
       ./stylix.nix
+      ./kickstart.nixvim/nixvim.nix
     ]
     ++ (
       if terminal == "alacritty"
