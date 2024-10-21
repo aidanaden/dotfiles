@@ -26,21 +26,6 @@
       # See `:help telescope` and `:help telescope.setup()`
       enable = true;
 
-      defaults = {
-        file_ignore_patterns = [
-          "^.git/"
-          "^.mypy_cache/"
-          "^__pycache__/"
-          "^output/"
-          "^data/"
-          "%.ipynb"
-          "node_modules"
-          "dist"
-          "yarn.lock"
-          "pnpm%-lock.yaml"
-        ];
-      };
-
       # Enable Telescope extensions
       extensions = {
         fzf-native.enable = true;
@@ -121,8 +106,23 @@
           };
         };
       };
+
       settings = {
         extensions.__raw = "{ ['ui-select'] = { require('telescope.themes').get_dropdown() } }";
+        defaults = {
+          file_ignore_patterns = [
+            "^.git/"
+            "^.mypy_cache/"
+            "^__pycache__/"
+            "^output/"
+            "^data/"
+            "%.ipynb"
+            "node_modules"
+            "dist"
+            "yarn.lock"
+            "pnpm%-lock.yaml"
+          ];
+        };
       };
     };
 
