@@ -26,6 +26,7 @@ in
     ./plugins/oil.nix
     ./plugins/ts-autotag.nix
     ./plugins/indent-blankline.nix
+    ./plugins/tailwind-tools.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #

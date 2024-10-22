@@ -4,9 +4,9 @@
     #    See the README about individual language/framework/plugin snippets:
     #    https://github.com/rafamadriz/friendly-snippets
     # https://nix-community.github.io/nixvim/plugins/friendly-snippets.html
-    plugins.friendly-snippets = {
-      enable = true;
-    };
+    # plugins.friendly-snippets = {
+    #   enable = true;
+    # };
 
     plugins.luasnip = {
       enable = true;
@@ -31,6 +31,14 @@
 
         completion = {
           completeopt = "menu,menuone,noinsert";
+        };
+
+        formatting = {
+          format = ''
+            require("lspkind").cmp_format({
+              before = require("tailwind-tools.cmp").lspkind_format
+            })          
+          '';
         };
 
         # For an understanding of why these mappings were
@@ -104,6 +112,7 @@
           { name = "nvim_lsp"; }
           # https://nix-community.github.io/nixvim/plugins/cmp-path.html
           { name = "path"; }
+          { name = "tailwindcss"; }
         ];
       };
     };
