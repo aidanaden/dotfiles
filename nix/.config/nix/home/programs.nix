@@ -10,8 +10,6 @@ in {
     packages = with pkgs; [
       inputs.neovim-nightly-overlay.packages.${system}.default # text editor
 
-      alejandra # nix formatter
-
       git
       act # github action runner
 

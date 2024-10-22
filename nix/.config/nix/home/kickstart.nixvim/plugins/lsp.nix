@@ -10,6 +10,18 @@
       enable = true;
     };
 
+    plugins.cmp-buffer = {
+      enable = true;
+    };
+
+    plugins.cmp-nvim-lua = {
+      enable = true;
+    };
+
+    plugins.cmp-path = {
+      enable = true;
+    };
+
     # Useful status updates for LSP.
     # https://nix-community.github.io/nixvim/plugins/fidget/index.html
     plugins.fidget = {
@@ -101,6 +113,12 @@
               };
             };
           };
+          filetypes = [
+            "javascript"
+            "javascriptreact"
+            "typescript"
+            "typescriptreact"
+          ];
         };
         gopls = {
           enable = true;
@@ -115,6 +133,15 @@
         };
         tailwindcss = {
           enable = true;
+          autostart = true;
+          filetypes = [
+            "css"
+            "scss"
+            "javascript"
+            "javascriptreact"
+            "typescript"
+            "typescriptreact"
+          ];
         };
         svelte = {
           enable = true;

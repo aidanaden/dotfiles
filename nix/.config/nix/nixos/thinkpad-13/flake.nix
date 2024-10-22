@@ -72,7 +72,7 @@
     terminal = "kitty"; # 'alacritty' or 'kitty'
   in {
     # Nix code formatter
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
 
     nixosConfigurations = {
       default = nixpkgs.lib.nixosSystem {

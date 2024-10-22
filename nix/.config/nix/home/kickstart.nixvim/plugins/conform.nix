@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.nixvim = {
     # Dependencies
     #
@@ -6,7 +10,7 @@
     extraPackages = with pkgs; [
       # Used to format Lua code
       stylua
-      alejandra
+      nixfmt
     ];
 
     # Autoformat
@@ -37,13 +41,72 @@
           # javascript = [ [ "prettierd" "prettier" ] ];
           markdown = ["prettierd"];
           mdx = ["prettierd"];
-          typescript = [["eslint" "prettierd"]];
-          typescriptreact = [["eslint" "prettierd"]];
-          javascript = [["eslint" "prettierd"]];
-          javascriptreact = [["eslint" "prettierd"]];
-          astro = [["eslint" "prettierd"]];
+          rust = ["rustfmt"];
+          typescript = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          typescriptreact = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          javascript = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          javascriptreact = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
+          astro = {
+            __unkeyed-1 = "prettierd";
+            __unkeyed-2 = "prettier";
+            stop_after_first = true;
+          };
           yaml = ["yamlfmt"];
-          nix = ["alejandra"];
+          toml = ["taplo"];
+          sql = ["sqlfluff"];
+          nix = ["nixfmt"];
+          zig = ["zigfmt"];
+          "_" = [
+            "squeeze_blanks"
+            "trim_whitespace"
+            "trim_newlines"
+          ];
+        };
+
+        formatters = {
+          nixfmt = {
+            command = lib.getExe pkgs.nixfmt-rfc-style;
+          };
+          prettierd = {
+            command = lib.getExe pkgs.prettierd;
+          };
+          rustfmt = {
+            command = lib.getExe pkgs.rustfmt;
+          };
+          sqlfluff = {
+            command = lib.getExe pkgs.sqlfluff;
+          };
+          squeeze_blanks = {
+            command = lib.getExe' pkgs.coreutils "cat";
+          };
+          stylua = {
+            command = lib.getExe pkgs.stylua;
+          };
+          taplo = {
+            command = lib.getExe pkgs.taplo;
+          };
+          yamlfmt = {
+            command = lib.getExe pkgs.yamlfmt;
+          };
+          zigfmt = {
+            command = lib.getExe pkgs.zig;
+          };
         };
       };
     };

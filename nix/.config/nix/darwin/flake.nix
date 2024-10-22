@@ -85,7 +85,7 @@
     terminal = "kitty";
   in {
     # nix code formatter
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
 
     # nix-darwin with home-manager for macOS
     darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
@@ -120,7 +120,7 @@
             users.${user} = {...}:
               with inputs; {
                 imports = [
-		  inputs.nixvim.homeManagerModules.nixvim
+                  inputs.nixvim.homeManagerModules.nixvim
                   inputs.spicetify-nix.homeManagerModules.default
                   stylix.homeManagerModules.stylix
                   mac-app-util.homeManagerModules.default
