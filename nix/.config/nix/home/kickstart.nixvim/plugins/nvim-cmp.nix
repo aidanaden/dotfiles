@@ -4,15 +4,21 @@
     #    See the README about individual language/framework/plugin snippets:
     #    https://github.com/rafamadriz/friendly-snippets
     # https://nix-community.github.io/nixvim/plugins/friendly-snippets.html
-    # plugins.friendly-snippets = {
-    #   enable = true;
-    # };
+    plugins.friendly-snippets = {
+      enable = true;
+    };
+
+    plugins.luasnip = {
+      enable = true;
+    };
 
     # Autocompletion
     # See `:help cmp`
     # https://nix-community.github.io/nixvim/plugins/cmp/index.html
     plugins.cmp = {
       enable = true;
+
+      autoEnableSources = true;
 
       settings = {
         snippet = {
@@ -90,20 +96,14 @@
         sources = [
           # Snippet Engine & its associated nvim-cmp source
           # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
-          {
-            name = "luasnip";
-          }
+          { name = "luasnip"; }
           # Adds other completion capabilites.
           #  nvim-cmp does not ship with all sources by default. They are split
           #  into multiple repos for maintenance purposes.
           # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
-          {
-            name = "nvim_lsp";
-          }
+          { name = "nvim_lsp"; }
           # https://nix-community.github.io/nixvim/plugins/cmp-path.html
-          {
-            name = "path";
-          }
+          { name = "path"; }
         ];
       };
     };

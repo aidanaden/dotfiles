@@ -4,15 +4,6 @@
   ...
 }: {
   programs.nixvim = {
-    # Dependencies
-    #
-    # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extrapackages
-    extraPackages = with pkgs; [
-      # Used to format Lua code
-      stylua
-      nixfmt
-    ];
-
     # Autoformat
     # https://nix-community.github.io/nixvim/plugins/conform-nvim.html
     plugins.conform-nvim = {
@@ -70,7 +61,7 @@
           yaml = ["yamlfmt"];
           toml = ["taplo"];
           sql = ["sqlfluff"];
-          nix = ["nixfmt"];
+          nix = ["nixfmt-rfc-style"];
           zig = ["zigfmt"];
           "_" = [
             "squeeze_blanks"
@@ -80,7 +71,7 @@
         };
 
         formatters = {
-          nixfmt = {
+          nixfmt-rfc-style = {
             command = lib.getExe pkgs.nixfmt-rfc-style;
           };
           prettierd = {
