@@ -1,6 +1,8 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./default.nix
+    ./fhs-compat.nix
     ./hyprland.nix
     ./waybar.nix
     ./dunst.nix
