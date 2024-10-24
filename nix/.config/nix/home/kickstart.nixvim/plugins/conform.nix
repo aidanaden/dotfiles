@@ -1,8 +1,5 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {
   programs.nixvim = {
     # Autoformat
     # https://nix-community.github.io/nixvim/plugins/conform-nvim.html
@@ -23,46 +20,56 @@
           end
         '';
         formatters_by_ft = {
-          lua = ["stylua"];
+          lua = [ "stylua" ];
           # Conform can also run multiple formatters sequentially
           # python = [ "isort "black" ];
           #
           # You can use a sublist to tell conform to run *until* a formatter
           # is found
           # javascript = [ [ "prettierd" "prettier" ] ];
-          markdown = ["prettierd"];
-          mdx = ["prettierd"];
-          rust = ["rustfmt"];
+          markdown = [ "prettierd" ];
+          mdx = [ "prettierd" ];
+          rust = [ "rustfmt" ];
           typescript = {
             __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
+            __unkeyed-2 = "eslint_d";
+            __unkeyed-3 = "eslint";
+            __unkeyed-4 = "prettier";
             stop_after_first = true;
           };
           typescriptreact = {
             __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
+            __unkeyed-2 = "eslint_d";
+            __unkeyed-3 = "eslint";
+            __unkeyed-4 = "prettier";
             stop_after_first = true;
           };
           javascript = {
             __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
+            __unkeyed-2 = "eslint_d";
+            __unkeyed-3 = "eslint";
+            __unkeyed-4 = "prettier";
             stop_after_first = true;
           };
           javascriptreact = {
             __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
+            __unkeyed-2 = "eslint_d";
+            __unkeyed-3 = "eslint";
+            __unkeyed-4 = "prettier";
             stop_after_first = true;
           };
           astro = {
             __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
+            __unkeyed-2 = "eslint_d";
+            __unkeyed-3 = "eslint";
+            __unkeyed-4 = "prettier";
             stop_after_first = true;
           };
-          yaml = ["yamlfmt"];
-          toml = ["taplo"];
-          sql = ["sqlfluff"];
-          nix = ["nixfmt-rfc-style"];
-          zig = ["zigfmt"];
+          yaml = [ "yamlfmt" ];
+          toml = [ "taplo" ];
+          sql = [ "sqlfluff" ];
+          nix = [ "nixfmt-rfc-style" ];
+          zig = [ "zigfmt" ];
           "_" = [
             "squeeze_blanks"
             "trim_whitespace"
@@ -76,6 +83,9 @@
           };
           prettierd = {
             command = lib.getExe pkgs.prettierd;
+          };
+          eslint_d = {
+            command = lib.getExe pkgs.eslint_d;
           };
           rustfmt = {
             command = lib.getExe pkgs.rustfmt;

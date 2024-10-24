@@ -1,18 +1,3 @@
-let
-  get_bufnrs.__raw = ''
-    function()
-      local buf_size_limit = 1024 * 1024 -- 1MB size limit
-      local bufs = vim.api.nvim_list_bufs()
-      local valid_bufs = {}
-      for _, buf in ipairs(bufs) do
-        if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf)) < buf_size_limit then
-          table.insert(valid_bufs, buf)
-        end
-      end
-      return valid_bufs
-    end
-  '';
-in
 {
   programs.nixvim = {
     # `friendly-snippets` contains a variety of premade snippets
@@ -117,93 +102,19 @@ in
         # If you use a raw lua string, you will need to explicitly enable the relevant source
         # plugins in your nixvim configuration.
         sources = [
-          # Adds other completion capabilites.
-          #  nvim-cmp does not ship with all sources by default. They are split
-          #  into multiple repos for maintenance purposes.
-          # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
-          {
-            name = "nvim_lsp";
-            priority = 1000;
-            option = {
-              inherit get_bufnrs;
-            };
-          }
-          {
-            name = "nvim_lsp_signature_help";
-            priority = 1000;
-            option = {
-              inherit get_bufnrs;
-            };
-          }
-          {
-            name = "nvim_lsp_document_symbol";
-            priority = 1000;
-            option = {
-              inherit get_bufnrs;
-            };
-          }
-          {
-            name = "treesitter";
-            priority = 850;
-            option = {
-              inherit get_bufnrs;
-            };
-          }
-          # Snippet Engine & its associated nvim-cmp source
-          # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
-          {
-            name = "luasnip";
-            priority = 750;
-          }
-          {
-            name = "tailwindcss";
-            priority = 600;
-          }
-          {
-            name = "buffer";
-            priority = 500;
-            option = {
-              inherit get_bufnrs;
-            };
-          }
-          # https://nix-community.github.io/nixvim/plugins/cmp-path.html
-          {
-            name = "path";
-            priority = 300;
-          }
-          {
-            name = "cmdline";
-            priority = 300;
-          }
-          {
-            name = "git";
-            priority = 250;
-          }
-          {
-            name = "neorg";
-            priority = 250;
-          }
-          {
-            name = "npm";
-            priority = 250;
-          }
-          {
-            name = "tmux";
-            priority = 250;
-          }
-          {
-            name = "zsh";
-            priority = 250;
-          }
-          {
-            name = "calc";
-            priority = 150;
-          }
-          {
-            name = "emoji";
-            priority = 100;
-          }
-
+          # # Snippet Engine & its associated nvim-cmp source
+          # # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
+          { name = "luasnip"; }
+          # # Adds other completion capabilites.
+          # #  nvim-cmp does not ship with all sources by default. They are split
+          # #  into multiple repos for maintenance purposes.
+          # # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
+          { name = "nvim_lsp"; }
+          # # https://nix-community.github.io/nixvim/plugins/cmp-path.html
+          # { name = "path"; }
+          { name = "tailwindcss"; }
+          # { name = "buffer"; }
+          { name = "npm"; }
         ];
       };
     };

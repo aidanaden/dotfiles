@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     # Dependencies
     # { 'Bilal2453/luvit-meta', lazy = true },
@@ -187,9 +188,12 @@
         # Diagnostic keymaps
         diagnostic = {
           "<leader>q" = {
-            #mode = "n";
             action = "setloclist";
             desc = "Open diagnostic [Q]uickfix list";
+          };
+          "<leader>e" = {
+            action = "open_float";
+            desc = "Show diagnostic [E]rror messages";
           };
         };
 
