@@ -6,9 +6,11 @@
   terminal,
   self,
   ...
-}: let
+}:
+let
   locale = "en_SG.UTF-8";
-in {
+in
+{
   # Networking
   networking.networkmanager.enable = true;
   # Tailscale related
@@ -159,7 +161,10 @@ in {
     };
 
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
 
       # Produces linking issues when updating on macOS
@@ -167,12 +172,8 @@ in {
       auto-optimise-store = true;
 
       # Substituers that will be considered before the official ones(https://cache.nixos.org)
-      substituters = [
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
+      substituters = [ "https://nix-community.cachix.org" ];
+      trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
       builders-use-substitutes = true;
     };
   };

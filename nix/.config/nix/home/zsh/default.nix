@@ -1,8 +1,5 @@
+{ pkgs, pkgs-zsh-fzf-tab, ... }:
 {
-  pkgs,
-  pkgs-zsh-fzf-tab,
-  ...
-}: {
   programs.zsh = {
     enable = true;
     enableCompletion = false;
@@ -128,7 +125,13 @@
       prompt = {
         theme = "off";
       };
-      pmodules = ["autosuggestions" "directory" "editor" "git" "terminal"];
+      pmodules = [
+        "autosuggestions"
+        "directory"
+        "editor"
+        "git"
+        "terminal"
+      ];
     };
   };
 }

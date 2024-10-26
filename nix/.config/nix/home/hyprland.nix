@@ -4,9 +4,11 @@
   scale,
   terminal,
   ...
-}: let
+}:
+let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
-in {
+in
+{
   home.packages = with pkgs; [
     brightnessctl # Screen brightness daemon
     swww # Wallpaper daemon
@@ -48,9 +50,7 @@ in {
       "$terminal" = "${terminal}";
       "$mod" = "SUPER";
 
-      monitor = [
-        ",prefered,auto,${scale}"
-      ];
+      monitor = [ ",prefered,auto,${scale}" ];
 
       xwayland = {
         force_zero_scaling = true;

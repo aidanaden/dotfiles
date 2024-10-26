@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   services.dunst = {
     enable = true;
     # iconTheme = {
@@ -39,7 +40,7 @@
         corner_radius = 10;
         follow = "mouse";
         font = "MesloLGS Nerd Font Mono 11";
-        format = "<b>%s</b>\\n%b"; #format = "<span foreground='#f3f4f5'><b>%s %p</b></span>\n%b"
+        format = "<b>%s</b>\\n%b"; # format = "<span foreground='#f3f4f5'><b>%s %p</b></span>\n%b"
         # frame_color = "#89b4fa";
         frame_width = 1;
         offset = "15x15";
@@ -60,7 +61,9 @@
         browser = "/usr/bin/env firefox -new-tab";
       };
 
-      fullscreen_delay_everything = {fullscreen = "delay";};
+      fullscreen_delay_everything = {
+        fullscreen = "delay";
+      };
 
       # urgency_critical = {
       #   background = "#1e1e2e";

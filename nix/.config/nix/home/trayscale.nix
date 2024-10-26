@@ -1,5 +1,4 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    trayscale
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ trayscale ];
 }

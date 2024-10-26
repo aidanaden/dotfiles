@@ -1,5 +1,5 @@
 {
-  description = "Lenovo thinkpad x1 gen 7 NixOS configuration";
+  description = "Dell xps 13-9360 NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -14,18 +14,6 @@
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-ld = {
-      url = "github:Mic92/nix-ld";
-      # this line assume that you also have nixpkgs as an input
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixpkgs-zsh-fzf-tab.url = "github:nixos/nixpkgs/8193e46376fdc6a13e8075ad263b4b5ca2592c03";
@@ -75,11 +63,11 @@
         zig.overlays.default
         neovim-nightly-overlay.overlays.default
       ];
-      user = "aidan";
+      user = "suji";
       system = "x86_64-linux";
-      hostname = "x1";
+      hostname = "xps13";
       # recommended to convert to 1.25 for 1440p and above
-      scale = "1.25";
+      scale = "1.6";
       terminal = "kitty"; # 'alacritty' or 'kitty'
     in
     {
@@ -115,13 +103,12 @@
               }
             )
             # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-            nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
+            nixos-hardware.nixosModules.dell-xps-13-9360
             inputs.nix-index-database.nixosModules.nix-index
             # Include results of the hardware scan
             ./hardware-configuration.nix
             ../default.nix
             ../user.nix
-            ../fhs-compat.nix
             home-manager.nixosModule
             {
               home-manager = {
@@ -142,7 +129,6 @@
                   with inputs;
                   {
                     imports = [
-                      inputs.nixvim.homeManagerModules.nixvim
                       inputs.spicetify-nix.homeManagerModules.default
                       stylix.homeManagerModules.stylix
                       ../../home/nixos.nix

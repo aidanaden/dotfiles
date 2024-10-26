@@ -3,18 +3,22 @@
   hostname,
   pkgs,
   ...
-}: {
+}:
+{
   users.users.${user} = {
     home = "/home/${user}";
     shell = pkgs.zsh;
     isNormalUser = true;
     description = user;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   networking = {
     hostName = hostname;
   };
 
-  nix.settings.allowed-users = [user];
+  nix.settings.allowed-users = [ user ];
 }

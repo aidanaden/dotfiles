@@ -200,7 +200,7 @@ in
 
         # Sync clipboard between OS and Neovim
         #  Remove this option if you want your OS clipboard to remain independent.
-        register = "unnamedplus";
+        # register = "unnamedplus";
       };
 
       # Enable break indent

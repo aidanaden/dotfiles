@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.git = {
     enable = true;
     delta.enable = true;
@@ -72,9 +73,13 @@
         commit = false;
         rebase = false;
       };
-      fetch = {prune = true;};
+      fetch = {
+        prune = true;
+      };
       push.autoSetupRemote = true;
-      delta = {line-numbers = true;};
+      delta = {
+        line-numbers = true;
+      };
     };
   };
 }

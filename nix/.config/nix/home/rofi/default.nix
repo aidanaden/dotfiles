@@ -1,8 +1,5 @@
+{ pkgs, terminal, ... }:
 {
-  pkgs,
-  terminal,
-  ...
-}: {
   programs.rofi = {
     enable = true;
     cycle = true;

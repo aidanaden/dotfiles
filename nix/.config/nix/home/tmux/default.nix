@@ -4,9 +4,11 @@
   inputs,
   terminal,
   ...
-}: let
+}:
+let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
-in {
+in
+{
   programs.tmux = {
     enable = true;
     shortcut = "b";
@@ -14,10 +16,7 @@ in {
     escapeTime = 0;
     historyLimit = 10000;
     keyMode = "vi";
-    "terminal" =
-      if terminal == "alacritty"
-      then "alacritty"
-      else "xterm-kitty";
+    "terminal" = if terminal == "alacritty" then "alacritty" else "xterm-kitty";
 
     plugins = with pkgs; [
       {
