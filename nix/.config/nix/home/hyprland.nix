@@ -67,7 +67,6 @@ in
       };
 
       input = {
-        kb_layout = "us";
         # Remap caps to ctrl
         kb_options = "ctrl:nocaps";
         follow_mouse = true;

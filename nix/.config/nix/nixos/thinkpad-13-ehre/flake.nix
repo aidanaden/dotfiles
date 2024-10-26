@@ -48,80 +48,107 @@
   # parameters in `outputs` are defined in `inputs` and can be referenced by their names.
   # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
-  outputs = {
-    self,
-    nixpkgs,
-    nixos-hardware,
-    home-manager,
-    zig,
-    neovim-nightly-overlay,
-    stylix,
-    ...
-  } @ inputs: let
-    nixpkgsConfig = {
-      allowUnfree = true;
-      allowUnsupportedSystem = false;
-    };
-    overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
-    user = "ehre";
-    system = "x86_64-linux";
-    hostname = "thinkpad13";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-hardware,
+      home-manager,
+      zig,
+      neovim-nightly-overlay,
+      stylix,
+      ...
+    }@inputs:
+    let
+      nixpkgsConfig = {
+        allowUnfree = true;
+        allowUnsupportedSystem = false;
+      };
+      overlays = with inputs; [
+        zig.overlays.default
+        neovim-nightly-overlay.overlays.default
+      ];
+      user = "ehre";
+      system = "x86_64-linux";
+      hostname = "thinkpad13";
 
-    # recommended to convert to 1.25 for 1440p and above
-    scale = "1";
-    terminal = "kitty"; # 'alacritty' or 'kitty'
-  in {
-    # Nix code formatter
-    formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
+      # recommended to convert to 1.25 for 1440p and above
+      scale = "1";
+      terminal = "kitty"; # 'alacritty' or 'kitty'
+    in
+    {
+      # Nix code formatter
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
 
-    nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
-        inherit system;
-        # Makes all inputs availble in imported files
-        specialArgs = {inherit inputs user hostname overlays nixpkgsConfig scale terminal;};
-        modules = [
-          ({...}: {
-            system = {
-              stateVersion = "5";
-              configurationRevision = self.rev or self.dirtyRev or null;
-            };
-            # UEFI Bootloader
-            boot.loader.systemd-boot.enable = true;
-            boot.loader.efi.canTouchEfiVariables = true;
-          })
-          # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-          nixos-hardware.nixosModules.lenovo-thinkpad
-          # Include results of the hardware scan
-          ./hardware-configuration.nix
-          ../default.nix
-          ../user.nix
-          home-manager.nixosModule
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              # Makes all inputs available in imported files for hm
-              extraSpecialArgs = {
-                inherit inputs scale terminal stylix;
-                pkgs-zsh-fzf-tab =
-                  import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
-              };
-              users.${user} = {...}:
-                with inputs; {
-                  imports = [
-                    inputs.nixvim.homeManagerModules.nixvim
-                    inputs.spicetify-nix.homeManagerModules.default
-                    stylix.homeManagerModules.stylix
-                    ../../home/nixos.nix
-                  ];
-                  home.stateVersion = "23.11";
-                  # Default scroll speed
-                  wayland.windowManager.hyprland.settings.input.touchpad.scroll_factor = 1;
+      nixosConfigurations = {
+        default = nixpkgs.lib.nixosSystem {
+          inherit system;
+          # Makes all inputs availble in imported files
+          specialArgs = {
+            inherit
+              inputs
+              user
+              hostname
+              overlays
+              nixpkgsConfig
+              scale
+              terminal
+              ;
+          };
+          modules = [
+            (
+              { ... }:
+              {
+                system = {
+                  stateVersion = "5";
+                  configurationRevision = self.rev or self.dirtyRev or null;
                 };
-            };
-          }
-        ];
+                # UEFI Bootloader
+                boot.loader.systemd-boot.enable = true;
+                boot.loader.efi.canTouchEfiVariables = true;
+              }
+            )
+            # Add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
+            nixos-hardware.nixosModules.lenovo-thinkpad
+            # Include results of the hardware scan
+            ./hardware-configuration.nix
+            ../keyboard/us.nix
+            ../default.nix
+            ../user.nix
+            home-manager.nixosModule
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                # Makes all inputs available in imported files for hm
+                extraSpecialArgs = {
+                  inherit
+                    inputs
+                    scale
+                    terminal
+                    stylix
+                    ;
+                  pkgs-zsh-fzf-tab = import inputs.nixpkgs-zsh-fzf-tab { inherit system; };
+                };
+                users.${user} =
+                  { ... }:
+                  with inputs;
+                  {
+                    imports = [
+                      inputs.nixvim.homeManagerModules.nixvim
+                      inputs.spicetify-nix.homeManagerModules.default
+                      stylix.homeManagerModules.stylix
+                      ../../home/nixos.nix
+                      ../../home/keyboard/us.nix
+                    ];
+                    home.stateVersion = "23.11";
+                    # Default scroll speed
+                    wayland.windowManager.hyprland.settings.input.touchpad.scroll_factor = 1;
+                  };
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }

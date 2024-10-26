@@ -119,6 +119,7 @@
             inputs.nix-index-database.nixosModules.nix-index
             # Include results of the hardware scan
             ./hardware-configuration.nix
+            ../keyboard/us.nix
             ../default.nix
             ../user.nix
             ../fhs-compat.nix
@@ -146,6 +147,7 @@
                       inputs.spicetify-nix.homeManagerModules.default
                       stylix.homeManagerModules.stylix
                       ../../home/nixos.nix
+                      ../../home/keyboard/us.nix
                     ];
                     home.stateVersion = "23.11";
                     # Default scroll speed
