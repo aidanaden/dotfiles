@@ -266,8 +266,8 @@ in
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
         "XDG_CURRENT_DESKTOP,Hyprland"
-        "HYPRCURSOR_SIZE,32"
-        "XCURSOR_SIZE,32"
+        "HYPRCURSOR_SIZE,24"
+        "XCURSOR_SIZE,24"
       ];
 
       exec-once = [
