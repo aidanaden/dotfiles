@@ -5,6 +5,7 @@
     ./tmux
     ./bat
     ./git.nix
+    ./jujutsu.nix
     ./btop.nix
     ./yazi.nix
     ./spotify.nix
