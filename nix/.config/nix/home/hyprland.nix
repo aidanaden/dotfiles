@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   scale,
   terminal,
@@ -67,6 +68,7 @@ in
       };
 
       input = {
+        kb_layout = lib.mkDefault "us";
         # Remap caps to ctrl
         kb_options = "ctrl:nocaps";
         follow_mouse = true;

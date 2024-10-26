@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   user,
   overlays,
   nixpkgsConfig,
@@ -85,7 +86,7 @@ in
       # videoDrivers = ["nouveau"];
 
       xkb = {
-        layout = "us";
+        layout = lib.mkDefault "us";
         variant = "";
       };
 
