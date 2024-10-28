@@ -32,6 +32,7 @@
       "bitwarden" # password manager
       "orbstack"
       "ente-auth" # 2fa manager
+      "jellyfin-media-player" # jellyfin player
     ];
   };
 }

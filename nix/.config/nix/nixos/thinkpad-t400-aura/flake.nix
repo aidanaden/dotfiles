@@ -68,7 +68,7 @@
         zig.overlays.default
         neovim-nightly-overlay.overlays.default
       ];
-      user = "flamme";
+      user = "aura";
       system = "x86_64-linux";
       hostname = "t400";
 
@@ -120,7 +120,6 @@
             inputs.nix-index-database.nixosModules.nix-index
             # Include results of the hardware scan
             ./hardware-configuration.nix
-            ../keyboard/us.nix
             ../default.nix
             ../user.nix
             home-manager.nixosModule
@@ -147,7 +146,6 @@
                       inputs.spicetify-nix.homeManagerModules.default
                       stylix.homeManagerModules.stylix
                       ../../home/nixos.nix
-                      ../../home/keyboard/us.nix
                     ];
                     home.stateVersion = "23.11";
                     wayland.windowManager.hyprland.package = nixpkgs.legacyPackages.${system}.hyprland.override {
