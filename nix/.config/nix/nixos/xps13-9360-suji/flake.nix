@@ -60,7 +60,6 @@
       nixpkgs,
       nixos-hardware,
       home-manager,
-      # catppuccin,
       zig,
       neovim-nightly-overlay,
       stylix,
@@ -121,6 +120,7 @@
             ./hardware-configuration.nix
             ../default.nix
             ../user.nix
+            ../fhs-compat.nix
             home-manager.nixosModule
             {
               home-manager = {
@@ -141,6 +141,7 @@
                   with inputs;
                   {
                     imports = [
+                      inputs.nixvim.homeManagerModules.nixvim
                       inputs.spicetify-nix.homeManagerModules.default
                       stylix.homeManagerModules.stylix
                       ../../home/nixos.nix

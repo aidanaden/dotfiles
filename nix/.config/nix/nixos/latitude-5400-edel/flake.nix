@@ -1,5 +1,5 @@
 {
-  description = "Dell latitude-5400 NixOS configuration";
+  description = "Dell latitude 5400 NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -60,7 +60,6 @@
       nixpkgs,
       nixos-hardware,
       home-manager,
-      # catppuccin,
       zig,
       neovim-nightly-overlay,
       stylix,
@@ -77,7 +76,7 @@
       ];
       user = "edel";
       system = "x86_64-linux";
-      hostname = "latitude-5400";
+      hostname = "x1";
       # recommended to convert to 1.25 for 1440p and above
       scale = "1";
       terminal = "kitty"; # 'alacritty' or 'kitty'
@@ -119,6 +118,7 @@
             ./hardware-configuration.nix
             ../default.nix
             ../user.nix
+            ../fhs-compat.nix
             home-manager.nixosModule
             {
               home-manager = {
@@ -139,6 +139,7 @@
                   with inputs;
                   {
                     imports = [
+                      inputs.nixvim.homeManagerModules.nixvim
                       inputs.spicetify-nix.homeManagerModules.default
                       stylix.homeManagerModules.stylix
                       ../../home/nixos.nix
