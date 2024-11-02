@@ -75,7 +75,7 @@
         zig.overlays.default
         neovim-nightly-overlay.overlays.default
       ];
-      user = "canarya";
+      user = "lange";
       system = "x86_64-linux";
       hostname = "x250";
       # recommended to convert to 1.25 for 1440p and above
