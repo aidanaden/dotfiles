@@ -82,6 +82,9 @@ in
       # lshw alternative
       inxi
 
+      # disk usage analyser
+      ncdu
+
       # crypto wallets
 
       # shamir cli
