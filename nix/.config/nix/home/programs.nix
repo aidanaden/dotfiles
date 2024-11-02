@@ -79,6 +79,9 @@ in
       # dog replacement
       dogdns
 
+      # lshw alternative
+      inxi
+
       # crypto wallets
 
       # shamir cli
