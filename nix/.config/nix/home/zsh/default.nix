@@ -42,6 +42,7 @@
       venv = "python3 -m venv";
       pn = "pnpm";
       vim = "nvim";
+      dig = "dog";
     };
 
     # initExtraFirst = ''
