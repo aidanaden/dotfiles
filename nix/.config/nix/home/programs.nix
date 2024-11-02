@@ -83,7 +83,7 @@ in
       inxi
 
       # disk usage analyser
-      ncdu
+      unstable.ncdu
 
       # crypto wallets
 
