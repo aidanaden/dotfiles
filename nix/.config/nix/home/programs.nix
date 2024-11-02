@@ -79,9 +79,6 @@ in
       # dog replacement
       dogdns
 
-      # systemd tui
-      sysz
-
       # crypto wallets
 
       # shamir cli
