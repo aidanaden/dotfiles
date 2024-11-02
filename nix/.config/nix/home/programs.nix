@@ -3,9 +3,11 @@
   inputs,
   terminal,
   ...
-}: let
+}:
+let
   unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
-in {
+in
+{
   home = {
     packages = with pkgs; [
       inputs.neovim-nightly-overlay.packages.${system}.default # text editor
@@ -74,6 +76,12 @@ in {
       # wireguard ui
       unstable.wireguard-ui
 
+      # dog replacement
+      dogdns
+
+      # systemd tui
+      sysz
+
       # crypto wallets
 
       # shamir cli
@@ -104,7 +112,7 @@ in {
       package = pkgs.go_1_22;
       goPath = "go";
       goBin = "go/bin";
-      goPrivate = [];
+      goPrivate = [ ];
     };
 
     # shell integrations are enabled by default

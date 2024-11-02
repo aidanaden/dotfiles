@@ -10,6 +10,5 @@
     ./bitwarden-desktop.nix
     ./rofi
     ./brave.nix
-    ./sysz.nix
   ];
 }
