@@ -65,7 +65,7 @@ in
       mpv
 
       # torrents
-      qbittorrent-qt5
+      unstable.qbittorrent-qt5
 
       # discord client
       unstable.vesktop
