@@ -88,39 +88,39 @@
         # clangd = {
         #  enable = true;
         #}
-        ts_ls = {
-          enable = true;
-          settings = {
-            javascript = {
-              inlayHints = {
-                includeInlayEnumMemberValueHints = true;
-                includeInlayFunctionLikeReturnTypeHints = true;
-                includeInlayFunctionParameterTypeHints = true;
-                includeInlayParameterNameHints = "all";
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-                includeInlayPropertyDeclarationTypeHints = true;
-                includeInlayVariableTypeHints = true;
-              };
-            };
-            typescript = {
-              inlayHints = {
-                includeInlayEnumMemberValueHints = true;
-                includeInlayFunctionLikeReturnTypeHints = true;
-                includeInlayFunctionParameterTypeHints = true;
-                includeInlayParameterNameHints = "all";
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-                includeInlayPropertyDeclarationTypeHints = true;
-                includeInlayVariableTypeHints = true;
-              };
-            };
-          };
-          filetypes = [
-            "javascript"
-            "javascriptreact"
-            "typescript"
-            "typescriptreact"
-          ];
-        };
+        # ts_ls = {
+        #   enable = true;
+        #   settings = {
+        #     javascript = {
+        #       inlayHints = {
+        #         includeInlayEnumMemberValueHints = true;
+        #         includeInlayFunctionLikeReturnTypeHints = true;
+        #         includeInlayFunctionParameterTypeHints = true;
+        #         includeInlayParameterNameHints = "all";
+        #         includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+        #         includeInlayPropertyDeclarationTypeHints = true;
+        #         includeInlayVariableTypeHints = true;
+        #       };
+        #     };
+        #     typescript = {
+        #       inlayHints = {
+        #         includeInlayEnumMemberValueHints = true;
+        #         includeInlayFunctionLikeReturnTypeHints = true;
+        #         includeInlayFunctionParameterTypeHints = true;
+        #         includeInlayParameterNameHints = "all";
+        #         includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+        #         includeInlayPropertyDeclarationTypeHints = true;
+        #         includeInlayVariableTypeHints = true;
+        #       };
+        #     };
+        #   };
+        #   filetypes = [
+        #     "javascript"
+        #     "javascriptreact"
+        #     "typescript"
+        #     "typescriptreact"
+        #   ];
+        # };
         gopls = {
           enable = true;
         };

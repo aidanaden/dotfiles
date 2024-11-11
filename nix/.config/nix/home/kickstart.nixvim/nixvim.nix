@@ -28,6 +28,7 @@ in
     ./plugins/indent-blankline.nix
     ./plugins/tailwind-tools.nix
     ./plugins/lspkind.nix
+    ./plugins/typescript-tools.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #

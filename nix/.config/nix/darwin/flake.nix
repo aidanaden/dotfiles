@@ -64,73 +64,88 @@
   # parameters in `outputs` are defined in `inputs` and can be referenced by their names.
   # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
-  outputs = {
-    self,
-    nixpkgs,
-    darwin,
-    home-manager,
-    zig,
-    neovim-nightly-overlay,
-    stylix,
-    ...
-  } @ inputs: let
-    nixpkgsConfig = {
-      allowUnfree = true;
-      allowUnsupportedSystem = false;
-    };
-    overlays = with inputs; [zig.overlays.default neovim-nightly-overlay.overlays.default];
-    user = "aidan";
-    system = "aarch64-darwin";
-    hostname = "m1";
-    terminal = "kitty";
-  in {
-    # nix code formatter
-    formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
-
-    # nix-darwin with home-manager for macOS
-    darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
-      inherit system;
-      # makes all inputs availble in imported files
-      specialArgs = {inherit inputs nixpkgsConfig overlays user hostname terminal;};
-      modules = [
-        inputs.nix-index-database.darwinModules.nix-index
-        inputs.mac-app-util.darwinModules.default
-        ./default.nix
-        ({
-          pkgs,
-          inputs,
-          ...
-        }: {
-          system = {
-            stateVersion = 5;
-            configurationRevision = self.rev or self.dirtyRev or null;
-          };
-        })
-        home-manager.darwinModule
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            # makes all inputs available in imported files for hm
-            extraSpecialArgs = {
-              inherit inputs stylix terminal;
-              pkgs-zsh-fzf-tab =
-                import inputs.nixpkgs-zsh-fzf-tab {inherit system;};
-            };
-            users.${user} = {...}:
-              with inputs; {
-                imports = [
-                  inputs.nixvim.homeManagerModules.nixvim
-                  inputs.spicetify-nix.homeManagerModules.default
-                  stylix.homeManagerModules.stylix
-                  mac-app-util.homeManagerModules.default
-                  ../home/darwin.nix
-                ];
-                home.stateVersion = "23.11";
-              };
-          };
-        }
+  outputs =
+    {
+      self,
+      nixpkgs,
+      darwin,
+      home-manager,
+      zig,
+      neovim-nightly-overlay,
+      stylix,
+      ...
+    }@inputs:
+    let
+      nixpkgsConfig = {
+        allowUnfree = true;
+        allowUnsupportedSystem = false;
+      };
+      overlays = with inputs; [
+        zig.overlays.default
+        neovim-nightly-overlay.overlays.default
       ];
+      user = "aidan";
+      system = "aarch64-darwin";
+      hostname = "m1";
+      terminal = "kitty";
+    in
+    {
+      # nix code formatter
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
+
+      # nix-darwin with home-manager for macOS
+      darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
+        inherit system;
+        # makes all inputs availble in imported files
+        specialArgs = {
+          inherit
+            inputs
+            nixpkgsConfig
+            overlays
+            user
+            hostname
+            terminal
+            ;
+        };
+        modules = [
+          inputs.nix-index-database.darwinModules.nix-index
+          inputs.mac-app-util.darwinModules.default
+          ./default.nix
+          (
+            { pkgs, inputs, ... }:
+            {
+              system = {
+                stateVersion = 5;
+                configurationRevision = self.rev or self.dirtyRev or null;
+              };
+            }
+          )
+          home-manager.darwinModule
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              # makes all inputs available in imported files for hm
+              extraSpecialArgs = {
+                inherit inputs stylix terminal;
+                pkgs-zsh-fzf-tab = import inputs.nixpkgs-zsh-fzf-tab { inherit system; };
+              };
+              users.${user} =
+                { ... }:
+                with inputs;
+                {
+                  imports = [
+                    inputs.nixvim.homeManagerModules.nixvim
+                    inputs.spicetify-nix.homeManagerModules.default
+                    stylix.homeManagerModules.stylix
+                    mac-app-util.homeManagerModules.default
+                    ../home/darwin.nix
+                  ];
+                  home.stateVersion = "23.11";
+                };
+            };
+          }
+        ];
+      };
     };
-  };
 }
