@@ -153,6 +153,9 @@
         yamlls = {
           enable = true;
         };
+        astro = {
+          enable = true;
+        };
 
         # pyright = {
         #  enable = true;

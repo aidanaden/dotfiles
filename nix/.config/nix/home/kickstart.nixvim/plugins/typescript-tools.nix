@@ -5,7 +5,7 @@
       settings = {
         separateDiagnosticServer = true;
         publishDiagnosticOn = "insert_leave";
-        exposeAsCodeAction = null;
+        exposeAsCodeAction = "all";
         tsserverPath = null;
         tsserverPlugins = null;
         tsserverMaxMemory = "auto";

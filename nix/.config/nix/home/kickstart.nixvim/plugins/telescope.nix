@@ -117,7 +117,6 @@
             "^output/"
             "^data/"
             "%.ipynb"
-            "node_modules"
             "dist"
             "yarn.lock"
             "pnpm%-lock.yaml"
