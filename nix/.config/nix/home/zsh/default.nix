@@ -43,6 +43,10 @@
       pn = "pnpm";
       vim = "nvim";
       dig = "dog";
+      # lazyjj shortcut
+      lj = "lazyjj";
+      # jj shortcut
+      j = "jj";
     };
 
     # initExtraFirst = ''

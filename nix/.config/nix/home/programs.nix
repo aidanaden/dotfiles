@@ -85,6 +85,9 @@ in
       # disk usage analyser
       unstable.ncdu
 
+      # lazyjj
+      unstable.lazyjj
+
       # crypto wallets
 
       # shamir cli
