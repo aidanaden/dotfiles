@@ -153,8 +153,6 @@ in
   nixpkgs.overlays = overlays;
 
   nix = {
-    # Enable flakes per default
-    package = pkgs.nixFlakes;
     gc = {
       automatic = true;
       dates = "weekly";

@@ -5,8 +5,9 @@
   hostname,
   nixpkgsConfig,
   ...
-}: {
-  imports = [./homebrew.nix];
+}:
+{
+  imports = [ ./homebrew.nix ];
 
   nixpkgs.config = nixpkgsConfig;
   nixpkgs.overlays = overlays;
@@ -38,16 +39,12 @@
   ];
 
   services = {
-    activate-system.enable = true;
     # Auto upgrade nix package and the daemon service.
     nix-daemon.enable = true;
     tailscale.enable = true;
   };
 
   nix = {
-    # enable flakes per default
-    package = pkgs.nixFlakes;
-
     optimise = {
       automatic = true;
       user = user;
@@ -59,20 +56,19 @@
     };
 
     settings = {
-      allowed-users = [user];
-      experimental-features = ["nix-command" "flakes"];
+      allowed-users = [ user ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
       # produces linking issues when updating on macOS
       # https://github.com/NixOS/nix/issues/7273
       auto-optimise-store = false;
 
       # substituers that will be considered before the official ones(https://cache.nixos.org)
-      substituters = [
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
+      substituters = [ "https://nix-community.cachix.org" ];
+      trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
       builders-use-substitutes = true;
     };
   };

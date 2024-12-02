@@ -17,6 +17,9 @@
         enableLeftBackColors = false;
         enableRightBackColors = false;
       };
+      kubecolor = {
+        enable = false;
+      };
       # rofi = {
       #   enable = true;
       # };
