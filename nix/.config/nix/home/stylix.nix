@@ -3,7 +3,7 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
     image = ../wallpapers/tokyodark/wallpaper1.png;
     polarity = "dark";
     targets = {
@@ -17,7 +17,7 @@
         enableLeftBackColors = false;
         enableRightBackColors = false;
       };
-      kubecolor = {
+      neovim = {
         enable = false;
       };
       # rofi = {

@@ -12,10 +12,10 @@
       [gaps]
       inner.horizontal = 5
       inner.vertical   = 5
-      outer.left       = 5
-      outer.bottom     = 5
-      outer.top        = 5
-      outer.right      = 5
+      outer.left       = 0
+      outer.bottom     = 0
+      outer.top        = 0
+      outer.right      = 0
 
       [mode.main.binding]
       alt-j = 'focus down'

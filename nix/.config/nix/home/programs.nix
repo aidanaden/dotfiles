@@ -88,6 +88,12 @@ in
       # lazyjj
       unstable.lazyjj
 
+      # ps alternative
+      unstable.procs
+
+      # diff alternative
+      difftastic
+
       # crypto wallets
 
       # shamir cli

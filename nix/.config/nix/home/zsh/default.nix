@@ -47,6 +47,8 @@
       lj = "lazyjj";
       # jj shortcut
       j = "jj";
+      # ps alternative
+      ps = "procs";
     };
 
     # initExtraFirst = ''

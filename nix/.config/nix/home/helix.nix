@@ -1,8 +1,9 @@
 { pkgs, ... }:
 {
+  # https://mynixos.com/home-manager/options/programs.helix
   programs.helix = {
     enable = true;
-    packages = pkgs.evil-helix;
+    package = pkgs.evil-helix;
     # settings =
     #   {
     #   };
