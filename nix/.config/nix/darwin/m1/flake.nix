@@ -1,5 +1,5 @@
 {
-  description = "Nix for macOS configuration";
+  description = "M1 Nix for macOS configuration";
 
   ##################################################################################################################
   #
@@ -110,7 +110,7 @@
         modules = [
           inputs.nix-index-database.darwinModules.nix-index
           inputs.mac-app-util.darwinModules.default
-          ./default.nix
+          ../default.nix
           (
             { pkgs, inputs, ... }:
             {
@@ -139,9 +139,9 @@
                     inputs.spicetify-nix.homeManagerModules.default
                     stylix.homeManagerModules.stylix
                     mac-app-util.homeManagerModules.default
-                    ../home/darwin.nix
+                    ../../home/darwin.nix
                   ];
-                  home.stateVersion = "23.11";
+                  home.stateVersion = "24.11";
                 };
             };
           }
