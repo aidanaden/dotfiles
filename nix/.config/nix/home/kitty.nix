@@ -15,6 +15,7 @@
 
       allow_hyperlinks = true;
       disable_ligatures = "never";
+      macos_option_as_alt = true;
     };
   };
 }

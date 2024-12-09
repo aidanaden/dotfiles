@@ -16,6 +16,7 @@ in
     escapeTime = 0;
     historyLimit = 10000;
     keyMode = "vi";
+    shell = "${pkgs.zsh}/bin/zsh";
     "terminal" = if terminal == "alacritty" then "alacritty" else "xterm-kitty";
 
     plugins = with pkgs; [
