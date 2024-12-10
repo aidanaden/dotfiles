@@ -144,6 +144,22 @@
             "typescriptreact"
           ];
         };
+        # TODO: Enable after unocss-language-server nix package added
+        # unocss = {
+        #   enable = true;
+        #   autostart = true;
+        #   filetypes = [
+        #     "css"
+        #     "scss"
+        #     "javascript"
+        #     "javascriptreact"
+        #     "typescript"
+        #     "typescriptreact"
+        #   ];
+        #   # rootDir = ''
+        #   #   require 'lspconfig.util'.root_pattern('unocss.config.ts')
+        #   # '';
+        # };
         svelte = {
           enable = true;
         };

@@ -3,14 +3,14 @@
  * User: w8ste
  */
 
-
 // define colors etc.
 * {
     bg: #24283b;
-    hv: #9274ca; 
-    primary: #C5C8C6; 
+    hv: #9274ca;
+    primary: #C5C8C6;
     ug: #0B2447;
     font: "MesloLGS Nerd Font Mono 11";
+    // font: "Monaspace Neon 11";
     background-color: @bg;
     //dark: @bg;
     border: 0px;
@@ -23,7 +23,7 @@
 // defines different aspects of the window
 window {
     width: 700;
-    /*since line wont work with height, i comment it out 
+    /*since line wont work with height, i comment it out
     if you rather control the size via height
     just comment it out */
     //height: 500;
@@ -32,7 +32,7 @@ window {
     location: center;
     anchor: center;
     transparency: "screenshot";
-    border-color: @transparent;   
+    border-color: @transparent;
     border: 0px;
     border-radius: 6px;
     spacing: 0;
@@ -77,7 +77,7 @@ listview {
     padding: 8px;
     lines: 12;
     columns: 1;
-    border: 0px 3px 3px 3px; 
+    border: 0px 3px 3px 3px;
     border-radius: 0px 0px 6px 6px;
     border-color: @primary;
     dynamic: false;
@@ -136,4 +136,4 @@ button selected normal {
 
 scrollbar {
     enabled: true;
-} 
+}

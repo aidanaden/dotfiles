@@ -62,7 +62,7 @@ in
 
       # video
       yt-dlp
-      mpv
+      unstable.mpv
 
       # torrents
       unstable.qbittorrent
@@ -93,6 +93,12 @@ in
 
       # diff alternative
       difftastic
+
+      # git lfs
+      git-lfs
+
+      # generate books from markdown (gameboy pandocs)
+      mdbook
 
       # crypto wallets
 

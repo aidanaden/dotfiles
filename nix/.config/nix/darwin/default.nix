@@ -29,6 +29,11 @@
       VISUAL = "nvim";
       TERMINAL = "kitty";
     };
+    etc."pam.d/sudo_local".text = ''
+      # Managed by Nix Darwin
+      auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
+      auth       sufficient     pam_tid.so
+    '';
   };
 
   fonts.packages = with pkgs; [
@@ -36,6 +41,7 @@
     scheherazade-new
     ia-writer-duospace
     meslo-lgs-nf
+    monaspace
   ];
 
   services = {
@@ -100,7 +106,6 @@
         orientation = "bottom";
         showhidden = true;
         static-only = true;
-        # TODO: Make this user-specific
         persistent-apps = [
           "/Users/${user}/Applications/Home Manager Apps/Telegram.app"
           "/Users/${user}/Applications/Home Manager Apps/Vesktop.app"
@@ -143,7 +148,13 @@
         NSGlobalDomain = {
           # Add a context menu item for showing the Web Inspector in web views
           WebKitDeveloperExtras = true;
-          KeyRepeat = 1;
+          InitialKeyRepeat = 10;
+          KeyRepeat = 2;
+          NSAutomaticCapitalizationEnabled = false;
+          NSAutomaticDashSubstitutionEnabled = false;
+          NSAutomaticPeriodSubstitutionEnabled = false;
+          NSAutomaticQuoteSubstitutionEnabled = false;
+          NSAutomaticSpellingCorrectionEnabled = false;
           "_HIHideMenuBar" = false;
         };
         "com.apple.AdLib" = {

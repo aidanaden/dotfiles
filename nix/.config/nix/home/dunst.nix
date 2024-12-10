@@ -40,6 +40,7 @@
         corner_radius = 10;
         follow = "mouse";
         font = "MesloLGS Nerd Font Mono 11";
+        # font = "Monaspace Neon 11";
         format = "<b>%s</b>\\n%b"; # format = "<span foreground='#f3f4f5'><b>%s %p</b></span>\n%b"
         # frame_color = "#89b4fa";
         frame_width = 1;

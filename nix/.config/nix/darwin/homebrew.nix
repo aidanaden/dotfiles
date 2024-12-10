@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   homebrew = {
     enable = true;
 
@@ -18,6 +19,7 @@
     brews = [
       "aidanaden/tools/canvas-sync"
       "intuis/tap/rustmission"
+      "sdl2" # SDL renderer
     ];
 
     # `brew install --cask`

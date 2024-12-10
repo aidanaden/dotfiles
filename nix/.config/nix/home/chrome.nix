@@ -1,8 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+    config.allowUnsupportedSystem = false;
+  };
+in
 {
   programs.chromium = {
     enable = true;
-    package = pkgs.google-chrome;
+    package = unstable.google-chrome;
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden

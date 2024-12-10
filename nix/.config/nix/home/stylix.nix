@@ -48,21 +48,30 @@
         terminal = 11;
         applications = 12;
       };
+
       serif = {
         package = pkgs.meslo-lgs-nf;
         name = "MesloLGS Nerd Font Mono";
+        # package = pkgs.monaspace;
+        # name = "Monaspace Neon";
       };
       sansSerif = {
         package = pkgs.meslo-lgs-nf;
         name = "MesloLGS Nerd Font Mono";
+        # package = pkgs.monaspace;
+        # name = "Monaspace Neon";
       };
       monospace = {
         package = pkgs.meslo-lgs-nf;
-        name = "MesloLGS NF";
+        name = "MesloLGS Nerd Font Mono";
+        # package = pkgs.monaspace;
+        # name = "Monaspace Neon";
       };
       emoji = {
-        package = pkgs.noto-fonts-emoji;
-        name = "Noto Color Emoji";
+        package = pkgs.meslo-lgs-nf;
+        name = "MesloLGS Nerd Font Mono";
+        # package = pkgs.monaspace;
+        # name = "Monaspace Neon";
       };
     };
   };

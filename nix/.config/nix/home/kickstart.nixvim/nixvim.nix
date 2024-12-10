@@ -29,20 +29,7 @@ in
     ./plugins/tailwind-tools.nix
     ./plugins/lspkind.nix
     ./plugins/typescript-tools.nix
-
-    # NOTE: Add/Configure additional plugins for Kickstart.nixvim
-    #
-    #  Here are some example plugins that I've included in the Kickstart repository.
-    #  Uncomment any of the lines below to enable them (you will need to restart nvim).
-    #
-    # ./plugins/kickstart/plugins/debug.nix
-    # ./plugins/kickstart/plugins/indent-blankline.nix
-    # ./plugins/kickstart/plugins/lint.nix
-    # ./plugins/kickstart/plugins/autopairs.nix
-    # ./plugins/kickstart/plugins/neo-tree.nix
-    #
-    # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
-    # Add your plugins to ./plugins/custom/plugins and import them below
+    ./plugins/harpoon.nix
   ];
 
   /*
@@ -201,7 +188,7 @@ in
 
         # Sync clipboard between OS and Neovim
         #  Remove this option if you want your OS clipboard to remain independent.
-        # register = "unnamedplus";
+        register = "unnamedplus";
       };
 
       # Enable break indent
@@ -279,29 +266,6 @@ in
           desc = "Exit terminal mode";
         };
       }
-      # TIP: Disable arrow keys in normal mode
-      /*
-        {
-          mode = "n";
-          key = "<left>";
-          action = "<cmd>echo 'Use h to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<right>";
-          action = "<cmd>echo 'Use l to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<up>";
-          action = "<cmd>echo 'Use k to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<down>";
-          action = "<cmd>echo 'Use j to move!!'<CR>";
-        }
-      */
       # Keybinds to make split navigation easier.
       #  Use CTRL+<hjkl> to switch between windows
       #
@@ -399,6 +363,14 @@ in
       # Useful for getting pretty icons, but requires a Nerd Font.
       nvim-web-devicons # TODO: Figure out how to configure using this with telescope
     ];
+
+    # Reset cursor after nvim exits
+    extraConfigLua = ''
+      -- without this I was always having the cursor be a block when leaving vim
+      vim.cmd([[
+        au VimLeave * set guicursor=a:ver10-blinkwait800
+      ]])
+    '';
 
     # TODO: Figure out where to move this
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extraconfigluapre

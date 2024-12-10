@@ -16,6 +16,7 @@
       # icon-theme = "Papirus";
       location = 0;
       font = "MesloLGS Nerd Font Mono 11";
+      # font = "Monaspace Neon 11";
       drun-display-format = "{icon} {name}";
       display-drun = " Apps";
       display-run = " Run";

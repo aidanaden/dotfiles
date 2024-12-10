@@ -7,8 +7,10 @@ in
     enable = true;
     package = unstable.jujutsu;
     settings = {
-      name = "aidan";
-      email = "aidanaden@hotmail.com";
+      user = {
+        name = "aidan";
+        email = "aidanaden@hotmail.com";
+      };
     };
   };
 }
