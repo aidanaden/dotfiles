@@ -35,6 +35,8 @@
       "orbstack"
       "ente-auth" # 2fa manager
       "jellyfin-media-player" # jellyfin player
+      "obs" # obs video recording/streaming software
+      "focusrite-control-2" # scarlett 2i2 audio interface software
     ];
   };
 }

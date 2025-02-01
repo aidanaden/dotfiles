@@ -5,7 +5,11 @@
   ...
 }:
 let
-  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+    config.allowUnsupportedSystem = false;
+  };
 in
 {
   home = {
@@ -21,6 +25,9 @@ in
       unstable.nodePackages.pnpm
       unstable.nodePackages.typescript
       unstable.nodePackages.typescript-language-server
+
+      # rush
+      nodePackages.rush
 
       # rust
       rustup
@@ -99,6 +106,9 @@ in
 
       # generate books from markdown (gameboy pandocs)
       mdbook
+
+      # note-taking
+      unstable.obsidian
 
       # crypto wallets
 

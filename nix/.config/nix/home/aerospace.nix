@@ -52,6 +52,8 @@
       alt-4 = 'workspace 4'
       alt-5 = 'workspace 5'
       alt-6 = 'workspace 6'
+      alt-7 = 'workspace 7'
+      alt-8 = 'workspace 8'
 
       alt-shift-1 = 'move-node-to-workspace 1'
       alt-shift-2 = 'move-node-to-workspace 2'
@@ -59,6 +61,8 @@
       alt-shift-4 = 'move-node-to-workspace 4'
       alt-shift-5 = 'move-node-to-workspace 5'
       alt-shift-6 = 'move-node-to-workspace 6'
+      alt-shift-7 = 'move-node-to-workspace 7'
+      alt-shift-8 = 'move-node-to-workspace 8'
 
       alt-shift-r = 'reload-config'
 
@@ -69,6 +73,8 @@
       4 = 'main'
       5 = 'main'
       6 = 'main'
+      7 = 'main'
+      8 = 'main'
 
       # browser
       [[on-window-detected]]
@@ -105,6 +111,14 @@
       [[on-window-detected]]
       if.app-name-regex-substring = 'spotify'
       run = 'move-node-to-workspace 5'
+
+      [[on-window-detected]]
+      if.app-name-regex-substring = 'obsidian'
+      run = 'move-node-to-workspace 6'
+
+      [[on-window-detected]]
+      if.app-name-regex-substring = 'obs'
+      run = 'move-node-to-workspace 7'
     '';
   };
 }
