@@ -110,6 +110,10 @@ in
       # note-taking
       unstable.obsidian
 
+      # solana dev tools (solana-cli, anchor)
+      unstable.solana-cli
+      unstable.anchor
+
       # crypto wallets
 
       # shamir cli

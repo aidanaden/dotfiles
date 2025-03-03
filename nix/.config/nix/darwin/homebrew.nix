@@ -24,6 +24,7 @@
 
     # `brew install --cask`
     casks = [
+      "lulu" # outlgoing network detection
       "raycast" # launcher on steroids
       "arc" # mac browser
       "nikitabobko/tap/aerospace" # tiling window manager

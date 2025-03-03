@@ -85,6 +85,8 @@
       # eval "$(fnm env)"
 
       export VI_MODE_SET_CURSOR=true
+
+      export PATH="/Users/aidan/.local/share/solana/install/active_release/bin:$PATH"
     '';
 
     plugins = [
