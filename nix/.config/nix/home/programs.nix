@@ -14,8 +14,6 @@ in
 {
   home = {
     packages = with pkgs; [
-      inputs.neovim-nightly-overlay.packages.${system}.default # text editor
-
       git
       act # github action runner
 
@@ -95,6 +93,9 @@ in
       # lazyjj
       unstable.lazyjj
 
+      # docker cli
+      unstable.lazydocker
+
       # ps alternative
       unstable.procs
 
@@ -108,7 +109,7 @@ in
       mdbook
 
       # note-taking
-      unstable.obsidian
+      obsidian
 
       # solana dev tools (solana-cli, anchor)
       unstable.solana-cli

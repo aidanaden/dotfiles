@@ -32,11 +32,6 @@
 
     zig.url = "github:mitchellh/zig-overlay";
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,7 +57,6 @@
       home-manager,
       # catppuccin,
       zig,
-      neovim-nightly-overlay,
       stylix,
       ...
     }@inputs:
@@ -73,7 +67,6 @@
       };
       overlays = with inputs; [
         zig.overlays.default
-        neovim-nightly-overlay.overlays.default
       ];
       user = "euphy";
       system = "x86_64-linux";

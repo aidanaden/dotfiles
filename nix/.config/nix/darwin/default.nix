@@ -42,6 +42,7 @@
     ia-writer-duospace
     meslo-lgs-nf
     monaspace
+    departure-mono
   ];
 
   services = {

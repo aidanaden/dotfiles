@@ -113,8 +113,6 @@ in
     enable = true;
     defaultEditor = true;
 
-    nixpkgs.pkgs = unstable.pkgs;
-
     # You can easily change to a different colorscheme.
     # Add your colorscheme here and enable it.
     # Don't forget to disable the colorschemes you arent using

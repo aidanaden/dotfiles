@@ -4,7 +4,7 @@ let
 in
 {
   programs.nixvim = {
-    extraPlugins = with unstable.vimPlugins; [ tailwind-tools-nvim ];
+    extraPlugins = with pkgs.vimPlugins; [ tailwind-tools-nvim ];
     extraConfigLua = ''
       require("tailwind-tools").setup({
         -- your configuration

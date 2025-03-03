@@ -15,12 +15,12 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     darwin = {
-      url = "github:lnl7/nix-darwin";
+      url = "github:lnl7/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -30,26 +30,24 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/nixos-24.11";
       # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixpkgs-zsh-fzf-tab.url = "github:nixos/nixpkgs/8193e46376fdc6a13e8075ad263b4b5ca2592c03";
 
     zig.url = "github:mitchellh/zig-overlay";
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     shamir.url = "github:aidanaden/shamir-zig";
     schnorr.url = "github:aidanaden/schnorr-zig";
@@ -71,7 +69,6 @@
       darwin,
       home-manager,
       zig,
-      neovim-nightly-overlay,
       stylix,
       ...
     }@inputs:
@@ -82,7 +79,6 @@
       };
       overlays = with inputs; [
         zig.overlays.default
-        neovim-nightly-overlay.overlays.default
       ];
       user = "aidan";
       system = "aarch64-darwin";

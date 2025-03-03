@@ -13,6 +13,7 @@
       "homebrew/services"
       "aidanaden/tools"
       "intuis/tap"
+      "rpendleton/homebrew-tap" # lc3 tools
     ];
 
     # `brew install`
@@ -20,6 +21,7 @@
       "aidanaden/tools/canvas-sync"
       "intuis/tap/rustmission"
       "sdl2" # SDL renderer
+      "lc3tools" # lc3 tools (for building lc3 .obj files from .asm files)
     ];
 
     # `brew install --cask`
