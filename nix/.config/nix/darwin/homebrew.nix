@@ -20,8 +20,8 @@
     brews = [
       "aidanaden/tools/canvas-sync"
       "intuis/tap/rustmission"
-      "sdl2" # SDL renderer
       "lc3tools" # lc3 tools (for building lc3 .obj files from .asm files)
+      "zigup"
     ];
 
     # `brew install --cask`

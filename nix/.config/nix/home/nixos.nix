@@ -11,5 +11,6 @@
     ./rofi
     ./brave.nix
     ./sysz.nix
+    ./zig.nix
   ];
 }

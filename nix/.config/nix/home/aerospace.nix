@@ -93,8 +93,14 @@
 
       # code
       [[on-window-detected]]
-      if.app-name-regex-substring = 'kitty'
+      if.app-id="com.mitchellh.ghostty"
       run = 'move-node-to-workspace 3'
+
+      [[on-window-detected]]
+      if.app-id="com.mitchellh.ghostty"
+      run= [
+        "layout floating",
+      ]
 
       [[on-window-detected]]
       if.app-name-regex-substring = 'mail'

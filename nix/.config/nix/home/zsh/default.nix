@@ -86,7 +86,8 @@
 
       export VI_MODE_SET_CURSOR=true
 
-      export PATH="/Users/aidan/.local/share/solana/install/active_release/bin:$PATH"
+      export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+      export PATH="/opt/homebrew/Cellar/zigup/2025.01.02/bin:$PATH"
     '';
 
     plugins = [

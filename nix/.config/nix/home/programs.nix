@@ -30,9 +30,6 @@ in
       # rust
       rustup
 
-      # zig
-      zigpkgs."0.13.0"
-
       # go
       goreleaser
 
@@ -67,10 +64,10 @@ in
 
       # video
       yt-dlp
-      unstable.mpv
+      unstable.mpv-unwrapped
 
       # torrents
-      unstable.qbittorrent
+      qbittorrent
 
       # discord client
       unstable.vesktop
@@ -114,6 +111,10 @@ in
       # solana dev tools (solana-cli, anchor)
       unstable.solana-cli
       unstable.anchor
+
+      # sdl cross-platform graphics
+      SDL2
+      sdl3
 
       # crypto wallets
 

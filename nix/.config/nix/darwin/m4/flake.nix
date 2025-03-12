@@ -134,8 +134,8 @@
                     inputs.nixvim.homeManagerModules.nixvim
                     inputs.spicetify-nix.homeManagerModules.default
                     stylix.homeManagerModules.stylix
-                    mac-app-util.homeManagerModules.default
                     ../../home/darwin.nix
+                    mac-app-util.homeManagerModules.default
                   ];
                   home.stateVersion = "24.11";
                 };

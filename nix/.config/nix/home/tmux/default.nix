@@ -42,7 +42,6 @@ in
           set -g @session-wizard-mode "full-path"
         '';
       }
-      tmuxPlugins.sensible
       tmuxPlugins.better-mouse-mode
       # {
       #   plugin = unstable.tmuxPlugins.catppuccin;

@@ -35,9 +35,9 @@ keybind = super+minus=decrease_font_size:1
 # keybind = ctrl+j=goto_split:bottom
 # keybind = ctrl+k=goto_split:top
 # keybind = ctrl+l=goto_split:right
-# keybind = super+shift+t=new_tab
-# keybind = super+shift+h=previous_tab
-# keybind = super+shift+l=next_tab
+keybind = super+shift+t=new_tab
+keybind = super+shift+p=previous_tab
+keybind = super+shift+n=next_tab
 # keybind = super+shift+comma=move_tab:-1
 # keybind = super+shift+period=move_tab:1
 # keybind = super+shift+c=copy_to_clipboard
