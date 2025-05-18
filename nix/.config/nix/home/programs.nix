@@ -24,6 +24,10 @@ in
       unstable.nodePackages.typescript
       unstable.nodePackages.typescript-language-server
 
+      # node webpack analysing
+      nodePackages.webpack
+      nodePackages.webpack-cli
+
       # rush
       nodePackages.rush
 
@@ -31,7 +35,7 @@ in
       rustup
 
       # go
-      goreleaser
+      unstable.goreleaser
 
       # make
       gnumake
@@ -64,7 +68,7 @@ in
 
       # video
       yt-dlp
-      unstable.mpv-unwrapped
+      mpv-unwrapped
 
       # torrents
       qbittorrent
@@ -112,9 +116,27 @@ in
       unstable.solana-cli
       unstable.anchor
 
+      # zig
+      unstable.zig
+
+      # local https certs
+      mkcert
+
+      # c build tools
+      ninja
+      cmake
+      automake
+      autoconf
+
+      # reverse engineering
+      ghidra
+
+      # utm virtualisation
+      utm
+
       # sdl cross-platform graphics
-      SDL2
-      sdl3
+      # SDL2
+      # sdl3
 
       # crypto wallets
 

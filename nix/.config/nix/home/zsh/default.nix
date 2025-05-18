@@ -45,10 +45,12 @@
       dig = "dog";
       # lazyjj shortcut
       lj = "lazyjj";
-      # jj shortcut
+      # jj shortcuts
       j = "jj";
+      jpg = "jj git push";
       # ps alternative
       ps = "procs";
+      jrb = "j rebase -s \"all:children(main) & (bookmarks(glob:'aidan/*') | parents(bookmarks(glob:'aidan/*')))\" -d main";
     };
 
     # initExtraFirst = ''
@@ -79,15 +81,14 @@
               command tmux "$@"
           fi
       }
-
       alias tmux=_tmux
-
-      # eval "$(fnm env)"
 
       export VI_MODE_SET_CURSOR=true
 
       export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
-      export PATH="/opt/homebrew/Cellar/zigup/2025.01.02/bin:$PATH"
+
+      # zig build fix, see https://github.com/ziglang/zig/issues/19400
+      ZIG_GLOBAL_CACHE_DIR=$PWD
     '';
 
     plugins = [

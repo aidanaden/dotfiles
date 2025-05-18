@@ -13,5 +13,6 @@
     ./stylix.nix
     ./kickstart.nixvim/nixvim.nix
     ./helix.nix
+    # ./libresprite.nix
   ] ++ (if terminal == "alacritty" then [ ./alacritty.nix ] else [ ./kitty.nix ]);
 }

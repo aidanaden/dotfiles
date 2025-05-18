@@ -39,10 +39,10 @@
 
     zig.url = "github:mitchellh/zig-overlay";
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # spicetify-nix = {
+    #   url = "github:Gerg-L/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     stylix = {
       url = "github:danth/stylix/release-24.11";
@@ -79,6 +79,11 @@
       };
       overlays = with inputs; [
         zig.overlays.default
+        (self: super: {
+          nodejs = super.nodejs_22;
+          nodejs-slim = super.nodejs-slim_22;
+        })
+
       ];
       user = "aidan";
       system = "aarch64-darwin";
@@ -132,7 +137,7 @@
                 {
                   imports = [
                     inputs.nixvim.homeManagerModules.nixvim
-                    inputs.spicetify-nix.homeManagerModules.default
+                    # inputs.spicetify-nix.homeManagerModules.default
                     stylix.homeManagerModules.stylix
                     ../../home/darwin.nix
                     mac-app-util.homeManagerModules.default
