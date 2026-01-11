@@ -136,6 +136,9 @@ in
           enable = true;
           package = unstable.zls;
         };
+        oxlint = {
+          enable = true;
+        };
         tailwindcss = {
           enable = true;
           autostart = true;
@@ -167,9 +170,9 @@ in
         svelte = {
           enable = true;
         };
-        jsonls = {
-          enable = true;
-        };
+        # jsonls = {
+        #   enable = true;
+        # };
         yamlls = {
           enable = true;
         };

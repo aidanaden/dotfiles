@@ -10,26 +10,29 @@ let
     config.allowUnfree = true;
     config.allowUnsupportedSystem = false;
   };
+  isLinux = pkgs.stdenv.isLinux;
 in
 {
   home = {
     packages = with pkgs; [
+      # neovim
+
       git
       act # github action runner
 
       # node
       bun
-      unstable.nodejs_20
-      unstable.nodePackages.pnpm
-      unstable.nodePackages.typescript
-      unstable.nodePackages.typescript-language-server
+      nodejs_22
+      nodePackages.pnpm
+      nodePackages.typescript
+      nodePackages.typescript-language-server
 
       # node webpack analysing
-      nodePackages.webpack
-      nodePackages.webpack-cli
+      # nodePackages.webpack
+      # nodePackages.webpack-cli
 
       # rush
-      nodePackages.rush
+      # nodePackages.rush
 
       # rust
       rustup
@@ -68,16 +71,24 @@ in
 
       # video
       yt-dlp
+
+      # video player and scripts (Linux only - wayland dependency)
+      ] ++ pkgs.lib.optionals isLinux [
       mpv-unwrapped
 
-      # torrents
+      # japanese-learning
+      mpvScripts.mpvacious
+
+      # torrents (Linux only - Qt/wayland dependency)
       qbittorrent
 
-      # discord client
+      # discord client (Linux only - wayland dependency)
       unstable.vesktop
 
-      # telegram
+      # telegram (Linux only - wayland dependency)
       telegram-desktop
+      ayugram-desktop
+      ] ++ [
 
       # wireguard ui
       unstable.wireguard-ui
@@ -91,8 +102,9 @@ in
       # disk usage analyser
       unstable.ncdu
 
-      # lazyjj
+      # jujutsu tui
       unstable.lazyjj
+      unstable.jjui
 
       # docker cli
       unstable.lazydocker
@@ -113,8 +125,8 @@ in
       obsidian
 
       # solana dev tools (solana-cli, anchor)
-      unstable.solana-cli
-      unstable.anchor
+      # unstable.solana-cli
+      # unstable.anchor
 
       # zig
       unstable.zig
@@ -134,6 +146,30 @@ in
       # utm virtualisation
       utm
 
+      # radicle
+      radicle-node
+      radicle-explorer
+
+      # httpie, curl alternative
+      xh
+
+      # swf flash game decompiler
+      jpexs
+
+      # rust command completion timer
+      hyperfine
+
+      # screenshot tool (Linux only - wayland dependency)
+      ] ++ pkgs.lib.optionals isLinux [
+      flameshot
+
+      # performance profiling (Linux only - wayland dependency)
+      tracy
+      ] ++ [
+
+      # cloudflare localhost tunneling
+      cloudflared
+
       # sdl cross-platform graphics
       # SDL2
       # sdl3
@@ -151,6 +187,9 @@ in
 
       # rustmission
       # inputs.rustmission.packages.${pkgs.system}.default
+
+      # signal terminal client
+      gurk-rs
     ];
 
     sessionVariables = {
@@ -165,7 +204,6 @@ in
 
     go = {
       enable = true;
-      package = pkgs.go_1_22;
       goPath = "go";
       goBin = "go/bin";
       goPrivate = [ ];
@@ -181,7 +219,6 @@ in
     # pretty ls
     lsd = {
       enable = true;
-      enableAliases = true;
     };
 
     fzf = {

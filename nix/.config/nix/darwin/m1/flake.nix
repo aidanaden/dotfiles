@@ -11,7 +11,7 @@
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
@@ -130,11 +130,11 @@
                   imports = [
                     inputs.nixvim.homeManagerModules.nixvim
                     inputs.spicetify-nix.homeManagerModules.default
-                    stylix.homeManagerModules.stylix
+                    stylix.homeModules.stylix
                     mac-app-util.homeManagerModules.default
                     ../../home/darwin.nix
                   ];
-                  home.stateVersion = "24.11";
+                  home.stateVersion = "25.11";
                 };
             };
           }

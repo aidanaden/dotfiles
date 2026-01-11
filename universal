@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="ghostty,rustmission"
+    STOW_FOLDERS="ghostty,rustmission,nvim"
 fi
 
 if [[ -z $DOTFILES ]]; then

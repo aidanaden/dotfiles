@@ -91,6 +91,16 @@
       if.app-name-regex-substring = 'qBittorrent'
       run = 'move-node-to-workspace 2'
 
+      # mpv 
+      [[on-window-detected]]
+      if.app-name-regex-substring = 'mpv'
+      run = 'move-node-to-workspace 2'
+
+      # japanese media player
+      [[on-window-detected]]
+      if.app-name-regex-substring = 'Memento'
+      run = 'move-node-to-workspace 2'
+
       # code
       [[on-window-detected]]
       if.app-id="com.mitchellh.ghostty"
@@ -108,6 +118,10 @@
 
       [[on-window-detected]]
       if.app-name-regex-substring = 'telegram'
+      run = 'move-node-to-workspace 4'
+
+      [[on-window-detected]]
+      if.app-name-regex-substring = 'ayugram'
       run = 'move-node-to-workspace 4'
 
       [[on-window-detected]]

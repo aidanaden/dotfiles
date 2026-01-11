@@ -16,20 +16,19 @@ in
 
     # Plugins
     ./plugins/gitsigns.nix
-    ./plugins/which-key.nix
+    # ./plugins/which-key.nix
     ./plugins/telescope.nix
     ./plugins/conform.nix
     ./plugins/lsp.nix
     ./plugins/nvim-cmp.nix
-    ./plugins/mini.nix
+    # ./plugins/mini.nix
     ./plugins/treesitter.nix
     ./plugins/oil.nix
-    ./plugins/ts-autotag.nix
-    ./plugins/indent-blankline.nix
-    ./plugins/tailwind-tools.nix
-    ./plugins/lspkind.nix
+    # ./plugins/ts-autotag.nix
+    # ./plugins/indent-blankline.nix
+    # ./plugins/tailwind-tools.nix
+    # ./plugins/lspkind.nix
     ./plugins/typescript-tools.nix
-    ./plugins/harpoon.nix
   ];
 
   /*
@@ -180,8 +179,8 @@ in
       #  See `:help 'clipboard'`
       clipboard = {
         providers = {
-          wl-copy.enable = true; # For Wayland
-          xsel.enable = false; # For X11
+          # wl-copy.enable = true; # For Wayland
+          # xsel.enable = false; # For X11
         };
 
         # Sync clipboard between OS and Neovim

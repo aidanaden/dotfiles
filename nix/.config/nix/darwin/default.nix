@@ -43,23 +43,22 @@
     meslo-lgs-nf
     monaspace
     departure-mono
+    noto-fonts
+    kanji-stroke-order-font
   ];
 
   services = {
     # Auto upgrade nix package and the daemon service.
-    nix-daemon.enable = true;
     tailscale.enable = true;
   };
 
   nix = {
     optimise = {
       automatic = true;
-      user = user;
     };
 
     gc = {
       automatic = true;
-      user = user;
     };
 
     settings = {
@@ -81,19 +80,20 @@
   };
 
   # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   # this is required if you want to use darwin's default shell - zsh
   programs.zsh.enable = true;
 
   system = {
+    primaryUser = user;
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
-    activationScripts.postUserActivation.text = ''
-      # activateSettings -u will reload the settings from the database and apply them to the current session,
-      # so we do not need to logout and login again to make the changes take effect.
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
+    # activationScripts.postUserActivation.text = ''
+    #   # activateSettings -u will reload the settings from the database and apply them to the current session,
+    #   # so we do not need to logout and login again to make the changes take effect.
+    #   /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    # '';
 
     keyboard = {
       enableKeyMapping = true;

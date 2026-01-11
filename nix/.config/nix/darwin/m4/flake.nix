@@ -11,16 +11,16 @@
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-24.11";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -30,14 +30,37 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
+      url = "github:nix-community/nixvim/nixos-25.11";
       # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-zsh-fzf-tab.url = "github:nixos/nixpkgs/8193e46376fdc6a13e8075ad263b4b5ca2592c03";
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    zig.url = "github:mitchellh/zig-overlay";
+    nixpkgs-zsh-fzf-tab = {
+      url = "github:nixos/nixpkgs/8193e46376fdc6a13e8075ad263b4b5ca2592c03";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixCats = {
+      url = "github:BirdeeHub/nixCats-nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    kickstart-nixcat = {
+      # This points to your local nvim directory
+      url = "path:../../home/kickstart-nixcat";
+      # Pass the other inputs to your nvim flake
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixCats.follows = "nixCats";
+    };
+
+    zig = {
+      url = "github:mitchellh/zig-overlay";
+    };
 
     # spicetify-nix = {
     #   url = "github:Gerg-L/spicetify-nix";
@@ -45,7 +68,7 @@
     # };
 
     stylix = {
-      url = "github:danth/stylix/release-24.11";
+      url = "github:danth/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -121,7 +144,7 @@
               };
             }
           )
-          home-manager.darwinModule
+          home-manager.darwinModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -137,12 +160,13 @@
                 {
                   imports = [
                     inputs.nixvim.homeManagerModules.nixvim
+                    # inputs.kickstart-nixcat.homeModules.default
                     # inputs.spicetify-nix.homeManagerModules.default
-                    stylix.homeManagerModules.stylix
+                    stylix.homeModules.stylix
                     ../../home/darwin.nix
                     mac-app-util.homeManagerModules.default
                   ];
-                  home.stateVersion = "24.11";
+                  home.stateVersion = "25.11";
                 };
             };
           }

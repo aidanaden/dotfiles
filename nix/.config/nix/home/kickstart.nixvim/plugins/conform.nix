@@ -14,7 +14,7 @@
             -- lanuages here or re-enable it for the disabled ones.
             local disable_filetypes = { c = true, cpp = true }
             return {
-              timeout_ms = 500,
+              timeout_ms = 1500,
               lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype]
             }
           end
@@ -27,54 +27,46 @@
           # You can use a sublist to tell conform to run *until* a formatter
           # is found
           # javascript = [ [ "prettierd" "prettier" ] ];
-          markdown = [ "prettierd" ];
-          mdx = [ "prettierd" ];
+          # markdown = [ "prettierd" ];
+          # mdx = [ "prettierd" ];
           rust = [ "rustfmt" ];
           typescript = {
             __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "eslint_d";
-            __unkeyed-3 = "eslint";
-            __unkeyed-4 = "prettier";
+            __unkeyed-3 = "oxlint";
             stop_after_first = true;
           };
           typescriptreact = {
             __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "eslint_d";
-            __unkeyed-3 = "eslint";
-            __unkeyed-4 = "prettier";
+            __unkeyed-3 = "oxlint";
             stop_after_first = true;
           };
           javascript = {
             __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "eslint_d";
-            __unkeyed-3 = "eslint";
-            __unkeyed-4 = "prettier";
+            __unkeyed-2 = "oxlint";
             stop_after_first = true;
           };
           javascriptreact = {
             __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "eslint_d";
-            __unkeyed-3 = "eslint";
-            __unkeyed-4 = "prettier";
+            __unkeyed-2 = "oxlint";
             stop_after_first = true;
           };
-          astro = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "eslint_d";
-            __unkeyed-3 = "eslint";
-            __unkeyed-4 = "prettier";
-            stop_after_first = true;
-          };
-          yaml = [ "yamlfmt" ];
-          toml = [ "taplo" ];
-          sql = [ "sqlfluff" ];
+          # astro = {
+          #   __unkeyed-1 = "prettierd";
+          #   __unkeyed-2 = "eslint_d";
+          #   __unkeyed-3 = "eslint";
+          #   __unkeyed-4 = "prettier";
+          #   stop_after_first = true;
+          # };
+          # yaml = [ "yamlfmt" ];
+          # toml = [ "taplo" ];
+          # sql = [ "sqlfluff" ];
           nix = [ "nixfmt-rfc-style" ];
           zig = [ "zigfmt" ];
-          "_" = [
-            "squeeze_blanks"
-            "trim_whitespace"
-            "trim_newlines"
-          ];
+          # "_" = [
+          #   "squeeze_blanks"
+          #   "trim_whitespace"
+          #   "trim_newlines"
+          # ];
         };
 
         formatters = {
@@ -84,27 +76,30 @@
           prettierd = {
             command = lib.getExe pkgs.prettierd;
           };
-          eslint_d = {
-            command = lib.getExe pkgs.eslint_d;
-          };
+          # eslint_d = {
+          #   command = lib.getExe pkgs.eslint_d;
+          # };
           rustfmt = {
             command = lib.getExe pkgs.rustfmt;
           };
-          sqlfluff = {
-            command = lib.getExe pkgs.sqlfluff;
+          oxlint = {
+            command = lib.getExe pkgs.oxlint;
           };
-          squeeze_blanks = {
-            command = lib.getExe' pkgs.coreutils "cat";
-          };
+          # sqlfluff = {
+          #   command = lib.getExe pkgs.sqlfluff;
+          # };
+          # squeeze_blanks = {
+          #   command = lib.getExe' pkgs.coreutils "cat";
+          # };
           stylua = {
             command = lib.getExe pkgs.stylua;
           };
-          taplo = {
-            command = lib.getExe pkgs.taplo;
-          };
-          yamlfmt = {
-            command = lib.getExe pkgs.yamlfmt;
-          };
+          # taplo = {
+          #   command = lib.getExe pkgs.taplo;
+          # };
+          # yamlfmt = {
+          #   command = lib.getExe pkgs.yamlfmt;
+          # };
           zigfmt = {
             command = lib.getExe pkgs.zig;
           };

@@ -47,7 +47,10 @@
       lj = "lazyjj";
       # jj shortcuts
       j = "jj";
-      jpg = "jj git push";
+      jn = "jj new ";
+      jp = "jj git push";
+      jf = "jj git fetch";
+      js = "jj st";
       # ps alternative
       ps = "procs";
       jrb = "j rebase -s \"all:children(main) & (bookmarks(glob:'aidan/*') | parents(bookmarks(glob:'aidan/*')))\" -d main";
@@ -57,7 +60,7 @@
     #   source ~/.p10k.zsh
     # '';
 
-    initExtra = ''
+    initContent = ''
       # yazi
       function yy() {
       	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
