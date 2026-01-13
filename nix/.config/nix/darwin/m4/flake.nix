@@ -42,12 +42,10 @@
 
     nixpkgs-zsh-fzf-tab = {
       url = "github:nixos/nixpkgs/8193e46376fdc6a13e8075ad263b4b5ca2592c03";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixCats = {
       url = "github:BirdeeHub/nixCats-nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     kickstart-nixcat = {
@@ -112,6 +110,16 @@
       system = "aarch64-darwin";
       hostname = "m4";
       terminal = "kitty";
+      # Import nixpkgs with config and overlays applied
+      pkgs = import nixpkgs {
+        inherit system;
+        config = nixpkgsConfig;
+        overlays = overlays;
+      };
+      pkgs-unstable = import inputs.nixpkgs-unstable {
+        inherit system;
+        config = nixpkgsConfig;
+      };
     in
     {
       # nix code formatter
@@ -119,13 +127,11 @@
 
       # nix-darwin with home-manager for macOS
       darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
-        inherit system;
+        inherit system pkgs;
         # makes all inputs availble in imported files
         specialArgs = {
           inherit
             inputs
-            nixpkgsConfig
-            overlays
             user
             hostname
             terminal
@@ -151,7 +157,7 @@
               useUserPackages = true;
               # makes all inputs available in imported files for hm
               extraSpecialArgs = {
-                inherit inputs stylix terminal;
+                inherit inputs stylix terminal pkgs-unstable;
                 pkgs-zsh-fzf-tab = import inputs.nixpkgs-zsh-fzf-tab { inherit system; };
               };
               users.${user} =
@@ -159,7 +165,7 @@
                 with inputs;
                 {
                   imports = [
-                    inputs.nixvim.homeManagerModules.nixvim
+                    inputs.nixvim.homeModules.nixvim
                     # inputs.kickstart-nixcat.homeModules.default
                     # inputs.spicetify-nix.homeManagerModules.default
                     stylix.homeModules.stylix

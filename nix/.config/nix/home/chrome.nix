@@ -1,23 +1,9 @@
-{ pkgs, inputs, ... }:
+{ pkgs-unstable, ... }:
 let
-  unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
-    config.allowUnfree = true;
-    config.allowUnsupportedSystem = false;
-  };
+  unstable = pkgs-unstable;
 in
 {
-  programs.chromium = {
-    enable = true;
-    package = unstable.google-chrome;
-    extensions = [
-      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-      { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
-      { id = "bfnaelmomeimhlpmgjnjophhpkkoljpa"; } # phantom wallet
-      { id = "hlepfoohegkhhmjieoechaddaejaokhf"; } # refined github
-      { id = "gppongmhjkpfnbhagpmjfkannfbllamg"; } # wappalyzer
-      { id = "jabopobgcpjmedljpbcaablpmlmfcogm"; } # whatfont
-    ];
-    commandLineArgs = [ "--disable-features=WebRtcAllowInputVolumeAdjustment" ];
-  };
+  home.packages = [
+    unstable.google-chrome
+  ];
 }

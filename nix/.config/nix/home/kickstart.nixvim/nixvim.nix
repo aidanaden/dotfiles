@@ -1,6 +1,6 @@
-{ pkgs, inputs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 let
-  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+  unstable = pkgs-unstable;
 in
 {
   imports = [
@@ -328,6 +328,9 @@ in
     ];
 
     plugins = {
+      # Enable lazy loading provider
+      lz-n.enable = true;
+
       # Adds icons for plugins to utilize in ui
       web-devicons.enable = true;
 

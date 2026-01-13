@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nix flake update:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "WebSearch",
+      "WebFetch(domain:nix-community.github.io)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:lsp-zero.netlify.app)",
+      "Bash(nix build:*)",
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(darwin-rebuild build:*)",
+      "Bash(darwin-rebuild switch:*)",
+      "Bash(sudo darwin-rebuild switch:*)",
+      "Bash(nix eval:*)",
+      "Bash(nix flake show:*)",
+      "WebFetch(domain:discourse.nixos.org)",
+      "Bash(/nix/store/pjzhz87zi3x8157hrvdi55r7q2znh4mj-oxfmt-0.23.0/bin/oxfmt:*)"
+    ]
+  }
+}

@@ -1,13 +1,13 @@
 {
   pkgs,
   lib,
-  inputs,
+  pkgs-unstable,
   scale,
   terminal,
   ...
 }:
 let
-  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+  unstable = pkgs-unstable;
 in
 {
   home.packages = with pkgs; [

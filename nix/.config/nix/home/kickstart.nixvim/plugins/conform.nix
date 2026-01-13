@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 {
   programs.nixvim = {
     # Autoformat
@@ -31,22 +31,22 @@
           # mdx = [ "prettierd" ];
           rust = [ "rustfmt" ];
           typescript = {
-            __unkeyed-1 = "prettierd";
+            __unkeyed-1 = "oxfmt";
             __unkeyed-3 = "oxlint";
             stop_after_first = true;
           };
           typescriptreact = {
-            __unkeyed-1 = "prettierd";
+            __unkeyed-1 = "oxfmt";
             __unkeyed-3 = "oxlint";
             stop_after_first = true;
           };
           javascript = {
-            __unkeyed-1 = "prettierd";
+            __unkeyed-1 = "oxfmt";
             __unkeyed-2 = "oxlint";
             stop_after_first = true;
           };
           javascriptreact = {
-            __unkeyed-1 = "prettierd";
+            __unkeyed-1 = "oxfmt";
             __unkeyed-2 = "oxlint";
             stop_after_first = true;
           };
@@ -73,9 +73,9 @@
           nixfmt-rfc-style = {
             command = lib.getExe pkgs.nixfmt-rfc-style;
           };
-          prettierd = {
-            command = lib.getExe pkgs.prettierd;
-          };
+          # prettierd = {
+          #   command = lib.getExe pkgs.prettierd;
+          # };
           # eslint_d = {
           #   command = lib.getExe pkgs.eslint_d;
           # };
@@ -84,6 +84,10 @@
           };
           oxlint = {
             command = lib.getExe pkgs.oxlint;
+          };
+          oxfmt = {
+            command = lib.getExe pkgs-unstable.oxfmt;
+            args = [ "--stdin-filepath" "$FILENAME" ];
           };
           # sqlfluff = {
           #   command = lib.getExe pkgs.sqlfluff;

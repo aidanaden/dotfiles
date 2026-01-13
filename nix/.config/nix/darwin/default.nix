@@ -1,16 +1,11 @@
 {
   pkgs,
   user,
-  overlays,
   hostname,
-  nixpkgsConfig,
   ...
 }:
 {
   imports = [ ./homebrew.nix ];
-
-  nixpkgs.config = nixpkgsConfig;
-  nixpkgs.overlays = overlays;
 
   users.users.${user} = {
     home = "/Users/${user}";

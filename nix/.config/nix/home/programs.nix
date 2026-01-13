@@ -1,15 +1,11 @@
 {
   pkgs,
-  inputs,
+  pkgs-unstable,
   terminal,
   ...
 }:
 let
-  unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
-    config.allowUnfree = true;
-    config.allowUnsupportedSystem = false;
-  };
+  unstable = pkgs-unstable;
   isLinux = pkgs.stdenv.isLinux;
 in
 {
@@ -61,7 +57,6 @@ in
       fd
       ripgrep
       tldr
-      meslo-lgs-nf
       fastfetch
 
       # cloud specific
@@ -115,8 +110,6 @@ in
       # diff alternative
       difftastic
 
-      # git lfs
-      git-lfs
 
       # generate books from markdown (gameboy pandocs)
       mdbook
@@ -204,9 +197,11 @@ in
 
     go = {
       enable = true;
-      goPath = "go";
-      goBin = "go/bin";
-      goPrivate = [ ];
+      env = {
+        GOPATH = "$HOME/go";
+        GOBIN = "$HOME/go/bin";
+        GOPRIVATE = "";
+      };
     };
 
     # shell integrations are enabled by default

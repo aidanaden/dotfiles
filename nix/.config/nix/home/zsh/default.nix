@@ -1,10 +1,10 @@
-{ pkgs, pkgs-zsh-fzf-tab, ... }:
+{ config, pkgs, pkgs-zsh-fzf-tab, ... }:
 {
   programs.zsh = {
     enable = true;
     enableCompletion = false;
     autocd = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     autosuggestion.enable = true;
 
     history = {

@@ -1,6 +1,6 @@
-{ pkgs, inputs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 let
-  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+  unstable = pkgs-unstable;
 in
 {
   programs.nixvim = {
@@ -124,6 +124,9 @@ in
         #     "typescriptreact"
         #   ];
         # };
+        tsgo = {
+          enable = true;
+        };
         gopls = {
           enable = true;
         };

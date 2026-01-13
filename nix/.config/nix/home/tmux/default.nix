@@ -1,12 +1,12 @@
 {
   pkgs,
   lib,
-  inputs,
+  pkgs-unstable,
   terminal,
   ...
 }:
 let
-  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+  unstable = pkgs-unstable;
 in
 {
   programs.tmux = {

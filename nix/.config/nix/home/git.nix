@@ -1,11 +1,13 @@
 { ... }:
 {
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+
   programs.git = {
     enable = true;
     lfs.enable = true;
-    delta.enable = true;
-    userName = "aidanaden";
-    userEmail = "aidanaden@hotmail.com";
     #signing = {
     #  key = null; # gnupg decides by mail
     #  signByDefault = true;
@@ -30,26 +32,6 @@
       #   };
       # }
     ];
-    aliases = {
-      cm = "commit";
-      ca = "commit --amend --no-edit";
-      co = "checkout";
-      cp = "cherry-pick";
-
-      di = "diff";
-      dh = "diff HEAD";
-
-      pu = "pull";
-      ps = "push";
-      pf = "push --force-with-lease";
-
-      st = "status -sb";
-      fe = "fetch";
-      gr = "grep -in";
-
-      ri = "rebase -i";
-      rc = "rebase --continue";
-    };
     ignores = [
       # ide
       ".idea"
@@ -67,7 +49,31 @@
       "__sapper__" # svelte
       ".DS_Store" # mac
     ];
-    extraConfig = {
+    settings = {
+      user = {
+        name = "aidanaden";
+        email = "aidanaden@hotmail.com";
+      };
+      alias = {
+        cm = "commit";
+        ca = "commit --amend --no-edit";
+        co = "checkout";
+        cp = "cherry-pick";
+
+        di = "diff";
+        dh = "diff HEAD";
+
+        pu = "pull";
+        ps = "push";
+        pf = "push --force-with-lease";
+
+        st = "status -sb";
+        fe = "fetch";
+        gr = "grep -in";
+
+        ri = "rebase -i";
+        rc = "rebase --continue";
+      };
       init.defaultBranch = "main";
       pull = {
         ff = false;
